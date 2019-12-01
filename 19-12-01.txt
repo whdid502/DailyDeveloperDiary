@@ -10,6 +10,8 @@ cli는 순서에 따라 작동되는 행동을 일정부분 컴퓨터가 대신해준다
 *ctrl + insert : bash 에서 복사
  shift + insert : bash 에서 붙여넣기
 
+--------
+
 2)git
 git original 은 cli 특유의 장점을 살릴수잇다.
 
@@ -55,9 +57,13 @@ conflict는 같은부분을 수정햇을때 git스스로 처리하지못하니 나한테 맡기는것
              base에서 수정된 부분을 데려와 comflict를 줄여 merge할수잇는 방법
 
 git workflow : 검색해보자 복잡한branch,merge 등을 병합
-cherrypick : branch를 부분적으로 병합(어렵다)
+cherrypick : branch(전체가아닌 당시버전)를 부분적으로 병합(어렵다)
+             git cherry-pick (버전값) : 병합하고자한 branch위에서 해야한다.
 
 rebase : otherbranch의 base를 master branch에 순차적으로 병합시킨다(타임라인이깔끔하게유지)
+         re+base > base를 옮긴다(log가 선형적으로, 깔끔하게 보인다)
+         git rebase (branch이름) : 옮기려는 branch로 가서 (branch이름)을 base로 삼는다
+         rebase와 merge 는 과정이다를뿐 결과는 같다.같아야한다
 
 git clone : remote repository 와 local repository가 같은상태가 됨
 git pull : remote repository의 최신버전을 다운로드하는것 > clone과 차이점 clone은 전체를복사, pull은 최신변경점만수정
@@ -80,3 +86,6 @@ patch : push 할 권한이 없는 타인이 원래 주인에게 유효한 작업을 전달힐때사용
  > 주인은 git am (패치파일) 이란 명령어를 사용 
           git am -3 -i *.patch : 3way merge를 통해 현명하게 적용/-i는 하나적용할때마다물어보기
    
+-------
+
+3) 

@@ -1,0 +1,147 @@
+
+12-01
+1) posix
+cli는 gui에비해 복잡하고 상호 작용체계가 다른 상황에서 간단하고 쉽게 명령입력이된다.
+cli는 순서에 따라 작동되는 행동을 일정부분 컴퓨터가 대신해준다
+여러 명령어를 순차적으로 진행할때 ';' 은 and 의 순서를 표시해준다 (명령어를구분하는 '구분자')
+';' 은 앞의 명령이 실패하면 그명령을 넘어가고 다음명령을진행한다 > 치명적인문제를발생할수도잇음
+'&&'은 앞의 명령이 실패하면 그명령에서 진행을 멈춘다 > 문제예방
+
+*ctrl + insert : bash 에서 복사
+ shift + insert : bash 에서 붙여넣기
+
+--------
+
+2)git
+git original 은 cli 특유의 장점을 살릴수잇다.
+
+dir 을 git 시킬때 git init . 으로 한다. '.'은 현재dir을 의미한다
+
+stage area 엔 git add를 사용한다 commit 되던 woriking tree에 잇던 상관없다
+
+git diff : 마지막버전과 working tree와의 차이점을 보여준다
+
+git reset --hard : undo, 뒤에 버전을 입력하면 그버전으로 가겟다, 돌아가겟다
+git reset --soft : reset시 수정본은 그대로둔다  >>reset은 지우는거나 다름없다.
+
+ >> reset : head가 branch를가리킬때, branch가 가리키는 commit을 바꾼다. 이전의 commit
+            즉, version은 삭제되다. 삭제의 개념
+
+git revert "버전" : 버전을 유지하고 버전을 revert 하고 그전 commit 으로 돌아간다
+                    한버전씩 역순으로 내려가야 충돌이 일어나지않는다. 건너뛰면안됨
+
+git checkout "branch name" : 해당 branch로 돌아간다(head의 값을바꾸는것 > 버전을 가리킬수도잇다,detached상태)
+                             >마지막 commit 상태로 돌아간다(물론 파일의내용도)
+git checkout master : 최신상태로 복귀
+
+ >>checkout : head가 가리키는것을 바꾼다. change 
+git commit -am "name" : a는 add, add와 commit 을 동시에 수행한다
+                        하지만 적어도 최초 한번은 add해서 tracked상태로 만들어줘야한다
+git commit : editor 가 뜬다. commit message를 좀더길고 세세하게 쓸수잇다.
+
+.gitignore : 버전관리,commit관리에서 제외(사적인파일)
+
+branch = 가지,같은뿌리 서로다른역사
+master : 기본 branch. 가장큰줄기
+head가 가리키는것 : 현재 우리가 속해잇는것
+branch를 만들고 branch사이를이동한다는것 > 공통의 줄기를지닌 평행우주사이에서 별개로작업한다는것 >놀랍다!
+git merge : branch의 병합
+합치려고하는 branch 간의 공통의 조상 : base
+base를 기반으로 두 이상의branch가 합된것 : merge commit
+git merge "branch name" : 현재의 branch로 "branch name"을 병합한다
+merge할때 현재branch말고 통합되던 branch의 log도 통합된 branch의 log에 등장한다
+merge 할때 같은 파일이더라도 수정부분이 다르면 알아서 적용해준다>git의 힘!
+conflict는 같은부분을 수정햇을때 git스스로 처리하지못하니 나한테 맡기는것
+
+3way merge : 2개의 branch가 여러부분 충돌할때 base branch를 추가로 merge하여
+             base에서 수정된 부분을 데려와 comflict를 줄여 merge할수잇는 방법
+
+git workflow : 검색해보자 복잡한branch,merge 등을 병합
+cherrypick : branch(전체가아닌 당시버전)를 부분적으로 병합(어렵다)
+             git cherry-pick (버전값) : 병합하고자한 branch위에서 해야한다.
+
+rebase : otherbranch의 base를 master branch에 순차적으로 병합시킨다(타임라인이깔끔하게유지)
+         re+base > base를 옮긴다(log가 선형적으로, 깔끔하게 보인다)
+         git rebase (branch이름) : 옮기려는 branch로 가서 (branch이름)을 base로 삼는다
+         rebase와 merge 는 과정이다를뿐 결과는 같다.같아야한다
+
+git clone : remote repository 와 local repository가 같은상태가 됨
+git pull : remote repository의 최신버전을 다운로드하는것 > clone과 차이점 clone은 전체를복사, pull은 최신변경점만수정
+
+git remote add 'origin' ~~ : 'origint은 원격저장소의 별명같은것, origin은 기본이름,시작이름같은것
+git push origin master : 여기서 origin 은 원격저장소의 이름, master은 push할 branch
+      (--set-upsteram) : 위의 push 와 origin사이에 두는, 설정하는것>이후엔 git push만으로 업로드가능
+      (-u)
+협업시 push,pull,commit을 자주해야한다 > 커뮤니케이션의 활발화가 중요하다 > conflict방지
+
+*pull vs fetch
+git pull = git fetch; git merge origin\master(or FETCH_HEAD) 와 같다.
+fetch 햇을시 local repository의 head는 remote repository의 head보다 1commit뒤에잇다.
+이때 fetch한 remote repository의 데이터는 .git\FETCJ_HEAD 안에 들어잇다.
+fetch 는 조금더 신중하게 자료를 받고싶을때 사용한다. 결합은나중에, 우선가져오기
+
+patch : push 할 권한이 없는 타인이 원래 주인에게 유효한 작업을 전달힐때사용
+      : git format-patch (origin\master의 버전) > origin\master 버전 이후의 새로작업한
+        파일을 patch란 확장자로 파일을 생성한다.
+ > 주인은 git am (패치파일) 이란 명령어를 사용 
+          git am -3 -i *.patch : 3way merge를 통해 현명하게 적용\-i는 하나적용할때마다물어보기
+   
+-------
+
+3) 정규표현식
+ 문자열을 처리하는방법중 하나, 특정한 조건의 문자를 '검색'하거나 '치환'의과정을 간편하게처리
+ 
+ 1} 정규표현식은 기본적으로 대,소문자를 구분한다 
+ 
+ 2} 띄어쓰기의 개수도 구분한다
+ 
+ 3} ^word > carot은 source의 word로 시작되는 source만 찾는다
+    word$ > 달러는 souce가 word로 끝나는것만 찾는다
+    \(백슬래쉬)뒤에잇는 문자는 단순한 문자로 취급한다 e.g.)  ^$ : 아무것도찾을수없음
+           > 단순히 문자로 탈출시켜준다 : escape라 한다     ^\$ : $로 시작하는 source지정
+        \뒤의 문자는 \와 하나로 생각하자                    \$$ : $로 끝나는 source 지정
+                                                             \\ : \를 escape 
+   
+ 
+ 4} .(point)는 어떠한문자라도 가리킨다
+    .*x개는 어떠한문자x개를 가리킨다. all matches엔 x의 배수로 가리킨다
+    .도 \를 통한 escape 가능하다 
+ 
+ 5} [](squre brackets)는 []안의 문자가 잇는것을 지정한다
+    []는 []와 그안의 문자를 포함해서 하나의 문자로 친다
+    [elm][aet] 는 'e나ㅣ이나m을포함하는문자하나'와 'a나e나t를포함하는문자하나' 총 두개를지정한다
+    []안에서 -는 구간을 나타낸다 [a-f]는 "'a부터f'까지의 문자를포함하는 한문자"를 지정한다
+    []안의 순서는 바뀌면안된다
+    []안의 ^은 부정의 의미이다 [^anei]는 'a,n,e,i가 아닌'한문자를 지정한다.제외의 개념
+ 
+ 6} |는 문자를 덩이단위로 자른다 (an|ae|gase)는 an,ae,gase라는 단어하나를 지정한다
+    공통되는패턴은 뺄수잇다 (monday|tuesday]friday)는 (mon|tues|fri)day와 같다
+ 
+ 7} 수량자(Quantifiers)는 *,+,?,{}가잇다, 수량자 앞의 하나의단어만 지정한다. 
+    *은 *앞의 문자가 0~여러개이다. a*b는 b,ab,aab,aa..ab를 찾는다. *뒤의 문자를기준으로잡자 
+    +는 +앞의 문자가 1~여러개이다. a+b는 ab,aab,aa.....b를 찾는다.
+    ?는 ?앞의 문자가 없거나 1개이다. a?b는 b,ab 를 찾는다.열
+    *?는 *의 0~여러개가 ?의 0,1을만나 0을의미하게된다. *?는 0이다.
+    +?는 1이다.
+    ??는 0이다. 
+               > lazy Quantifiers : 게으른 수량자 > *?,+?,??
+               > Greed Quantifiers : 탐욕적인 수량자 > +,*,?
+ 
+ 8} {}는 안의 수량을 정한다 .{3}는 어떠한문자(.)든 3개({3})씩 지정한다 
+    {,}는 이상,이하를 의미한다 {1,3}은 1이상3이하이다.{3,}은 3이상, {,3}은 3이하이다.
+
+ 9} \(백슬래쉬)w는 word 를 뜻한다. 단어는 알파벳과 숫자와 _(underline)의 기호를 word라고한다.
+                                 >합한것이 아님!
+    \w는 [A-z0-9_]와 정확하게 같은의미이다
+    \W는 word가 아닌것이란 뜻이다. [^A-z0-9_]와 같은의미이다.
+    \d는 숫자이다. [0-9]와같다,
+    \D는 숫자가아닌것이다 [^0-9]와 같다,
+    \b는 word boundary 이다. \b\w는 \w로 시작하는것, \w\b는 \w로 끝나는것이다.
+    \B는 \b의 반대이다. \B\w는 \w로 시작한것을제외하고지정, \w\B는 \w로 끝나는것을제외하고지정이다.
+    \A는 시작점이다 \A...은 시작점 3개의 문자를 지정한다
+            > \A는 전체 열의 시작점, ^는 각행의 시작점.
+    \Z는 끝점이다. ...\Z는 끝점3개의 문자를 지정한다
+            > \Z는 전체 열의 끝점. $는 각 행의 끝점,
+
+ 10} ?=는 뒤의 문자를 검색하는데는 쓰지만, 지정하진 않는다란 의미, ?=x는 x를 찾지만 지정은안한다. 다른것과같이씀
+     e.g.)\w+(?=X)는 'X앞의 문자가 1~여러개 인것을 지정하지만 X는 지정하지않는다'란 의미이다

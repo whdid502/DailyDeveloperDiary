@@ -8,7 +8,7 @@
  input(입력)과 output(출력)이 중요
     |                     ㄴ'Read' >R
     ㄴ'Creat', 'Update', 'Delete' >C UD
-                                    ㄴ'CRUD'가 중요하다.
+                                   ㄴ'CRUD'가 중요하다.
 
  압도적으로 많이사용되는 datebase 는 관계형 데이터베이스(reational datebase)이다.
  이 관계형데이터베이스의 핵심은 '표'이다.
@@ -27,6 +27,90 @@
  > 내경우엔 'whdid502 AS SYSDBA'로 만듬 PW : whdid7738
  관리자권한부여 'GRANT' DBA : 모든일을할수잇는 권한
   >>>>... ORACLE 사용자 계정만드는과정에서 비밀번호가 입력되지않음.. 나중에 해봐야겟다..
+
+ORACLE은 해결하고자하는것을 인지하고, 검색해서 쓰면된다. 다외우지않아도됨.
+
+왜 sql로 복잡하게 사용할까, 쉬운 엑셀안쓰고??
+ > 훨씬 가볍고, 방대하고, 효율좋게 처리할수잇다(잘햇다면)
+ > 명령어를 이용해서 데이터베이스를 제어할수있다 > 자동화할수있다.
+ > 이러한 명령어를 SQL(Structured Query Language,구조화된 정보를 처리하도록 요청하는 언어)라고한다.
+ > 절대다수가 사용하는 관계형 데이터베이스는 SQL로 동작한다.
+
+○table(표)만들기
+예제1.
+CREATE TABLE tablename(
+	id NUMBER NOT NULL,
+	title VARCHAR2(50) NOT NULL,
+	description VARCHAR2(4000) NULL,
+	created DATE NOT NULL
+);
+>> 1} 컬럼(열)은 ()로 묶어지정하고, ;으로 끝낸다
+   2} 컬럼뒤에 데이터타입은 꼭 지정되어야한다. > NUMBER(숫자만) VARCHAR2(4000)4000이하의 문자, DATE(날짜)
+   3} NULL(없다), NOT NULL(반드시있어야한다.)등의 제한명령어를 쓸수있다.
+
+ 
+○table에 행(row) 추가하기
+예제2.
+INSERT INTO tablename
+	(id,title,description,created)
+	VALUES
+	(1,'ORACLE','ORACLE is ..',SYSDATE);
+입력후
+commit;
+>> 1} 열은 ()묶어진다.
+   2} VALUES는 구체적인 값을 적는다
+   3} id 은 데이터타입을 숫자로 지정햇으므로 숫자를적고, title,description은 문자숫자제한 즉 문자로 지정햇으니
+      문자를 적어준다.
+   4} created는 데이터타입이 DATE,날짜이므로 SYSDATE(현재)등으로 적어준다.
+   5} commit;까지 해야 완성(기계적으로하자, 무조건한다)   
+
+○table 가져오기(확인하기)
+예제3.
+SELECT * FROM tablename;
+>> 1} *은 모든 컬럼를 말한다.
+   2} sqlpls론 불편하다. SQL DEVELOPER를 사용하면 깔끔하게본다.
+
+○table 분할해 가져오기(확인하기)
+예제3-1.
+
+SELECT id,title,created FROM tablename;
+>> 1}*(모든컬럼)대신 id,title,create 컬럼만 보겟다
+
+예제 3-2.
+
+SELECT * FROM tablename WHERE id = 1;
+                                 <
+                                 >    
+>> 1} 모든 컬럼중에서 / id컬럼이 1인 부분의 로우만 본다.
+                                 1보다 작은
+                                 1보다 큰
+
+○출력된 결과를 정렬   
+예제4.
+SELECT * FROM tablename ORDER BY id DESC;
+                                    ASC;
+>> 1} tablename 의 모든컬럼을 정령한다 / id컬럼을 기준으로 / 큰숫자(혹 문자순)부터 내림으로
+                                                             작은숫자(혹 문자순)부터 올림으로
+
+○전체(*)에서 페이징 하기 > 전체의 시트양이 너무많다면 *를 꺼내올때마다 데이터베이스는 마비된다.
+                            책에서 페이지가 나뉘어잇듯이, 시트를 분할하는것을 페이징이라 한다.
+예제5.
+SECET * FROM tablename
+	OFFSET 1 ROWS;
+>> 1} OFFSET 1은 '0번째 이후에 나오는 행들만 가져온다=우리가봣을때 2번째' > 컴퓨터는 0부터 센다.
+             2    1
+
+○OFFSET 한 행을 가져오기
+예제5.
+SELECT *FROM tablename                           SELECT *FROM tablename      
+	OFFSET 0 ROWS                                    OFFSET 1 ROWS
+	FETCH NEXT 1 ROWS ONLY;                          FETCH NEXT 1 ROWS ONLY;
+>> 1} 1번째 이후의 / 하나의 행만을 가져온다.    >>1} 2번째 이후의 / 하나의 행만을 가져온다.
+   2} 몇번째 페이지인가를 의미한다.
+
+
+
+
 
 2. C#동영상보기(POCU Academy)
  컴퓨터공학의 기본기가 중요하다.

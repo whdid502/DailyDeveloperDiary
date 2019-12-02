@@ -75,16 +75,16 @@ git push origin master : 여기서 origin 은 원격저장소의 이름, master은 push할 bra
 협업시 push,pull,commit을 자주해야한다 > 커뮤니케이션의 활발화가 중요하다 > conflict방지
 
 *pull vs fetch
-git pull = git fetch; git merge origin/master(or FETCH_HEAD) 와 같다.
+git pull = git fetch; git merge origin\master(or FETCH_HEAD) 와 같다.
 fetch 햇을시 local repository의 head는 remote repository의 head보다 1commit뒤에잇다.
-이때 fetch한 remote repository의 데이터는 .git/FETCJ_HEAD 안에 들어잇다.
+이때 fetch한 remote repository의 데이터는 .git\FETCJ_HEAD 안에 들어잇다.
 fetch 는 조금더 신중하게 자료를 받고싶을때 사용한다. 결합은나중에, 우선가져오기
 
 patch : push 할 권한이 없는 타인이 원래 주인에게 유효한 작업을 전달힐때사용
-      : git format-patch (origin/master의 버전) > origin/master 버전 이후의 새로작업한
+      : git format-patch (origin\master의 버전) > origin\master 버전 이후의 새로작업한
         파일을 patch란 확장자로 파일을 생성한다.
  > 주인은 git am (패치파일) 이란 명령어를 사용 
-          git am -3 -i *.patch : 3way merge를 통해 현명하게 적용/-i는 하나적용할때마다물어보기
+          git am -3 -i *.patch : 3way merge를 통해 현명하게 적용\-i는 하나적용할때마다물어보기
    
 -------
 
@@ -136,12 +136,12 @@ patch : push 할 권한이 없는 타인이 원래 주인에게 유효한 작업을 전달힐때사용
     \W는 word가 아닌것이란 뜻이다. [^A-z0-9_]와 같은의미이다.
     \d는 숫자이다. [0-9]와같다,
     \D는 숫자가아닌것이다 [^0-9]와 같다,
-    \b는 word boundary 이다. /b/w는 /w로 시작하는것, /w/b는 /w로 끝나는것이다.
-    \B는 /b의 반대이다. /B/w는 /w로 시작한것을제외하고지정, /w/B는 /w로 끝나는것을제외하고지정이다.
+    \b는 word boundary 이다. \b\w는 \w로 시작하는것, \w\b는 \w로 끝나는것이다.
+    \B는 \b의 반대이다. \B\w는 \w로 시작한것을제외하고지정, \w\B는 \w로 끝나는것을제외하고지정이다.
     \A는 시작점이다 \A...은 시작점 3개의 문자를 지정한다
-            > /A는 전체 열의 시작점, ^는 각행의 시작점.
+            > \A는 전체 열의 시작점, ^는 각행의 시작점.
     \Z는 끝점이다. ...\Z는 끝점3개의 문자를 지정한다
-            > /Z는 전체 열의 끝점. $는 각 행의 끝점,
+            > \Z는 전체 열의 끝점. $는 각 행의 끝점,
 
  10} ?=는 뒤의 문자를 검색하는데는 쓰지만, 지정하진 않는다란 의미, ?=x는 x를 찾지만 지정은안한다. 다른것과같이씀
-     e.g.)/w+(?=X)는 'X앞의 문자가 1~여러개 인것을 지정하지만 X는 지정하지않는다'란 의미이다
+     e.g.)\w+(?=X)는 'X앞의 문자가 1~여러개 인것을 지정하지만 X는 지정하지않는다'란 의미이다

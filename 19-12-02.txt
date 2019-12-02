@@ -5,7 +5,14 @@
                          ㄴfile의 한계 : 성능, 보안, 편의성
                            ㄴ극복하기위한것이 바로 'datebase' : 방대한기능을가지고잇는 정보도구
 
-1)input(입력)과 output(출력)이 중요
+ input(입력)과 output(출력)이 중요
     |                     ㄴ'Read' >R
     ㄴ'Creat', 'Update', 'Delete' >C UD
                                     ㄴ'CRUD'가 중요하다.
+
+ 압도적으로 많이사용되는 datebase 는 관계형 데이터베이스(reational datebase)이다.
+ 이 관계형데이터베이스의 핵심은 '표'이다.
+ x와 y, 열과 행으로 표현한다면 쉽게 처리할수잇다. 데이터베이스란 이 표를 기계화시킨다.
+
+1) ORACLE
+   

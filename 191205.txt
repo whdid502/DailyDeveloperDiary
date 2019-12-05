@@ -1,0 +1,5 @@
+web 페이지를 만드는 코드 : html > 쉽고, 주요하다.(hyper text markup lauguage)
+
+web 은 public domain : 저작권이 없다. web도 마찬가지
+
+editor 로는 atom을 선정

@@ -3,3 +3,14 @@ web 페이지를 만드는 코드 : html > 쉽고, 주요하다.(hyper text markup lauguage)
 web 은 public domain : 저작권이 없다. web도 마찬가지
 
 editor 로는 atom을 선정
+
+----------------------------------
+
+● html tag > 앞의태그는 열리는태그, 뒤으태그는 닫히는태그라고한다.
+                ㄴ 태그는 쉽게 설명해준다!
+
+○ <strong>,</storng> : 굵게, 강조푯
+
+○ <u>,</u> : 밑줄
+
+○ 

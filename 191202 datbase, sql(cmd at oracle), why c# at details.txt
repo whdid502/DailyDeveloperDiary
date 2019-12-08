@@ -1,53 +1,53 @@
 19-12-02
 
-1. µ¥ÀÌÅÍº£ÀÌ½º
- µ¥ÀÌÅÍ¸¦ ÀúÀåÇÏ´Â ¹æ¹ý - file : ¸¹ÀºÀåÁ¡, ¹è¿ì±â ½±´Ù, ¾îµð¿¡¼­³ª »ç¿ë°¡´É, °£ÆíÇÑ Àü¼Û
-                         ¤¤fileÀÇ ÇÑ°è : ¼º´É, º¸¾È, ÆíÀÇ¼º
-                           ¤¤±Øº¹ÇÏ±âÀ§ÇÑ°ÍÀÌ ¹Ù·Î 'datebase' : ¹æ´ëÇÑ±â´ÉÀ»°¡Áö°íÀÕ´Â Á¤º¸µµ±¸
+1. ë°ì´í„°ë² ì´ìŠ¤
+ ë°ì´í„°ë¥¼ ì €ìž¥í•˜ëŠ” ë°©ë²• - file : ë§Žì€ìž¥ì , ë°°ìš°ê¸° ì‰½ë‹¤, ì–´ë””ì—ì„œë‚˜ ì‚¬ìš©ê°€ëŠ¥, ê°„íŽ¸í•œ ì „ì†¡
+                         ã„´fileì˜ í•œê³„ : ì„±ëŠ¥, ë³´ì•ˆ, íŽ¸ì˜ì„±
+                           ã„´ê·¹ë³µí•˜ê¸°ìœ„í•œê²ƒì´ ë°”ë¡œ 'datebase' : ë°©ëŒ€í•œê¸°ëŠ¥ì„ê°€ì§€ê³ ìž‡ëŠ” ì •ë³´ë„êµ¬
 
- input(ÀÔ·Â)°ú output(Ãâ·Â)ÀÌ Áß¿ä
-    |                     ¤¤'Read' >R
-    ¤¤'Creat', 'Update', 'Delete' >C UD
-                                   ¤¤'CRUD'°¡ Áß¿äÇÏ´Ù.
+ input(ìž…ë ¥)ê³¼ output(ì¶œë ¥)ì´ ì¤‘ìš”
+    |                     ã„´'Read' >R
+    ã„´'Creat', 'Update', 'Delete' >C UD
+                                   ã„´'CRUD'ê°€ ì¤‘ìš”í•˜ë‹¤.
 
- ¾ÐµµÀûÀ¸·Î ¸¹ÀÌ»ç¿ëµÇ´Â datebase ´Â °ü°èÇü µ¥ÀÌÅÍº£ÀÌ½º(reational datebase)ÀÌ´Ù.
- ÀÌ °ü°èÇüµ¥ÀÌÅÍº£ÀÌ½ºÀÇ ÇÙ½ÉÀº 'Ç¥'ÀÌ´Ù.
- x¿Í y, ¿­°ú ÇàÀ¸·Î Ç¥ÇöÇÑ´Ù¸é ½±°Ô Ã³¸®ÇÒ¼öÀÕ´Ù. µ¥ÀÌÅÍº£ÀÌ½º¶õ ÀÌ Ç¥¸¦ ±â°èÈ­½ÃÅ²´Ù.
+ ì••ë„ì ìœ¼ë¡œ ë§Žì´ì‚¬ìš©ë˜ëŠ” datebase ëŠ” ê´€ê³„í˜• ë°ì´í„°ë² ì´ìŠ¤(reational datebase)ì´ë‹¤.
+ ì´ ê´€ê³„í˜•ë°ì´í„°ë² ì´ìŠ¤ì˜ í•µì‹¬ì€ 'í‘œ'ì´ë‹¤.
+ xì™€ y, ì—´ê³¼ í–‰ìœ¼ë¡œ í‘œí˜„í•œë‹¤ë©´ ì‰½ê²Œ ì²˜ë¦¬í• ìˆ˜ìž‡ë‹¤. ë°ì´í„°ë² ì´ìŠ¤ëž€ ì´ í‘œë¥¼ ê¸°ê³„í™”ì‹œí‚¨ë‹¤.
 
- *³ªÀÌ°ÅÇÒÁÙ¾Ë¾Æ! ÀÇ Á¤ÀÇ : SETUP(ºó°øÅÍ¸¦¸¸µé±â) > CRUD(°øÅÍ¸¦Ã¤¿ì´Â ¿øÀÚµé)
-                            >GROUP(¿øÀÚµéÀ» ¹­¾î ´õÅ« ±×·ì, ¿¬°á½ÃÄÑ¼­ °ß°íÇÏ°Ô)
-                            >RUN(ÀÌ°ÍµéÀ» ½ÇÇàÇØº¸´Â°Í) > 
+ *ë‚˜ì´ê±°í• ì¤„ì•Œì•„! ì˜ ì •ì˜ : SETUP(ë¹ˆê³µí„°ë¥¼ë§Œë“¤ê¸°) > CRUD(ê³µí„°ë¥¼ì±„ìš°ëŠ” ì›ìžë“¤)
+                            >GROUP(ì›ìžë“¤ì„ ë¬¶ì–´ ë”í° ê·¸ë£¹, ì—°ê²°ì‹œì¼œì„œ ê²¬ê³ í•˜ê²Œ)
+                            >RUN(ì´ê²ƒë“¤ì„ ì‹¤í–‰í•´ë³´ëŠ”ê²ƒ) > 
 
 -----------------------------------------------------
 
 1) ORACLE 
- ¿À¶óÅ¬¿¡¼­ ¿ì¸®°¡ ÇÒ°ÍÀº 'Ç¥'¿¡ Á¤º¸¸¦ ±â·Ï&ÀÐ´Â°ÍÀÌ´Ù.
- Ç¥°¡ ¸¹¾ÆÁú¼ö·Ï ¿¬°üµÈ Ç¥µé³¢¸® GroupingÇÒ Ã¼°è°¡ ÇÊ¿äÇÏ´Ù > ÀÌ°ÍÀ» Schema¶ó°íÇÑ´Ù
- User¸¦ ¸¸µé¸é Schema°¡ ¸¸µé¾îÁö°í user´Â Schema¸¦ °ü¸®ÇÑ´Ù. Schema¿Í User´Â ¿¬°üµÅÀÕ´Ù.
+ ì˜¤ë¼í´ì—ì„œ ìš°ë¦¬ê°€ í• ê²ƒì€ 'í‘œ'ì— ì •ë³´ë¥¼ ê¸°ë¡&ì½ëŠ”ê²ƒì´ë‹¤.
+ í‘œê°€ ë§Žì•„ì§ˆìˆ˜ë¡ ì—°ê´€ëœ í‘œë“¤ë¼ë¦¬ Groupingí•  ì²´ê³„ê°€ í•„ìš”í•˜ë‹¤ > ì´ê²ƒì„ Schemaë¼ê³ í•œë‹¤
+ Userë¥¼ ë§Œë“¤ë©´ Schemaê°€ ë§Œë“¤ì–´ì§€ê³  userëŠ” Schemaë¥¼ ê´€ë¦¬í•œë‹¤. Schemaì™€ UserëŠ” ì—°ê´€ë¼ìž‡ë‹¤.
 
-'sys' AS SYSDBA (°ü¸®ÀÚ·Î½á »ç¿ëÀÚ)
- > ³»°æ¿ì¿£ 'whdid502 AS SYSDBA'·Î ¸¸µë PW : whdid7738
- °ü¸®ÀÚ±ÇÇÑºÎ¿© 'GRANT' DBA : ¸ðµçÀÏÀ»ÇÒ¼öÀÕ´Â ±ÇÇÑ
-  >>>>... ORACLE »ç¿ëÀÚ °èÁ¤¸¸µå´Â°úÁ¤¿¡¼­ ºñ¹Ð¹øÈ£°¡ ÀÔ·ÂµÇÁö¾ÊÀ½.. ³ªÁß¿¡ ÇØºÁ¾ß°Ù´Ù..
+'sys' AS SYSDBA (ê´€ë¦¬ìžë¡œì¨ ì‚¬ìš©ìž)
+ > ë‚´ê²½ìš°ì—” 'whdid502 AS SYSDBA'ë¡œ ë§Œë“¬ PW : whdid7738
+ ê´€ë¦¬ìžê¶Œí•œë¶€ì—¬ 'GRANT' DBA : ëª¨ë“ ì¼ì„í• ìˆ˜ìž‡ëŠ” ê¶Œí•œ
+  >>>>... ORACLE ì‚¬ìš©ìž ê³„ì •ë§Œë“œëŠ”ê³¼ì •ì—ì„œ ë¹„ë°€ë²ˆí˜¸ê°€ ìž…ë ¥ë˜ì§€ì•ŠìŒ.. ë‚˜ì¤‘ì— í•´ë´ì•¼ê²Ÿë‹¤..
 
-ORACLEÀº ÇØ°áÇÏ°íÀÚÇÏ´Â°ÍÀ» ÀÎÁöÇÏ°í, °Ë»öÇØ¼­ ¾²¸éµÈ´Ù. ´Ù¿Ü¿ìÁö¾Ê¾ÆµµµÊ.
+ORACLEì€ í•´ê²°í•˜ê³ ìží•˜ëŠ”ê²ƒì„ ì¸ì§€í•˜ê³ , ê²€ìƒ‰í•´ì„œ ì“°ë©´ëœë‹¤. ë‹¤ì™¸ìš°ì§€ì•Šì•„ë„ë¨.
 
-¿Ö sql·Î º¹ÀâÇÏ°Ô »ç¿ëÇÒ±î, ½¬¿î ¿¢¼¿¾È¾²°í??
- > ÈÎ¾À °¡º±°í, ¹æ´ëÇÏ°í, È¿À²ÁÁ°Ô Ã³¸®ÇÒ¼öÀÕ´Ù(ÀßÇÞ´Ù¸é)
- > ¸í·É¾î¸¦ ÀÌ¿ëÇØ¼­ µ¥ÀÌÅÍº£ÀÌ½º¸¦ Á¦¾îÇÒ¼öÀÖ´Ù > ÀÚµ¿È­ÇÒ¼öÀÖ´Ù.
- > ÀÌ·¯ÇÑ ¸í·É¾î¸¦ SQL(Structured Query Language,±¸Á¶È­µÈ Á¤º¸¸¦ Ã³¸®ÇÏµµ·Ï ¿äÃ»ÇÏ´Â ¾ð¾î)¶ó°íÇÑ´Ù.
- > Àý´ë´Ù¼ö°¡ »ç¿ëÇÏ´Â °ü°èÇü µ¥ÀÌÅÍº£ÀÌ½º´Â SQL·Î µ¿ÀÛÇÑ´Ù.
+ì™œ sqlë¡œ ë³µìž¡í•˜ê²Œ ì‚¬ìš©í• ê¹Œ, ì‰¬ìš´ ì—‘ì…€ì•ˆì“°ê³ ??
+ > í›¨ì”¬ ê°€ë³ê³ , ë°©ëŒ€í•˜ê³ , íš¨ìœ¨ì¢‹ê²Œ ì²˜ë¦¬í• ìˆ˜ìž‡ë‹¤(ìž˜í–‡ë‹¤ë©´)
+ > ëª…ë ¹ì–´ë¥¼ ì´ìš©í•´ì„œ ë°ì´í„°ë² ì´ìŠ¤ë¥¼ ì œì–´í• ìˆ˜ìžˆë‹¤ > ìžë™í™”í• ìˆ˜ìžˆë‹¤.
+ > ì´ëŸ¬í•œ ëª…ë ¹ì–´ë¥¼ SQL(Structured Query Language,êµ¬ì¡°í™”ëœ ì •ë³´ë¥¼ ì²˜ë¦¬í•˜ë„ë¡ ìš”ì²­í•˜ëŠ” ì–¸ì–´)ë¼ê³ í•œë‹¤.
+ > ì ˆëŒ€ë‹¤ìˆ˜ê°€ ì‚¬ìš©í•˜ëŠ” ê´€ê³„í˜• ë°ì´í„°ë² ì´ìŠ¤ëŠ” SQLë¡œ ë™ìž‘í•œë‹¤.
 
 
- ORACLEÀº Ç¥¸¦ ÂÉ°¶¼öÀÖ´Ù. ¸Å¿ì¸Å¿ì Å« ¿ë·®ÀÇ TABLEÀ» ¼öÁ¤ÇÏ°íÀÚ ÇÒ¶§, ÀÏÀÏÈ÷ ¼öÁ¤ÇÏ´Â°Íº¸´Ù, Ç¥¸¦ ÇÊ¿ä¿¡ ÀÇÇØ ºÐÇÒ½ÃÄÑ ¿øÇÏ´Â ºÎºÐ¸¸ ¼öÁ¤ÇÏ¿© ½Ã°£°ú ºñ¿ëÀ» °¨ÃàÇÒ¼öÀÖ´Ù.
-ÇÏÁö¸¸ ÀÌ·¸°Ô ÂÉ°³³õÀº Ç¥´Â  UPDATE´Â ½±Áö¸¸ READÇÏ±â ¾î·Æ´Ù. ÀÌ·²¶§ ÀÐ±â ½±°Ô ÇÏ´Â°ÍÀ» JOINÀÌ¶óÇÑ´Ù. ÀÌ´Â ºÐÇÕµÈ Ç¥¸¦ ºÐÇÕµÈ°ÍÃ³·³ ÀúÀåÇÏ´Â°ÍÀ» ¸»ÇÑ´Ù.
+ ORACLEì€ í‘œë¥¼ ìª¼ê°¤ìˆ˜ìžˆë‹¤. ë§¤ìš°ë§¤ìš° í° ìš©ëŸ‰ì˜ TABLEì„ ìˆ˜ì •í•˜ê³ ìž í• ë•Œ, ì¼ì¼ížˆ ìˆ˜ì •í•˜ëŠ”ê²ƒë³´ë‹¤, í‘œë¥¼ í•„ìš”ì— ì˜í•´ ë¶„í• ì‹œì¼œ ì›í•˜ëŠ” ë¶€ë¶„ë§Œ ìˆ˜ì •í•˜ì—¬ ì‹œê°„ê³¼ ë¹„ìš©ì„ ê°ì¶•í• ìˆ˜ìžˆë‹¤.
+í•˜ì§€ë§Œ ì´ë ‡ê²Œ ìª¼ê°œë†“ì€ í‘œëŠ”  UPDATEëŠ” ì‰½ì§€ë§Œ READí•˜ê¸° ì–´ë µë‹¤. ì´ëŸ´ë•Œ ì½ê¸° ì‰½ê²Œ í•˜ëŠ”ê²ƒì„ JOINì´ë¼í•œë‹¤. ì´ëŠ” ë¶„í•©ëœ í‘œë¥¼ ë¶„í•©ëœê²ƒì²˜ëŸ¼ ì €ìž¥í•˜ëŠ”ê²ƒì„ ë§í•œë‹¤.
 
 ---------------------------------------------
 
-¡ÜCLIENT_SQL(in cli)
+â—CLIENT_SQL(in cli)
 
-¡Ûtable(Ç¥)¸¸µé±â
-¿¹Á¦1.
+â—‹table(í‘œ)ë§Œë“¤ê¸°
+ì˜ˆì œ1.
 CREATE TABLE tablename(
 	id NUMBER NOT NULL,
 	title VARCHAR2(50) NOT NULL,
@@ -55,144 +55,147 @@ CREATE TABLE tablename(
 	created DATE NOT NULL,
 	CONSTRAINT PK_tablename PRIMARY KEY(id) 
 );
->> 1} ÄÃ·³(¿­)Àº ()·Î ¹­¾îÁöÁ¤ÇÏ°í, ;À¸·Î ³¡³½´Ù
-   2} ÄÃ·³µÚ¿¡ µ¥ÀÌÅÍÅ¸ÀÔÀº ²À ÁöÁ¤µÇ¾î¾ßÇÑ´Ù. > NUMBER(¼ýÀÚ¸¸) VARCHAR2(4000)4000ÀÌÇÏÀÇ ¹®ÀÚ, DATE(³¯Â¥)
-   3} NULL(¾ø´Ù), NOT NULL(¹Ýµå½ÃÀÖ¾î¾ßÇÑ´Ù.)µîÀÇ Á¦ÇÑ¸í·É¾î¸¦ ¾µ¼öÀÖ´Ù.
-   4} CONSTRAINT(Á¦ÇÑÇÑ´Ù)µµ Á¦¾àÁ¶°ÇÀÌ´Ù. PK_tablenamedÀº ÇÁ¶óÀÌ¸Ó¸®Å°ÀÇ ÀÌ¸§ÀÌ°í, PRIMARY KEY(id)´Â idÄÃ·³À» ÀüºÎ °íÀ¯°ª(Áßº¹µÈ´Ù¸é ¸í·ÉÀÌ ½ÇÇàµÇÁö¾Ê°Ô, ÀüºÎ ±¸º°µÇ°Ô)À¸·Î ¸¸µç´Ù.
-       ¤¤PRIMARY KEY ÀÇ ÇàÀº À¯ÀÏ¹«ÀÌÇÏ´Ù! + ÈÄ¿¡ PRIMARY KEY·Î ÁöÁ¤ÇÑ ÇàÀ» Ã£´Â°ÍÀº ¼Óµµ°¡ ¿ùµîÈ÷ ºü¸£´Ù
+>> 1} ì»¬ëŸ¼(ì—´)ì€ ()ë¡œ ë¬¶ì–´ì§€ì •í•˜ê³ , ;ìœ¼ë¡œ ëë‚¸ë‹¤
+   2} ì»¬ëŸ¼ë’¤ì— ë°ì´í„°íƒ€ìž…ì€ ê¼­ ì§€ì •ë˜ì–´ì•¼í•œë‹¤. > NUMBER(ìˆ«ìžë§Œ) VARCHAR2(4000)4000ì´í•˜ì˜ ë¬¸ìž, DATE(ë‚ ì§œ)
+   3} NULL(ì—†ë‹¤), NOT NULL(ë°˜ë“œì‹œìžˆì–´ì•¼í•œë‹¤.)ë“±ì˜ ì œí•œëª…ë ¹ì–´ë¥¼ ì“¸ìˆ˜ìžˆë‹¤.
+   4} CONSTRAINT(ì œí•œí•œë‹¤)ë„ ì œì•½ì¡°ê±´ì´ë‹¤. PK_tablenamedì€ í”„ë¼ì´ë¨¸ë¦¬í‚¤ì˜ ì´ë¦„ì´ê³ , PRIMARY KEY(id)ëŠ” idì»¬ëŸ¼ì„ ì „ë¶€ ê³ ìœ ê°’(ì¤‘ë³µëœë‹¤ë©´ ëª…ë ¹ì´ ì‹¤í–‰ë˜ì§€ì•Šê²Œ, ì „ë¶€ êµ¬ë³„ë˜ê²Œ)ìœ¼ë¡œ ë§Œë“ ë‹¤.
+       ã„´PRIMARY KEY ì˜ í–‰ì€ ìœ ì¼ë¬´ì´í•˜ë‹¤! + í›„ì— PRIMARY KEYë¡œ ì§€ì •í•œ í–‰ì„ ì°¾ëŠ”ê²ƒì€ ì†ë„ê°€ ì›”ë“±ížˆ ë¹ ë¥´ë‹¤
  
-¡Ûtable¿¡ Çà(row) Ãß°¡ÇÏ±â
-¿¹Á¦2.
+â—‹tableì— í–‰(row) ì¶”ê°€í•˜ê¸°
+ì˜ˆì œ2.
 INSERT INTO tablename
 	(id,title,description,created)
 	VALUES
 	(1,'ORACLE','ORACLE is ..',SYSDATE);
-ÀÔ·ÂÈÄ
+ìž…ë ¥í›„
 commit;
->> 1} ¿­Àº ()¹­¾îÁø´Ù.
-   2} VALUES´Â ±¸Ã¼ÀûÀÎ °ªÀ» Àû´Â´Ù
-   3} id Àº µ¥ÀÌÅÍÅ¸ÀÔÀ» ¼ýÀÚ·Î ÁöÁ¤ÇÞÀ¸¹Ç·Î ¼ýÀÚ¸¦Àû°í, title,descriptionÀº ¹®ÀÚ¼ýÀÚÁ¦ÇÑ Áï ¹®ÀÚ·Î ÁöÁ¤ÇÞÀ¸´Ï
-      ¹®ÀÚ¸¦ Àû¾îÁØ´Ù.
-   4} created´Â µ¥ÀÌÅÍÅ¸ÀÔÀÌ DATE,³¯Â¥ÀÌ¹Ç·Î SYSDATE(ÇöÀç)µîÀ¸·Î Àû¾îÁØ´Ù.
-   5} commit;±îÁö ÇØ¾ß ¿Ï¼º(±â°èÀûÀ¸·ÎÇÏÀÚ, ¹«Á¶°ÇÇÑ´Ù)   
+>> 1} ì—´ì€ ()ë¬¶ì–´ì§„ë‹¤.
+   2} VALUESëŠ” êµ¬ì²´ì ì¸ ê°’ì„ ì ëŠ”ë‹¤
+   3} id ì€ ë°ì´í„°íƒ€ìž…ì„ ìˆ«ìžë¡œ ì§€ì •í–‡ìœ¼ë¯€ë¡œ ìˆ«ìžë¥¼ì ê³ , title,descriptionì€ ë¬¸ìžìˆ«ìžì œí•œ ì¦‰ ë¬¸ìžë¡œ ì§€ì •í–‡ìœ¼ë‹ˆ
+      ë¬¸ìžë¥¼ ì ì–´ì¤€ë‹¤.
+   4} createdëŠ” ë°ì´í„°íƒ€ìž…ì´ DATE,ë‚ ì§œì´ë¯€ë¡œ SYSDATE(í˜„ìž¬)ë“±ìœ¼ë¡œ ì ì–´ì¤€ë‹¤.
+   5} commit;ê¹Œì§€ í•´ì•¼ ì™„ì„±(ê¸°ê³„ì ìœ¼ë¡œí•˜ìž, ë¬´ì¡°ê±´í•œë‹¤)   
 
-¡Ûtable °¡Á®¿À±â(È®ÀÎÇÏ±â)
-¿¹Á¦3.
+â—‹table ê°€ì ¸ì˜¤ê¸°(í™•ì¸í•˜ê¸°)
+ì˜ˆì œ3.
 SELECT * FROM tablename;
->> 1} *Àº ¸ðµç ÄÃ·³¸¦ ¸»ÇÑ´Ù.
-   2} sqlpls·Ð ºÒÆíÇÏ´Ù. SQL DEVELOPER¸¦ »ç¿ëÇÏ¸é ±ò²ûÇÏ°Ôº»´Ù.
+>> 1} *ì€ ëª¨ë“  ì»¬ëŸ¼ë¥¼ ë§í•œë‹¤.
+   2} sqlplsë¡  ë¶ˆíŽ¸í•˜ë‹¤. SQL DEVELOPERë¥¼ ì‚¬ìš©í•˜ë©´ ê¹”ë”í•˜ê²Œë³¸ë‹¤.
 
-¡Ûtable ºÐÇÒÇØ °¡Á®¿À±â(È®ÀÎÇÏ±â)
-¿¹Á¦3-1.
+â—‹table ë¶„í• í•´ ê°€ì ¸ì˜¤ê¸°(í™•ì¸í•˜ê¸°)
+ì˜ˆì œ3-1.
 
 SELECT id,title,created FROM tablename;
->> 1}*(¸ðµçÄÃ·³)´ë½Å id,title,create ÄÃ·³¸¸ º¸°Ù´Ù
+>> 1}*(ëª¨ë“ ì»¬ëŸ¼)ëŒ€ì‹  id,title,create ì»¬ëŸ¼ë§Œ ë³´ê²Ÿë‹¤
 
-¿¹Á¦ 3-2.
+ì˜ˆì œ 3-2.
 
 SELECT * FROM tablename WHERE id = 1;
                                  <
                                  >    
->> 1} ¸ðµç ÄÃ·³Áß¿¡¼­ / idÄÃ·³ÀÌ 1ÀÎ ºÎºÐÀÇ ·Î¿ì¸¸ º»´Ù.
-                                 1º¸´Ù ÀÛÀº
-                                 1º¸´Ù Å«
+>> 1} ëª¨ë“  ì»¬ëŸ¼ì¤‘ì—ì„œ / idì»¬ëŸ¼ì´ 1ì¸ ë¶€ë¶„ì˜ ë¡œìš°ë§Œ ë³¸ë‹¤.
+                                 1ë³´ë‹¤ ìž‘ì€
+                                 1ë³´ë‹¤ í°
 
-¡ÛÃâ·ÂµÈ °á°ú¸¦ Á¤·Ä   
-¿¹Á¦4.
+â—‹ì¶œë ¥ëœ ê²°ê³¼ë¥¼ ì •ë ¬   
+ì˜ˆì œ4.
 SELECT * FROM tablename ORDER BY id DESC;
                                     ASC;
->> 1} tablename ÀÇ ¸ðµçÄÃ·³À» Á¤·ÉÇÑ´Ù / idÄÃ·³À» ±âÁØÀ¸·Î / Å«¼ýÀÚ(È¤ ¹®ÀÚ¼ø)ºÎÅÍ ³»¸²À¸·Î
-                                                             ÀÛÀº¼ýÀÚ(È¤ ¹®ÀÚ¼ø)ºÎÅÍ ¿Ã¸²À¸·Î
+>> 1} tablename ì˜ ëª¨ë“ ì»¬ëŸ¼ì„ ì •ë ¹í•œë‹¤ / idì»¬ëŸ¼ì„ ê¸°ì¤€ìœ¼ë¡œ / í°ìˆ«ìž(í˜¹ ë¬¸ìžìˆœ)ë¶€í„° ë‚´ë¦¼ìœ¼ë¡œ
+                                                             ìž‘ì€ìˆ«ìž(í˜¹ ë¬¸ìžìˆœ)ë¶€í„° ì˜¬ë¦¼ìœ¼ë¡œ
 
-¡ÛÀüÃ¼(*)¿¡¼­ ÆäÀÌÂ¡ ÇÏ±â > ÀüÃ¼ÀÇ ½ÃÆ®¾çÀÌ ³Ê¹«¸¹´Ù¸é *¸¦ ²¨³»¿Ã¶§¸¶´Ù µ¥ÀÌÅÍº£ÀÌ½º´Â ¸¶ºñµÈ´Ù.
-                            Ã¥¿¡¼­ ÆäÀÌÁö°¡ ³ª´µ¾îÀÕµíÀÌ, ½ÃÆ®¸¦ ºÐÇÒÇÏ´Â°ÍÀ» ÆäÀÌÂ¡ÀÌ¶ó ÇÑ´Ù.
-¿¹Á¦5.
+â—‹ì „ì²´(*)ì—ì„œ íŽ˜ì´ì§• í•˜ê¸° > ì „ì²´ì˜ ì‹œíŠ¸ì–‘ì´ ë„ˆë¬´ë§Žë‹¤ë©´ *ë¥¼ êº¼ë‚´ì˜¬ë•Œë§ˆë‹¤ ë°ì´í„°ë² ì´ìŠ¤ëŠ” ë§ˆë¹„ëœë‹¤.
+                            ì±…ì—ì„œ íŽ˜ì´ì§€ê°€ ë‚˜ë‰˜ì–´ìž‡ë“¯ì´, ì‹œíŠ¸ë¥¼ ë¶„í• í•˜ëŠ”ê²ƒì„ íŽ˜ì´ì§•ì´ë¼ í•œë‹¤.
+ì˜ˆì œ5.
 SECET * FROM tablename
 	OFFSET 1 ROWS;
->> 1} OFFSET 1Àº '0¹øÂ° ÀÌÈÄ¿¡ ³ª¿À´Â Çàµé¸¸ °¡Á®¿Â´Ù=¿ì¸®°¡”fÀ»¶§ 2¹øÂ°' > ÄÄÇ»ÅÍ´Â 0ºÎÅÍ ¼¾´Ù.
+>> 1} OFFSET 1ì€ '0ë²ˆì§¸ ì´í›„ì— ë‚˜ì˜¤ëŠ” í–‰ë“¤ë§Œ ê°€ì ¸ì˜¨ë‹¤=ìš°ë¦¬ê°€Â”fì„ë•Œ 2ë²ˆì§¸' > ì»´í“¨í„°ëŠ” 0ë¶€í„° ì„¼ë‹¤.
              2    1
 
-¡ÛOFFSET ÇÑ ÇàÀ» °¡Á®¿À±â
-¿¹Á¦5.
+â—‹OFFSET í•œ í–‰ì„ ê°€ì ¸ì˜¤ê¸°
+ì˜ˆì œ5.
 SELECT *FROM tablename                           SELECT *FROM tablename      
 	OFFSET 0 ROWS                                    OFFSET 1 ROWS
 	FETCH NEXT 1 ROWS ONLY;                          FETCH NEXT 1 ROWS ONLY;
->> 1} 1¹øÂ° ÀÌÈÄÀÇ / ÇÏ³ªÀÇ Çà¸¸À» °¡Á®¿Â´Ù.    >>1} 2¹øÂ° ÀÌÈÄÀÇ / ÇÏ³ªÀÇ Çà¸¸À» °¡Á®¿Â´Ù.
-   2} ¸î¹øÂ° ÆäÀÌÁöÀÎ°¡¸¦ ÀÇ¹ÌÇÑ´Ù.
+>> 1} 1ë²ˆì§¸ ì´í›„ì˜ / í•˜ë‚˜ì˜ í–‰ë§Œì„ ê°€ì ¸ì˜¨ë‹¤.    >>1} 2ë²ˆì§¸ ì´í›„ì˜ / í•˜ë‚˜ì˜ í–‰ë§Œì„ ê°€ì ¸ì˜¨ë‹¤.
+   2} ëª‡ë²ˆì§¸ íŽ˜ì´ì§€ì¸ê°€ë¥¼ ì˜ë¯¸í•œë‹¤.
 
-¡ÛÇà ³»¿ë º¯°æÇÏ±â
-¿¹Á¦6.
+â—‹í–‰ ë‚´ìš© ë³€ê²½í•˜ê¸°
+ì˜ˆì œ6.
 UPDATE tablename
 	SET
 	title = 'MSSQL',
-	description = 'MSSQL is ..'   >(¿©±â±îÁöÇÏ°í ; ·Î ¸¶¹«¸®ÇÏ¸é ¸ðµç title°ú description ÄÃ·³ÀÌ Àú ³»¿ëÀ¸·Î¹Ù²ï´Ù)
-	WHERE                                       (¹«¾ð°¡ÇÒ¶§ WHEREÀÌ ¾ø´Ù¸é ´Ù½Ã »ý°¢ÇØº¸ÀÚ)
+	description = 'MSSQL is ..'   >(ì—¬ê¸°ê¹Œì§€í•˜ê³  ; ë¡œ ë§ˆë¬´ë¦¬í•˜ë©´ ëª¨ë“  titleê³¼ description ì»¬ëŸ¼ì´ ì € ë‚´ìš©ìœ¼ë¡œë°”ë€ë‹¤)
+	WHERE                                       (ë¬´ì–¸ê°€í• ë•Œ WHEREì´ ì—†ë‹¤ë©´ ë‹¤ì‹œ ìƒê°í•´ë³´ìž)
 	id = 3;
->> 1} tablenameÀÌ¶õ TABLE¿¡¼­ / title ÄÃ·³À» 'MSSQL', descriptionÄÃ·³À»  'MSSQL is ..'ÀÌ¶ó°í ¾÷µ¥ÀÌÆ®ÇÑ´Ù
-      ´Ü, ±× ÇàÀº id°¡ 3ÀÎ Çà¸¸ Àû¿ëÇÑ´Ù.
-   2} ÀÌ·± ¼öÁ¤ÀÛ¾÷ÈÄ¿£ Ç×»ó 'commit;'À» ÀÔ·ÂÇØ¼­ ¼öÁ¤³»¿ëÀÌ Àû¿ëµÇ°ÔÇÑ´Ù.
+>> 1} tablenameì´ëž€ TABLEì—ì„œ / title ì»¬ëŸ¼ì„ 'MSSQL', descriptionì»¬ëŸ¼ì„  'MSSQL is ..'ì´ë¼ê³  ì—…ë°ì´íŠ¸í•œë‹¤
+      ë‹¨, ê·¸ í–‰ì€ idê°€ 3ì¸ í–‰ë§Œ ì ìš©í•œë‹¤.
+   2} ì´ëŸ° ìˆ˜ì •ìž‘ì—…í›„ì—” í•­ìƒ 'commit;'ì„ ìž…ë ¥í•´ì„œ ìˆ˜ì •ë‚´ìš©ì´ ì ìš©ë˜ê²Œí•œë‹¤.
 
-¡ÛÇà »èÁ¦ÇÏ±â(±²ÀåÈ÷ ÆÄ±«ÀûÀÎ °á°ú¸¦ ºÒ·¯ÀÏÀ¸Å³¼öÀÕ´Ù, Ç×»óÁ¶½ÉÇÏÀÚ)
-¿¹Á¦7.
-DELETE FROM tablename            >(¿©±â±îÁöÇÏ°í ;·Î ¸¶¹«¸®ÇÏ¸é, ÅäÇÈÇàÀÌ ¸ðµÎ »èÁ¦µÈ´Ù...ÃÖ¾Ç..)
+â—‹í–‰ ì‚­ì œí•˜ê¸°(êµ‰ìž¥ížˆ íŒŒê´´ì ì¸ ê²°ê³¼ë¥¼ ë¶ˆëŸ¬ì¼ìœ¼í‚¬ìˆ˜ìž‡ë‹¤, í•­ìƒì¡°ì‹¬í•˜ìž)
+ì˜ˆì œ7.
+DELETE FROM tablename            >(ì—¬ê¸°ê¹Œì§€í•˜ê³  ;ë¡œ ë§ˆë¬´ë¦¬í•˜ë©´, í† í”½í–‰ì´ ëª¨ë‘ ì‚­ì œëœë‹¤...ìµœì•…..)
 	WHERE
 	id = 3;
->> 1} id ÄÃ·³ÀÇ ·Î¿ì°¡ 3ÀÎ°÷À» »èÁ¦ÇÑ´Ù.
+>> 1} id ì»¬ëŸ¼ì˜ ë¡œìš°ê°€ 3ì¸ê³³ì„ ì‚­ì œí•œë‹¤.
 
-¡ÛÇ¥ Áö¿ì±â
-¿¹Á¦8.
+â—‹í‘œ ì§€ìš°ê¸°
+ì˜ˆì œ8.
 DROP TABLE tablename;
->> 1} tablenameÀÌ¶õ TABLE »èÁ¦
+>> 1} tablenameì´ëž€ TABLE ì‚­ì œ
 
-¡Û½ÃÄö½º »ý¼ºÇÏ±â >> PRIMARY KEY¿Í °¡Á·ÀÌ¶ó°í »ý°¢ÇÏÀÚ~, °°ÀÌÀÕÀ¸¸é °­·ÂÇØÁø´Ù.
-¿¹Á¦9.
+â—‹ì‹œí€€ìŠ¤ ìƒì„±í•˜ê¸° >> PRIMARY KEYì™€ ê°€ì¡±ì´ë¼ê³  ìƒê°í•˜ìž~, ê°™ì´ìž‡ìœ¼ë©´ ê°•ë ¥í•´ì§„ë‹¤.
+ì˜ˆì œ9.
 CREATE SEQUENCE SEQ_tablename;
->> 1} SEQ_tablename ÀÌ¶ó´Â ½ÃÄö½º¸¦ »ý¼ºÇÑ´Ù.
+>> 1} SEQ_tablename ì´ë¼ëŠ” ì‹œí€€ìŠ¤ë¥¼ ìƒì„±í•œë‹¤.
 
-¿¹Á¦9-1.
+ì˜ˆì œ9-1.
 INSERT INTO tablename
 	(id,title,description,created)
 	VALUES
 	(SEQ_tablename.NEXTVAL,'ORACLE','ORACLE is ..',SYSDATE);
->> 1} id ÄÃ·³¿¡¼­ ÀÚµ¿À¸·Î ´ÙÀ½°ªÀ» Ã£¾Æ ÀÔ·ÂÇØÁØ´Ù. NEXT(´ÙÀ½)VAL(¼ýÀÚ)
-        ¤¤°ªÀÌ Ãæµ¹ÇÏÁö ¾Ê°Ô²ûÇÑ´Ù.
+>> 1} id ì»¬ëŸ¼ì—ì„œ ìžë™ìœ¼ë¡œ ë‹¤ìŒê°’ì„ ì°¾ì•„ ìž…ë ¥í•´ì¤€ë‹¤. NEXT(ë‹¤ìŒ)VAL(ìˆ«ìž)
+        ã„´ê°’ì´ ì¶©ëŒí•˜ì§€ ì•Šê²Œë”í•œë‹¤.
 
-¿¹Á¦9-2.
-SELECT SEQ_tablename.CURRVAL FROM tablename; > ÇöÀç tablename ÀÌ¶õ TABLE¿¡ ÀÕ´Â ¸ðµçÇàÀÇ ¼ö¸¸Å­ °ªÀ» Ç¥½ÃÇØÁØ´Ù
-                             FROM DUAL;      > °¡»ó TABLE ¿¡¼­ °ªÀ»º¸¿©ÁØ´Ù. ÇÏ³ªÀÇ Çà¿¡¼­¸¸º¸¿©ÁØ´Ù.
->> 1} ÇöÀç ½ÃÄö½ºÀÇ °ªÀ» º»´Ù.
+ì˜ˆì œ9-2.
+SELECT SEQ_tablename.CURRVAL FROM tablename; > í˜„ìž¬ tablename ì´ëž€ TABLEì— ìž‡ëŠ” ëª¨ë“ í–‰ì˜ ìˆ˜ë§Œí¼ ê°’ì„ í‘œì‹œí•´ì¤€ë‹¤
+                             FROM DUAL;      > ê°€ìƒ TABLE ì—ì„œ ê°’ì„ë³´ì—¬ì¤€ë‹¤. í•˜ë‚˜ì˜ í–‰ì—ì„œë§Œë³´ì—¬ì¤€ë‹¤.
+>> 1} í˜„ìž¬ ì‹œí€€ìŠ¤ì˜ ê°’ì„ ë³¸ë‹¤.
 
-¡Û Ç¥ JOINÇÏ±â(ÇÕÄ£°ÍÃ³·³ ÀúÀåÇÏ±â>ÀÐ±â½±°Ô)
-¿¹Á¦10.
-SELECT * FROM tablename ...> ÀÌ´Â ¿¹Á¦¿Í ÇÔ²² https://opentutorials.org/course/3885/26417 ¿¡¼­ È®ÀÎÇÏÀÚ.
+â—‹ í‘œ JOINí•˜ê¸°(í•©ì¹œê²ƒì²˜ëŸ¼ ì €ìž¥í•˜ê¸°>ì½ê¸°ì‰½ê²Œ)
+ì˜ˆì œ10.
+SELECT * FROM tablename ...> ì´ëŠ” ì˜ˆì œì™€ í•¨ê»˜ https://opentutorials.org/course/3885/26417 ì—ì„œ í™•ì¸í•˜ìž.
 
 -------------------------------------------------------
 
-¡ÜCLIENT_SQL_DEVELOPER(in gui)
-¡ÜCLIENT_TOAD(in gui)
+â—CLIENT_SQL_DEVELOPER(in gui)
+â—CLIENT_TOAD(in gui)
 
-
-
-
-
-
-
-2. C#µ¿¿µ»óº¸±â(POCU Academy)
- ÄÄÇ»ÅÍ°øÇÐÀÇ ±âº»±â°¡ Áß¿äÇÏ´Ù.
+1. join at sql
  
-C#Àº ÀÔ¹®ÀÚ¿¡°Ô ÀûÇÕÇÑ ÁÖ·ù¾ð¾î
-      ±ò²û,°£°á > ½Ç¼ö¸¦ÇÏ±â¾î·Æ´Ù
-      ¶Ù¾î³­ °³¹ßÈ¯°æ
-      ¾ÆÁÖ ¶Ù¾î³­ ¼³¸í¼­(https://docs.microsoft.com/en-us/dotnet/csharp/index)
-      Å¸ÇÁ·Î±×·¡¹Ö ¾ð¾îÀÇ ¹Ì·¡»óÀ» Á¦°øÇÏ´Â ¾ð¾î > ´Ù¸¥¾ð¾îµéÀÌ C#À»º¸°í ¹æÇâ¼ºÀ»ÀâÀ½
+ JOIN : ì—¬ëŸ¬ í‘œë¥¼ í•©ì¹˜ëŠ”ê²ƒ > ê´€ê³„í˜• ë°ì´í„°ë² ì´ìŠ¤ì—ì„œ ê°€ìž¥ ì¤‘ìš”í•œê¸°ëŠ¥ì¤‘ í•˜ë‚˜
 
-C#Àº ´Ù¾çÇÑ ÇÁ·¹ÀÓ¿öÅ©°¡ÀÖ´Ù.
-     .NET ÇÁ·¹ÀÓ¿öÅ© VS .NET Core
-     .NET Core·Î ¹Ù²î¾î°¡´ÂÁß > À©µµ¿ì, ¸®´ª½º, ¸Æ¿¡¼­ ½ÇÇà°¡´É
-     .NET ÇÁ·¹ÀÓ¿öÅ©µµ .NET Core¿Í ºñ½ÁÇÏ´Ù
+TABLE ì—ì„œ ì¤‘ë³µì€ ì¢‹ì§€ì•Šë‹¤ > ë°ì´í„°ë‚­ë¹„, ìˆ˜ì •ì´ íž˜ë“¤ë‹¤
+  ã„´ ëª¨ë“  í‘œëŠ” í•˜ë‚˜ì˜ ì£¼ì œë§Œ ê°€ì ¸ì•¼ í•œë‹¤.
 
-C#Àº °³Ã¼ÁöÇâ¾ð¾î(OOP,Object-Oriented Programming)ÀÌ´Ù.
+ JOINëœ í‘œëŠ” ë³´ê¸° íŽ¸í•˜ê³ , ìˆ˜ì •í•˜ê¸° ì–´ë µë‹¤
+ ë¶„í• ëœ í‘œëŠ” ë³´ê¸° ì–´ë µê³ , ìˆ˜ì •í•˜ê¸° íŽ¸í•˜ë‹¤ > trade off ìƒí™©(ìž¥ì ê³¼ ë‹¨ì ì´ ë‹¤ë¥´ë‹¤.)
+                                             ã„´ë‘˜ì˜ ìž¥ì ë§Œ ì„žì–´ì„œ ë§Œë“¤ìž > ê´€ê³„í˜•ë°ì´í„°ë² ì´ìŠ¤ì˜ JOIN
+ 
+[[[ì‹¤ìŠµì¤€ë¹„ë¥¼ ì§ì ‘í•´ë³´ìž, ì–´ì œ í•´ë³¸ í‘œë§Œë“¤ê³  í–‰ë¶™ì´ê³  ì´ëŸ°ê±° ë³µìŠµ+í•´ê²°í•˜ì§€ëª»í•œ ORACLE ì‚¬ìš©ìžìƒì„±ë„ í•´ê²°]]]
 
-°¡Àå Áß¿äÇÑ°ÍÀº ÄÄÇ»ÅÍ°¡ ÀÌÇØÇÏ´Â¹æ½ÄÀ» ³»°¡´õ Àß ÀÌÇØÇØ¾ßÇÑ´Ù.
-                °øÅëÀûÀÎ ±âº»ÀÌ µÇ´Â °Í. > ·ÎÁ÷À» ÄÚµå·Î Ç¥ÇöÇÏ´Â ¹æ¹ý, »óÅÂ¸¦ÀúÀåÇÏ´Â¹ý
+ì•Œê²Œëœê²ƒ
+
+INT,BIGINT,SMALLINT > ì •ìˆ˜ë¥¼ ì“°ëŠ” ìˆ«ìžë°ì´í„°
+DEFAULT ê°’ ì •í•˜ê¸° > ì œì•½ì¡°ê±´ì´ë‹¤. DEFAULT '..'ëŠ” '..'ê°’ì„ ê¸°ë³¸ìœ¼ë¡œ ì‚¬ìš©í•˜ê²Ÿë‹¤.
+  ã„´ DEFAULT NULLì´ëž€? : ì—†ëŠ”ê²ƒì´ ê¸°ë³¸ì´ë‹¤ > ì—†ì„ìˆ˜ë„ìžˆë‹¤. (ë°˜ë“œì‹œìžˆë‹¤ì˜ NOT NULLê³¼ ëŒ€ë¹„ëœë‹¤.) <ë§žëŠ”ê°€í™•ì¸í•´ë³´ìž
+
+
+  >>ì˜¤ëŠ˜ì„ í•˜ë£¨ì¢…ì¼ ì €ë²ˆì—ë°°ÂŸmë˜ê²ƒ ë³µìŠµí•˜ê³  ì—°ìŠµí•´ë³´ê³ , sqlì˜¤ë¥˜ë§Œ ë§Œë³‘...í•´ê²°ì€ëª»í–‡ë‹¤..
+
+
+
+
+
+
 

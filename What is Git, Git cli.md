@@ -12,12 +12,13 @@
 
 3. working area 에서 작업후 init된 dir에 작업한 내용을 `git add`를 사용하여 staging 시킵니다. staging 시킨 상태는 `git status`를 사용해 확인할수있습니다.  
 
-> * `git add .` : 현재 dir를 stage area로 저장합니다. commit 할 준비를 마쳤습니다. (.)대신 (파일이름)을 넣을수있습니다.
-> * `git status` : 현재 branch의 위치, commit할 파일이 있는지 등의 상태를 체크해줍니다.```  
+> * `git add .` : 현재 dir를 stage area로 저장합니다. commit 할 준비를 마쳤습니다.  
+                  (.)대신 (파일이름)을 넣을수있습니다.
+> * `git status` : 현재 branch의 위치, commit할 파일이 있는지 등의 상태를 체크해줍니다.  
 
 4. stage area 에 있는 작업된 파일을 `git commit` 을 이용하여 commit 합니다. 이는 local repository로 옮기는 행위이며, 새로운 version을 등록하는 행위입니다.
 
-> * `git commit -m <커밋메시지>` : commit 하는것, stage 한것을 로컬저장소(최신본을 HEAD라고함)에 집어넣음 push의 전단계
+> * `git commit -m <커밋메시지>` : commit 하는것, stage 한것을 로컬저장소(최신본을 HEAD라고함)에 집어넣음 push의 전단계이다.
 
 5. push하기전에 github에 등록된 remote repository의 주소를 등록해줍니다. 이때 `git remote add origin (주소)` 를 사용합니다. 완료된후 `git push`를 이용해 remote repository에 등록합니다.  
 
@@ -27,12 +28,13 @@
 >> *  `(--set-upsteram)` : 위의 push 와 origin사이에 두는, 설정하는것>이후엔 git push만으로 업로드가능
       `(-u)`
 
+* .gitignore : 버전관리,commit관리에서 제외(사적인파일)
 
 ## Git Command Line  
 
-* `git diff` : 마지막버전과 working tree와의 차이점을 보여준다
+* `git diff` : 마지막버전과 working tree와의 차이점을 보여준다.
 
-* ` git reset --hard` : undo, 뒤에 버전을 입력하면 그버전으로 가겟다, 돌아가겟다  
+* ` git reset --hard` : undo, 뒤에 버전을 입력하면 그버전으로 가겟다, 돌아가겟다.  
 `git reset --soft` : reset시 수정본은 그대로둔다  >>**reset은 지우는거나 다름없다.**
 
 > * reset : head가 branch를가리킬때, branch가 가리키는 commit을 바꾼다. 이전의 commit 즉, version은 삭제되다. 삭제의 개념
@@ -46,8 +48,6 @@
 
 * `git commit -am "name"` : a는 add, add와 commit 을 동시에 수행하는 명령어이다. 하지만 적어도 **최초 한번은 add**해서 tracked상태로 만들어줘야한다  
    `git commit` : editor 가 뜬다. commit message를 좀더길고 세세하게 쓸수잇다.
-
-* .gitignore : 버전관리,commit관리에서 제외(사적인파일)
 
 ## Branch
 
@@ -78,25 +78,25 @@
 * cherrypick : branch(전체가아닌 당시버전)를 부분적으로 병합  
 > * `git cherry-pick (버전값)` : 병합하고자한 branch위에서 실행시 현재 branch에 해당부분의 버전값을 끌고와 병합한다.  
 
-* rebase : otherbranch의 base를 master branch에 순차적으로 병합시킨다, **타임라인(로그)이깔끔하게유지**  
+* rebase : otherbranch의 base를 master branch에 순차적으로 병합시킨다, **타임라인(로그)이깔끔하게유지**    
            re+base > base를 옮긴다(log가 선형적으로, 깔끔하게 보인다)  
            **rebase와 merge 는 과정이다를뿐 결과는 같다. 같아야한다**
-           > *  `git rebase (branch이름)` : 옮기려는 branch로 가서 (branch이름)을 base로 삼는다  
+> *  `git rebase (branch이름)` : 옮기려는 branch로 가서 (branch이름)을 base로 삼는다  
 
 * `git clone (remote repository URL)` : remote repository의 파일을 복사하여 내위치에 복제한다. 
 
 * `git pull` : remote repository의 최신버전을 다운로드하는것 
 > * clone과 차이점 clone은 전체를복사, pull은 최신변경점만수정
 
-* 협업시 push,pull,commit을 자주해야한다, \> 커뮤니케이션의 활발화가 중요하다, conflict방지
+* 협업시 push,pull,commit을 자주해야한다, > 커뮤니케이션의 활발화가 중요하다, conflict방지
 
 * pull vs fetch
-> * git pull = git fetch; git merge origin\master(or FETCH_HEAD) 와 같다.  
+> * git pull = git fetch; git merge origin/master(or FETCH_HEAD) 와 같다.  
     fetch 햇을시 local repository의 head는 remote repository의 head보다 1 commit뒤에잇다.  
-    이때 fetch한 remote repository의 데이터는 .git\FETCJ_HEAD 안에 들어잇다.  
+    이때 fetch한 remote repository의 데이터는 .git/FETCH_HEAD 안에 들어잇다.  
     **fetch 는 조금더 신중하게 자료를 받고싶을때** 사용한다. 결합은나중에, 우선가져오기
 
 * patch : push 할 권한이 없는 타인이 원래 주인에게 유효한 작업을 전달힐때사용
-> * `git format-patch (origin\master의 버전)` : origin\master 버전 이후의 새로작업한 파일을 patch란 확장자로 새로 파일을 생성한다.
->> * 주인은` git am (패치파일)` 이란 명령어를 사용 
->> * `git am -3 -i *.patch` : 3way merge를 통해 현명하게 적용\-i는 하나적용할때마다물어보기
+> * `git format-patch (origin\master의 버전)` : origin/master 버전 이후의 새로작업한 파일을 patch란 확장자로 새로 파일을 생성한다.
+>> * 주인은` git commit amend (패치파일)` 이란 명령어를 사용 
+>> * `git am -3 -i *.patch` : 3way merge를 통해 현명하게 적용 -i는 하나 적용할때마다 물어보기

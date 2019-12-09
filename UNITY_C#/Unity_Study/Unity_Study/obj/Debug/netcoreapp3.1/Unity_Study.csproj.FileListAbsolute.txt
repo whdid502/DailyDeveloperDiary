@@ -1,3 +1,0 @@
-C:\Users\user2\Desktop\DailyDeveloperDiary\UNITY_C#\Unity_Study\Unity_Study\obj\Debug\netcoreapp3.1\Unity_Study.csprojAssemblyReference.cache
-C:\Users\user2\Desktop\DailyDeveloperDiary\UNITY_C#\Unity_Study\Unity_Study\obj\Debug\netcoreapp3.1\Unity_Study.AssemblyInfoInputs.cache
-C:\Users\user2\Desktop\DailyDeveloperDiary\UNITY_C#\Unity_Study\Unity_Study\obj\Debug\netcoreapp3.1\Unity_Study.AssemblyInfo.cs

@@ -13,3 +13,5 @@
 ### 6. [Regex](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Regex.md)
 
 ## C#
+
+### 1. [C#Basic](https://github.com/whdid502/DailyDeveloperDiary/blob/master/C%23Basic.md)

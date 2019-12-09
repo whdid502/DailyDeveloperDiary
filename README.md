@@ -4,7 +4,7 @@
 
 ### 2. [What is Git, Git cli](https://github.com/whdid502/DailyDeveloperDiary/blob/master/What%20is%20Git,%20Git%20cli.md)
 
-### 3. [Shell, Linux Cli & http](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Shell%2C%20Linux%20Cli%20%26%20http)
+### 3. [Shell, Linux Cli & http](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Shell%2C%20Linux%20Cli%20%26%20http.md)
 
 ### 4. [Database, Oracle, SQL](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Database%2C%20Oracle%2C%20SQL.md)
 

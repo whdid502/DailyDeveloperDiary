@@ -6,7 +6,7 @@
 
 ### 3. [Shell, Linux Cli & http](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Shell%2C%20Linux%20Cli%20%26%20http)
 
-### 4. [Datebase, Oracle, SQL](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Datebase%2C%20Oracle%2C%20SQL.md)
+### 4. [Database, Oracle, SQL](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Database%2C%20Oracle%2C%20SQL.md)
 
 ### 5. [Html, Tag](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Html%2C%20Tag.md)
 

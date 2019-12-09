@@ -1,0 +1,11 @@
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\VisualStudio_Csharpstudy1\bin\Debug\netcoreapp3.1\VisualStudio_Csharpstudy1.exe
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\VisualStudio_Csharpstudy1\bin\Debug\netcoreapp3.1\VisualStudio_Csharpstudy1.deps.json
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\VisualStudio_Csharpstudy1\bin\Debug\netcoreapp3.1\VisualStudio_Csharpstudy1.runtimeconfig.json
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\VisualStudio_Csharpstudy1\bin\Debug\netcoreapp3.1\VisualStudio_Csharpstudy1.runtimeconfig.dev.json
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\VisualStudio_Csharpstudy1\bin\Debug\netcoreapp3.1\VisualStudio_Csharpstudy1.dll
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\VisualStudio_Csharpstudy1\bin\Debug\netcoreapp3.1\VisualStudio_Csharpstudy1.pdb
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\VisualStudio_Csharpstudy1\obj\Debug\netcoreapp3.1\VisualStudio_Csharpstudy1.csprojAssemblyReference.cache
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\VisualStudio_Csharpstudy1\obj\Debug\netcoreapp3.1\VisualStudio_Csharpstudy1.AssemblyInfoInputs.cache
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\VisualStudio_Csharpstudy1\obj\Debug\netcoreapp3.1\VisualStudio_Csharpstudy1.AssemblyInfo.cs
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\VisualStudio_Csharpstudy1\obj\Debug\netcoreapp3.1\VisualStudio_Csharpstudy1.dll
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\VisualStudio_Csharpstudy1\obj\Debug\netcoreapp3.1\VisualStudio_Csharpstudy1.pdb

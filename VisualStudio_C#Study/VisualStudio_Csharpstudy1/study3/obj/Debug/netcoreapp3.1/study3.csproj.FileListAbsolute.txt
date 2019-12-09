@@ -1,0 +1,11 @@
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\study3\bin\Debug\netcoreapp3.1\study3.exe
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\study3\bin\Debug\netcoreapp3.1\study3.deps.json
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\study3\bin\Debug\netcoreapp3.1\study3.runtimeconfig.json
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\study3\bin\Debug\netcoreapp3.1\study3.runtimeconfig.dev.json
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\study3\bin\Debug\netcoreapp3.1\study3.dll
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\study3\bin\Debug\netcoreapp3.1\study3.pdb
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\study3\obj\Debug\netcoreapp3.1\study3.csprojAssemblyReference.cache
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\study3\obj\Debug\netcoreapp3.1\study3.AssemblyInfoInputs.cache
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\study3\obj\Debug\netcoreapp3.1\study3.AssemblyInfo.cs
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\study3\obj\Debug\netcoreapp3.1\study3.dll
+C:\Users\user2\Desktop\DDD\VisualStudio_C#Study\VisualStudio_Csharpstudy1\study3\obj\Debug\netcoreapp3.1\study3.pdb

@@ -3,6 +3,8 @@
   Git은 Git Hub, GitLab 같은 중앙 서버를 둘 수도 있지만 기본적으로는 로컬에서 사용하게 됩니다.
 * git의 가장 큰 목적은 **버전관리**, **협업**, **백업**입니다
 
+---
+
 ## Git 시작하기 (cli)  
 > * Git bash를 이용한 Git 활용은 cli 특유의 장점을 살릴 수 있습니다.
 > * `git config`를 이용한 Git 설정에 관해선 후술하고 있지 않습니다.
@@ -20,11 +22,17 @@
 >> 이는 또한 commit 할 준비를 마친 것입니다.  
 > * `git status` : git 프로젝트의 상태를 확인할 수 있게 해주는 명령어입니다.  
 
-4. staging area 에 있는 작업된 파일을 `git commit` 을 이용하여 commit 합니다. 이는 local repository로 옮기는 행위이며, 새로운 version을 등록하는 행위입니다.
-
-> * `git commit -m <커밋메시지>` : commit 하는것, stage 한것을 로컬저장소(최신본을 HEAD라고함)에 집어넣음 push의 전단계이다.
+#### 4. Staging area 에 있는 작업된 파일을 `git commit` 을 이용하여 Commit 합니다.
+> * `git commit -m <커밋메시지>` : Staging area에 저장된 파일을 Commit하여 지역저장소(Git Repository)에 저장하는것입니다.
+>> Working Directory 로 가져올 수 있는 Version을 만드는 행위입니다.
+>>> 원거리저장소에 저장을 하기 위한 전 단계입니다.
 
 5. push하기전에 github에 등록된 remote repository의 주소를 등록해줍니다. 이때 `git remote add origin (주소)` 를 사용합니다. 완료된후 `git push`를 이용해 remote repository에 등록합니다.  
+
+---
+
+##### Git의 세가지영역
+
 
 > * `git remote add origin <원격저장소주소,GitHub의 저장소주소>` : 원격저장소 주소 등록
 > * `git remote -v` : 원격저장소 주소확인

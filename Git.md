@@ -1,22 +1,27 @@
 # Git
-> * git의 가장큰목적은 **버전관리**, **협업**, **백업**이다
+* Git은 분산 버전 관리 시스템 기반의 버전 관리 도구입니다.  
+  Git은 Git Hub, GitLab 같은 중앙 서버를 둘 수도 있지만 기본적으로는 로컬에서 사용하게 됩니다.
+* git의 가장 큰 목적은 **버전관리**, **협업**, **백업**입니다
 
 ## Git 시작하기 (cli)  
-> * git bash를 이용한 git 활용은 cli 특유의 장점을 살릴수있다.
+> * git bash를 이용한 git 활용은 cli 특유의 장점을 살릴 수 있습니다.
+> * `git config`를 이용한 git 설정에 관해선 후술하고 있지 않습니다.
 
-1. dir 을 새로 만듭니다.( mkdir )  
+1. dir을 새로 만듭니다.( mkdir )  
 
-2. git bash 를 사용하여 새로만든 dir를 들어가 `git init`을 사용합니다.
+2. git bash를 사용하여 새로 만든 dir로 들어가 `git init`을 사용합니다.
 
-> * `git init` : 현재 dir를 git화시킵니다.
+> * `git init` : 현재 dir를 git 시킵니다.
 
-3. working area 에서 작업후 init된 dir에 작업한 내용을 `git add`를 사용하여 staging 시킵니다. staging 시킨 상태는 `git status`를 사용해 확인할수있습니다.  
+3. working area 에서 작업후 init된 dir에 작업한 내용을 `git add`를 사용하여 staging 시킵니다.  
+   staging 시킨 상태는 `git status`를 사용해 확인할 수 있습니다.  
 
-> * `git add .` : 현재 dir를 stage area로 저장합니다. commit 할 준비를 마쳤습니다.  
-                  (.)대신 (파일이름)을 넣을수있습니다.
-> * `git status` : 현재 branch의 위치, commit할 파일이 있는지 등의 상태를 체크해줍니다.  
+> * `git add .` : 현재 dir를 stage area로 저장합니다. commit 할 준비를 마친 것입니다.  
+                  (.)대신 (파일이름)을 넣을 수 있습니다.
+> * `git status` : git 프로젝트의 상태를 확인할 수 있게 해주는 명령어입니다.  
+                   현재 branch의 위치, commit할 파일이 있는지 등의 상태를 체크해줍니다.  
 
-4. stage area 에 있는 작업된 파일을 `git commit` 을 이용하여 commit 합니다. 이는 local repository로 옮기는 행위이며, 새로운 version을 등록하는 행위입니다.
+4. staging area 에 있는 작업된 파일을 `git commit` 을 이용하여 commit 합니다. 이는 local repository로 옮기는 행위이며, 새로운 version을 등록하는 행위입니다.
 
 > * `git commit -m <커밋메시지>` : commit 하는것, stage 한것을 로컬저장소(최신본을 HEAD라고함)에 집어넣음 push의 전단계이다.
 

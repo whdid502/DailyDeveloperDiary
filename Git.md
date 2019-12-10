@@ -113,7 +113,7 @@
 >> merge할때 현재 브랜치말고 통합되던 브랜치의 log도 통합된 브랜치의 log에 선형으로 등장합니다.  
 
 #### rebase
-![](rebase)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/Git/rebase.png)
 > * bugfix 브랜치의 base를 master 브랜치에 순차적으로 병합시킵니다.
 >> D commit 상태를 base로 X를 병합해 C-D의 변경부분을 수정해 "X'"가 만들어졌습니다. Y'도 같은 내용입니다.
 >>> 이와같이 log가 깔끔하게 보이도록 하는 방식을 "rebase"라고 합니다.
@@ -122,8 +122,9 @@
 > *  `git rebase branch_name` : 해당 Branch에서 "branch_name"을 base로 삼아 병합합니다. 
 
 #### Cherry Pick
-![](cherry_pick)
-> * 브랜치를 부분적으로 rebase 하는것을 "Cherry Pick"이라고 합니다.
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/Git/cherry_pick.png)
+> * Master브랜치의 f42c5버전(최신버전)에서 ruby_client브랜치 전체가 아닌 e43a6버전만 끌고와 병합해 새로운 a0a41버전을 생성해 냈습니다.
+> * 이처럼 브랜치를 부분적으로 rebase 하는것을 "Cherry Pick"이라고 합니다.
 >> 이것은 하나의 commit만 rebase 하는것을 의미합니다.
 >>> * `git cherry-pick (버전값)` : 병합하고자한 브랜치위에서 해당 부분의 버전값을 끌고와 병합합니다.  
 <sub>[출처 : https://mobicon.tistory.com/230](https://mobicon.tistory.com/230)</sub>
@@ -140,27 +141,26 @@
 #### conflict
 * 병합시 git이 자동병합 하지 못하는 항목은 충돌이 일어납니다. 이를 "conflict"라고 합니다.
 * 3way merge : 2개의 브랜치가 여러부분 충돌할때 base 브랜치를 추가로 merge하여 conflict를 줄여 merge할수잇는 방법
-![](3_way_merge)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/Git/3_way_merge.png)
 > * Me브랜치와 Other브랜치의 병합(2-way merge)는 B부분을 제외하고 git이 스스로 병합해줄 수 있는 것이 없습니다.
 >> 이럴때 Base브랜치를 추가로 병합(3-way merge)를 이용합니다.
 >>> Base브랜치를 기준으로 변형된 부분을 자동으로 병합해줍니다.
 <sub>[출처 : opentutorials](https://opentutorials.org/module/2676/15307)</sub>
 
+#### clone, pull 그리고 fetch
 
-* `git clone (remote repository URL)` : remote repository의 파일을 복사하여 내위치에 복제한다. 
+![](gitpull)
+* `git pull` : remote repository의 최신의 커밋을 내려받고, 병합합니다.
+> * 지역 브랜치와, 원격 저장소 Head가 같은 위치를 가르킵니다.
 
-* `git pull` : remote repository의 최신버전을 다운로드하는것 
-> * clone과 차이점 clone은 전체를복사, pull은 최신변경점만수정
+![](gitfetch)
+* `git fetch` : 원격 저장소로부터 필요한 프로젝트를 내려 받지만, 병합은 하지않습니다.
+> * 지역 브랜치는 가지고 있던 지역 저장소의 최신 커밋을 가르킵니다. 
+    원격 저장소의 Head는 가져온 최신 커밋을 가르킵니다.
 
-* 협업시 push,pull,commit을 자주해야한다, > 커뮤니케이션의 활발화가 중요하다, conflict방지
+* **fetch 는 조금더 신중하게 자료를 받고 싶을때** 사용합니다.
+> * 우선 커밋을 받은 뒤, 변경점과 커밋의 진행상황 등 세부사항을 확인한 뒤 병합합니다.
+>> 이는 결국 `git pull`은 `git fetch; git merge origin/master(or FETCH_HEAD)` 와 같습니다.  
 
-* pull vs fetch
-> * git pull = git fetch; git merge origin/master(or FETCH_HEAD) 와 같다.  
-    fetch 햇을시 local repository의 head는 remote repository의 head보다 1 commit뒤에잇다.  
-    이때 fetch한 remote repository의 데이터는 .git/FETCH_HEAD 안에 들어잇다.  
-    **fetch 는 조금더 신중하게 자료를 받고싶을때** 사용한다. 결합은나중에, 우선가져오기
-
-* patch : push 할 권한이 없는 타인이 원래 주인에게 유효한 작업을 전달힐때사용
-> * `git format-patch (origin\master의 버전)` : origin/master 버전 이후의 새로작업한 파일을 patch란 확장자로 새로 파일을 생성한다.
->> * 주인은` git commit amend (패치파일)` 이란 명령어를 사용 
->> * `git am -3 -i *.patch` : 3way merge를 통해 현명하게 적용 -i는 하나 적용할때마다 물어보기
+* `git clone (remote repository URL)` : remote repository의 파일을 복사하여 내위치에 복제합니다.
+> 결과적으로 pull 과 같지만 클라이언트상에 아무것도 없는 상태에서 서버의 프로젝트를 내려받습니다.

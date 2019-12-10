@@ -33,6 +33,15 @@
 
 ##### Git의 세가지영역
 
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/Git/git_repository.png)
+* 모두 같은 Dir에 존재하지만, 개념적으로 나눈것 입니다.
+* Working Directory : 프로젝트를 진행하는 실제 작업 공간으로 개발한 소스 및 자원이 존재하며 이곳에서 파일을 수정 및 추가합니다.
+* Stageing Area : 프로젝트를 진행하는 실제 작업 공간으로 개발한 소스 및 자원이 존재하며 이곳에서 파일을 수정 및 추가합니다.
+* Git Directory(지역저장소) : 실제로는 .git 이라는 이름의 디렉터리이며, 여러가지 버전의 커밋 데이터들과 Git 프로젝트에 대한 모든 정보를 담고 있는 핵심 데이터베이스 디렉터리입니다.
+
+##### 프로젝트(디렉토리 혹은 파일)의 상태
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/Git/tracked%2Cuntracked...png)
+* Untracked : 
 
 > * `git remote add origin <원격저장소주소,GitHub의 저장소주소>` : 원격저장소 주소 등록
 > * `git remote -v` : 원격저장소 주소확인

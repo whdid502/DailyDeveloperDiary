@@ -37,7 +37,9 @@
 
 ---
 
-##### Git의 세 가지 영역
+## Git의 세 가지 영역, 그리고 상태
+
+#### Git의 세 가지 영역
 
 ![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/Git/git_repository.png)
 * 모두 같은 Dir에 존재하지만, 개념적으로 나눈 것입니다.
@@ -45,7 +47,7 @@
 * Stageing Area : 프로젝트를 진행하는 실제 작업 공간으로 개발한 소스 및 자원이 존재하며 이곳에서 파일을 수정 및 추가합니다.
 * Git Directory(지역 저장소) : 실제로는 .git/이라는 이름의 디렉토리이며, 여러 가지 버전의 커밋 데이터들과 Git 프로젝트에 대한 모든 정보를 담고 있는 핵심 데이터베이스 디렉토리입니다.
 
-##### 프로젝트(디렉토리 혹은 파일)의 상태
+#### 프로젝트(디렉토리 혹은 파일)의 상태
 ![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/Git/tracked%2Cuntracked...png)
 * 추적의 여부로 Tracked와 Untracked로 나뉠 수 있습니다. 
 > * Tracked : 해당 파일을 Git이 추적해 관리하고 있다는 상태입니다.
@@ -147,12 +149,16 @@
 >>> Base브랜치를 기준으로 변형된 부분을 자동으로 병합해줍니다.
 <sub>[출처 : opentutorials](https://opentutorials.org/module/2676/15307)</sub>
 
-#### clone, pull 그리고 fetch
+---
 
+## pull, fetch 그리고 clone
+
+#### pull
 ![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/Git/git_pull.png)
 * `git pull` : remote repository의 최신의 커밋을 내려받고, 병합합니다.
 > * 지역 브랜치와, 원격 저장소 Head가 같은 위치를 가리킵니다.
 
+#### fetch
 ![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/Git/git_fetch.png)
 * `git fetch` : 원격 저장소로부터 필요한 프로젝트를 내려받지만, 병합은 하지 않습니다.
 > * 지역 브랜치는 가지고 있던 지역 저장소의 최신 커밋을 가리킵니다. 
@@ -162,5 +168,6 @@
 > * 우선 커밋을 받은 뒤, 변경점과 커밋의 진행상황 등 세부사항을 확인한 뒤 병합합니다.
 >> 이는 결국 `git pull`은 `git fetch; git merge origin/master(or FETCH_HEAD)` 와 같습니다.  
 
+#### clone
 * `git clone (remote repository URL)` : remote repository의 파일을 복사하여 내 위치에 복제합니다.
 > 결과적으로 pull 과 같지만 클라이언트상에 아무것도 없는 상태에서 서버의 프로젝트를 내려받습니다.

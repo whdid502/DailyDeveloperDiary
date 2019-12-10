@@ -5,29 +5,35 @@
 
 ---
 
-## Git 시작하기 (cli)  
-> * Git bash를 이용한 Git 활용은 cli 특유의 장점을 살릴 수 있습니다.
+## Git 시작하기 (Cli)  
+> * Git Bash를 이용한 Git 활용은 Cli 특유의 장점을 살릴 수 있습니다.
 > * `git config`를 이용한 Git 설정에 관해선 후술하고 있지 않습니다.
 
 #### 1. dir을 새로 만듭니다.(`mkdir`)  
 
 #### 2. Git bash를 사용하여 새로 만든 dir로 들어가 `git init`을 사용합니다.
-> * `git init` : 현재 dir를 Git 시킵니다. 이는 현재 dir를 git 저장소에 등록시키는 것 입니다.
->> `git init` 이란 명령어는 현재 dir에 ".git"이란 하위 dir을 생성합니다. 이 dir에는 Git 저장소에 필요한 뼈대 파일이 들어있습니다. 
+> * `git init` : 현재 Dir를 Git 시킵니다. 이는 현재 Dir를 Git 저장소에 등록시키는 것 입니다.
+>> `git init` 이란 명령어는 현재 Dir에 ".git"이란 하위 Dir을 생성합니다. 이 Dir에는 Git 저장소에 필요한 뼈대 파일이 들어있습니다. 
 
 #### 3. Working Directory 에서 작업한 내용을 `git add`를 사용하여 stage 시킵니다.
 > * Working Directory는 Git Directory 즉, 지역저장소에서 특정버전을 Check Out 하여 가져온 것입니다.
     이곳에서 프로젝트 작업, 개발 및 수정을 진행하게 됩니다.
-> * `git add *.txt` : "\*.txt"를 stage area로 저장합니다. Untracked 상태였다면 Tracked 상태로 만들어 줍니다.  
->> 이는 또한 commit 할 준비를 마친 것입니다.  
+> * `git add *.txt` : "\*.txt"를 stage Area로 저장합니다. Untracked 상태였다면 Tracked 상태로 만들어 줍니다.  
+>> 이는 또한 Commit 할 준비를 마친 것입니다.  
 > * `git status` : git 프로젝트의 상태를 확인할 수 있게 해주는 명령어입니다.  
 
-#### 4. Staging area 에 있는 작업된 파일을 `git commit` 을 이용하여 Commit 합니다.
-> * `git commit -m <커밋메시지>` : Staging area에 저장된 파일을 Commit하여 지역저장소(Git Repository)에 저장하는것입니다.
+#### 4. Staging Area 에 있는 작업된 파일을 `git commit` 을 이용하여 Commit 합니다.
+> * `git commit -m <커밋메시지>` : Staging Area에 저장된 파일을 Commit하여 지역저장소(Git Repository)에 저장하는것입니다.
 >> Working Directory 로 가져올 수 있는 Version을 만드는 행위입니다.
 >>> 원거리저장소에 저장을 하기 위한 전 단계입니다.
 
-5. push하기전에 github에 등록된 remote repository의 주소를 등록해줍니다. 이때 `git remote add origin (주소)` 를 사용합니다. 완료된후 `git push`를 이용해 remote repository에 등록합니다.  
+#### 5. Github에 등록된 Remote Repository의 주소를 등록해줍니다.
+> * `git remote add origin (주소)` :  원격저장소의 주소를 입력함으로써 원격저장소를 등록합니다.
+>> 'origin' 의 자리는 저장소의 별칭입니다. 'origin'은 가장 기본 별칭입니다.
+> * `git remote -v` : 원격저장소의 상태를 확인합니다.
+
+#### 6. `git push`를 사용해서 지역저장소에 등록된 프로젝트를 원격저장소에 저장합니다.
+> * `git push origin <branch이름>` : 원격저장소에 프로젝트를 등록합니다.
 
 ---
 
@@ -41,19 +47,22 @@
 
 ##### 프로젝트(디렉토리 혹은 파일)의 상태
 ![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/Git/tracked%2Cuntracked...png)
-* Untracked : 
+* 추적의 여부로 Tracked와 Untracked로 나뉠 수 있습니다. 
+> * Tracked : 해당 파일을 Git이 추적해 관리하고 있다는 상태입니다.
+>> Tracked 파일은 최소 한 번 이상 `git add`를 통해 Staging Area에 포함되거나, `git commit`을 통해 지역저장소에 저장된 파일입니다.
+> * Untracked : 해당 파일이 Git의 관리를 받고 있지 않은 상태입니다. 
+>> Working Directory의 파일이라고 모두 Git의 관리 하에 있는 파일은 아닙니다.
+> * Modified(변경발생)와 Unmodified : Staged되거나 Commit된 시점 이후로 수정, 변경이 있다면 Modified 라고 합니다.
+>> Modified와 Unmodified파일은 Tracked 된 상태입니다.
+<sub>[출처 : dololak.tistory](https://dololak.tistory.com/category/%EA%B9%83%28Git%29?page=1)</sub>
 
-> * `git remote add origin <원격저장소주소,GitHub의 저장소주소>` : 원격저장소 주소 등록
-> * `git remote -v` : 원격저장소 주소확인
-> * `git push origin <branch이름,master>` : 원격저장소에 올림, 여기서 origin 은 원격저장소의 이름, master은 push할 branch
->> *  `(--set-upsteram)` : 위의 push 와 origin사이에 두는, 설정하는것>이후엔 git push만으로 업로드가능
-      `(-u)`
-
-* .gitignore : 버전관리,commit관리에서 제외(사적인파일)
+---
 
 ## Git Command Line  
 
 * `git diff` : 마지막버전과 working tree와의 차이점을 보여준다.
+> 단순한 변경내역이 아니라, 어떤 내용이 변경되었는지 차이점을 알 수 있습니다.
+>> `git diff --staged` : Commit 한 Git 저장소의 내용과 Staging Area에 등록한 내용의 차이를 비교할 수 있습니다.
 
 * ` git reset --hard` : undo, 뒤에 버전을 입력하면 그버전으로 가겟다, 돌아가겟다.  
 `git reset --soft` : reset시 수정본은 그대로둔다  >>**reset은 지우는거나 다름없다.**

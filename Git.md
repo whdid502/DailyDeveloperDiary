@@ -4,22 +4,21 @@
 * git의 가장 큰 목적은 **버전관리**, **협업**, **백업**입니다
 
 ## Git 시작하기 (cli)  
-> * git bash를 이용한 git 활용은 cli 특유의 장점을 살릴 수 있습니다.
-> * `git config`를 이용한 git 설정에 관해선 후술하고 있지 않습니다.
+> * Git bash를 이용한 Git 활용은 cli 특유의 장점을 살릴 수 있습니다.
+> * `git config`를 이용한 Git 설정에 관해선 후술하고 있지 않습니다.
 
-1. dir을 새로 만듭니다.( mkdir )  
+#### 1. dir을 새로 만듭니다.(`mkdir`)  
 
-2. git bash를 사용하여 새로 만든 dir로 들어가 `git init`을 사용합니다.
+#### 2. Git bash를 사용하여 새로 만든 dir로 들어가 `git init`을 사용합니다.
+> * `git init` : 현재 dir를 Git 시킵니다. 이는 현재 dir를 git 저장소에 등록시키는 것 입니다.
+>> `git init` 이란 명령어는 현재 dir에 ".git"이란 하위 dir을 생성합니다. 이 dir에는 Git 저장소에 필요한 뼈대 파일이 들어있습니다. 
 
-> * `git init` : 현재 dir를 git 시킵니다.
-
-3. working area 에서 작업후 init된 dir에 작업한 내용을 `git add`를 사용하여 staging 시킵니다.  
-   staging 시킨 상태는 `git status`를 사용해 확인할 수 있습니다.  
-
-> * `git add .` : 현재 dir를 stage area로 저장합니다. commit 할 준비를 마친 것입니다.  
-                  (.)대신 (파일이름)을 넣을 수 있습니다.
+#### 3. Working Directory 에서 작업한 내용을 `git add`를 사용하여 stage 시킵니다.
+> * Working Directory는 Git Directory 즉, 지역저장소에서 특정버전을 Check Out 하여 가져온 것입니다.
+    이곳에서 프로젝트 작업, 개발 및 수정을 진행하게 됩니다.
+> * `git add *.txt` : "\*.txt"를 stage area로 저장합니다. Untracked 상태였다면 Tracked 상태로 만들어 줍니다.  
+>> 이는 또한 commit 할 준비를 마친 것입니다.  
 > * `git status` : git 프로젝트의 상태를 확인할 수 있게 해주는 명령어입니다.  
-                   현재 branch의 위치, commit할 파일이 있는지 등의 상태를 체크해줍니다.  
 
 4. staging area 에 있는 작업된 파일을 `git commit` 을 이용하여 commit 합니다. 이는 local repository로 옮기는 행위이며, 새로운 version을 등록하는 행위입니다.
 

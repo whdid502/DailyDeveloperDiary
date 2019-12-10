@@ -87,37 +87,65 @@
 * Branch : 가지라는 의미입니다. 독립적으로 다른 작업을 진행하기 위한 개념입니다.
 > 같은 소스코드(뿌리)위에서 다른 작업(가지)을 서로 영향을 주지 않으며 진행할 수 있습니다.
 
-* Master : 기본 Branch입니다. 통합 Branch로 쓰입니다.
-> 가장 큰 줄기이며 최초로 만들어진 Branch이자, 최후의 Branch입니다.
+* Master : 기본 브랜치입니다. 통합 브랜치로 쓰입니다.
+> 가장 큰 줄기이며 최초로 만들어진 브랜치이자, 최후의 브랜치입니다.
 
-* Head : 현재 사용중인 Branch의 선두부분입니다.
+* Head : 현재 사용중인 브랜치의 선두부분입니다.
 > Head가 가르키는 것은 현재 우리가 속해잇는 곳입니다. 
 
-* Merge : branch의 **병합**입니다.
-> * 합치려고 하는 branch 간의 공통된 조상을 "base"라고 합니다. 
+* Merge : 브랜치의 **병합**입니다.
+> * 합치려고 하는 브랜치간의 공통된 조상을 "base"라고 합니다. 
+
+#### fast-forward
+
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/Git/fast_forward.png)
+> * A-B가 Master의 계보이고, X-Y가 Master에서 분할해 나간 bugfix 브랜치인 상태입니다.
+>> * Master 브랜치의 변경이 없으며, 또한 bugfix 브랜치는 Master 브랜치의 이력을 모두 포함한 상태입니다.
+>>> * 이러한 상황에는 단순한 이동으로도 Merge가 이루어집니다. 이러한 것을 "fast-forward(빨리감기)"라고 합니다.
+
+#### merge commit
+
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/Git/merge_commit.png)
+> * 위와 비슷하지만 bugfix 브랜치가 분할된 후에 Master 브랜치의 변경이 생겼습니다.
+>> * 이러한 경우 양쪽의 변경을 가져온 "merge commit(병합 커밋)"을 실행합니다.
+
+> * `git merge "branch name"`: 현재의 브랜치로 "branch name"을 병합합니다.  
+>> merge할때 현재 브랜치말고 통합되던 브랜치의 log도 통합된 브랜치의 log에 선형으로 등장합니다.  
+
+#### rebase
+![](rebase)
+> * bugfix 브랜치의 base를 master 브랜치에 순차적으로 병합시킵니다.
+>> D commit 상태를 base로 X를 병합해 C-D의 변경부분을 수정해 "X'"가 만들어졌습니다. Y'도 같은 내용입니다.
+>>> 이와같이 log가 깔끔하게 보이도록 하는 방식을 "rebase"라고 합니다.
+**rebase와 merge 는 과정이 다를 뿐 최종결과는 같습니다.**
+
+> *  `git rebase branch_name` : 해당 Branch에서 "branch_name"을 base로 삼아 병합합니다. 
+
+#### Cherry Pick
+![](cherry_pick)
+> * 브랜치를 부분적으로 rebase 하는것을 "Cherry Pick"이라고 합니다.
+>> 이것은 하나의 commit만 rebase 하는것을 의미합니다.
+>>> * `git cherry-pick (버전값)` : 병합하고자한 브랜치위에서 해당 부분의 버전값을 끌고와 병합합니다.  
+<sub>[출처 : https://mobicon.tistory.com/230](https://mobicon.tistory.com/230)</sub>
 
 
+##### merge와 rebase
+* merges는 변경 내용의 이력이 모두 그대로 남아 있기 때문에 이력이 복잡해집니다.
+* rebase는 이력은 단순해지지만, 원래의 커밋 이력이 변경됩니다.
+> 정확한 이력을 남겨야 할 필요가 있을 경우에는 사용하면 안됩니다.  
 
->> * base를 기반으로 두개 이상의 branch가 합된것 : merge commit
-   
->>> * `git merge "branch name"`: 현재의 branch로 "branch name"을 병합한다  
-                                 merge할때 현재branch말고 통합되던 branch의 log도 통합된 branch의 log에 등장한다  
-                                 merge 할때 같은 파일이더라도 수정부분이 다르면 알아서 git이 적용해준다.  
-   
-> * **conflict**는 같은부분을 수정햇을때 git스스로 처리하지못하니 나한테 맡기는것이다.
+* 예시) 토픽 브랜치에 통합 브랜치의 최신 코드를 적용할 경우에는 rebase 를 사용합니다.  
+  통합 브랜치에 토픽 브랜치를 불러올 경우에는 우선 rebase 를 한 후 merge합니다.
+ 
+#### conflict
+* 병합시 git이 자동병합 하지 못하는 항목은 충돌이 일어납니다. 이를 "conflict"라고 합니다.
+* 3way merge : 2개의 브랜치가 여러부분 충돌할때 base 브랜치를 추가로 merge하여 conflict를 줄여 merge할수잇는 방법
+![](3_way_merge)
+> * Me브랜치와 Other브랜치의 병합(2-way merge)는 B부분을 제외하고 git이 스스로 병합해줄 수 있는 것이 없습니다.
+>> 이럴때 Base브랜치를 추가로 병합(3-way merge)를 이용합니다.
+>>> Base브랜치를 기준으로 변형된 부분을 자동으로 병합해줍니다.
+<sub>[출처 : opentutorials](https://opentutorials.org/module/2676/15307)</sub>
 
-* 3way merge : 2개의 branch가 여러부분 충돌할때 base branch를 추가로 merge하여  
-               base에서 수정된 부분을 데려와 comflict를 줄여 merge할수잇는 방법
-
-* git workflow : 복잡한branch,merge 등을 병합
-
-* cherrypick : branch(전체가아닌 당시버전)를 부분적으로 병합  
-> * `git cherry-pick (버전값)` : 병합하고자한 branch위에서 실행시 현재 branch에 해당부분의 버전값을 끌고와 병합한다.  
-
-* rebase : otherbranch의 base를 master branch에 순차적으로 병합시킨다, **타임라인(로그)이깔끔하게유지**    
-           re+base > base를 옮긴다(log가 선형적으로, 깔끔하게 보인다)  
-           **rebase와 merge 는 과정이다를뿐 결과는 같다. 같아야한다**
-> *  `git rebase (branch이름)` : 옮기려는 branch로 가서 (branch이름)을 base로 삼는다  
 
 * `git clone (remote repository URL)` : remote repository의 파일을 복사하여 내위치에 복제한다. 
 

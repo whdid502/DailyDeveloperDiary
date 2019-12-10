@@ -60,38 +60,44 @@
 
 ## Git Command Line  
 
-* `git diff` : 마지막버전과 working tree와의 차이점을 보여준다.
+* `git diff` : 마지막버전과 working tree와의 차이점을 보여줍니다.
 > 단순한 변경내역이 아니라, 어떤 내용이 변경되었는지 차이점을 알 수 있습니다.
 >> `git diff --staged` : Commit 한 Git 저장소의 내용과 Staging Area에 등록한 내용의 차이를 비교할 수 있습니다.
 
-* ` git reset --hard` : undo, 뒤에 버전을 입력하면 그버전으로 가겟다, 돌아가겟다.  
-`git reset --soft` : reset시 수정본은 그대로둔다  >>**reset은 지우는거나 다름없다.**
+* ` git reset --hard` : 해당 버전을 입력하면 그버전으로 돌아간다는 명령어입니다.  
+> * **reset은 버전 삭제의 개념이 포함되어있습니다.**
+>> * reset : head가 branch를가리킬때, branch가 가리키는 commit을 바꿉니다. 이전의 commit 즉, version은 삭제됩니다.
 
-> * reset : head가 branch를가리킬때, branch가 가리키는 commit을 바꾼다. 이전의 commit 즉, version은 삭제되다. 삭제의 개념
+* `git revert "버전"` : 버전을 유지하고 그 전 commit으로 되돌아갑니다.  
+                        한 버전씩 역순으로 내려가야 충돌이 일어나지 않습니다. **건너뛰면 안됩니다.**  
+[reset과 revert의 차이점](http://www.devpools.kr/2017/01/31/%EA%B0%9C%EB%B0%9C%EB%B0%94%EB%B3%B4%EB%93%A4-1%ED%99%94-git-back-to-the-future/)
 
-* `git revert "버전"` : 버전을 유지하고 버전을 revert 하고 그전 commit 으로 돌아간다.  
-                        한버전씩 역순으로 내려가야 충돌이 일어나지않는다. **건너뛰면안됨**
+* `git checkout "branch name"` : 해당 branch로 돌아간다.
+> * **단순히 head가 가리키는 것을 바꿉니다**
+>> Head는 버전을 가르킬 수도 있습다. 단, 이럴때 Head는 Detached상태라고 합니다.
+>>> ` git checkout master` : 최신상태로 복귀함을 의미합니다. (head가 master를 가르키게 합니다.)
 
-* `git checkout "branch name"` : 해당 branch로 돌아간다. (**head의 값을바꾸는것**,단 head는 버전을 가리킬수도잇다 이럴때 head는 detached상태라고한다.)
-                           
-* ` git checkout master` : 최신상태로 복귀. (head가 master를 가리키게한다.)
+* `git commit -am "name"` : Staging을 함과 동시에 Commit까지 수행합니다. 
+> 하지만 **최초 한번은 add**해서 Tracked상태로 만들어줘야 합니다.  
 
-* `git commit -am "name"` : a는 add, add와 commit 을 동시에 수행하는 명령어이다. 하지만 적어도 **최초 한번은 add**해서 tracked상태로 만들어줘야한다  
-   `git commit` : editor 가 뜬다. commit message를 좀더길고 세세하게 쓸수잇다.
+---
 
 ## Branch
 
+* Branch : 가지라는 의미입니다. 독립적으로 다른 작업을 진행하기 위한 개념입니다.
+> 같은 소스코드(뿌리)위에서 다른 작업(가지)을 서로 영향을 주지 않으며 진행할 수 있습니다.
 
-* branch = 가지,같은뿌리 서로다른역사
+* Master : 기본 Branch입니다. 통합 Branch로 쓰입니다.
+> 가장 큰 줄기이며 최초로 만들어진 Branch이자, 최후의 Branch입니다.
 
-* master : 기본 branch. 가장큰줄기
+* Head : 현재 사용중인 Branch의 선두부분입니다.
+> Head가 가르키는 것은 현재 우리가 속해잇는 곳입니다. 
 
-* head가 가리키는것 : 현재 우리가 속해잇는것  
-> * branch를 만들고 branch사이를이동한다는것은 공통의 줄기를지닌 평행우주사이에서 별개로작업한다는것이다.
+* Merge : branch의 **병합**입니다.
+> * 합치려고 하는 branch 간의 공통된 조상을 "base"라고 합니다. 
 
-* `git merge` : branch의 **병합**
-   
-> * 합치려고하는 branch 간의 공통의 조상 : base  
+
+
 >> * base를 기반으로 두개 이상의 branch가 합된것 : merge commit
    
 >>> * `git merge "branch name"`: 현재의 branch로 "branch name"을 병합한다  

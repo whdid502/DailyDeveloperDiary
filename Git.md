@@ -44,7 +44,7 @@
 ![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/Git/git_repository.png)
 * 모두 같은 Dir에 존재하지만, 개념적으로 나눈 것입니다.
 * Working Directory : 프로젝트를 진행하는 실제 작업 공간으로 개발한 소스 및 자원이 존재하며 이곳에서 파일을 수정 및 추가합니다.
-* Stageing Area : 프로젝트를 진행하는 실제 작업 공간으로 개발한 소스 및 자원이 존재하며 이곳에서 파일을 수정 및 추가합니다.
+* Staging Area : 프로젝트를 진행하는 실제 작업 공간으로 개발한 소스 및 자원이 존재하며 이곳에서 파일을 수정 및 추가합니다.
 * Git Directory(지역 저장소) : 실제로는 .git/이라는 이름의 디렉토리이며, 여러 가지 버전의 커밋 데이터들과 Git 프로젝트에 대한 모든 정보를 담고 있는 핵심 데이터베이스 디렉토리입니다.
 
 #### 프로젝트(디렉토리 혹은 파일)의 상태
@@ -93,7 +93,7 @@
 > 가장 큰 줄기이며 최초로 만들어진 브랜치이자, 최후의 브랜치입니다.
 
 * Head : 현재 사용 중인 브랜치의 선두 부분입니다.
-> Head가 가리키는 것은 현재 우리가 속해 잇는 곳입니다. 
+> Head가 가리키는 것은 현재 우리가 속해 있는 곳입니다. 
 
 * Merge : 브랜치의 **병합**입니다.
 > * 합치려고 하는 브랜치 간의 공통된 조상을 "base"라고 합니다. 
@@ -142,7 +142,7 @@
  
 #### conflict
 * 병합 시 git이 자동 병합하지 못하는 항목은 충돌이 일어납니다. 이를 "conflict"라고 합니다.
-* 3-way merge : 2개의 브랜치가 여러 부분 충돌할 때 base 브랜치를 추가로 merge하여 conflict를 줄여 merge할 수 잇는 방법
+* 3-way merge : 2개의 브랜치가 여러 부분 충돌할 때 base 브랜치를 추가로 merge하여 conflict를 줄여 merge할 수 있는 방법
 ![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/Git/3_way_merge.png)
 > * Me브랜치와 Other브랜치의 병합(2-way merge)은 B부분을 제외하고 git이 스스로 병합해줄 수 있는 것이 없습니다.
 >> 이럴 때 Base브랜치를 추가로 병합(3-way merge)을 이용합니다.

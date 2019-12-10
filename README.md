@@ -4,7 +4,7 @@
 
 ### 2. [Git](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Git.md)
 
-#### - Git, how to start, repository and status, Branch, pull fetch & clone
+#### - [how to start](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Git.md#git-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0-cli), [repository and status](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Git.md#git%EC%9D%98-%EC%84%B8-%EA%B0%80%EC%A7%80-%EC%98%81%EC%97%AD-%EA%B7%B8%EB%A6%AC%EA%B3%A0-%EC%83%81%ED%83%9C), [Branch](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Git.md#branch), [pull fetch & clone](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Git.md#pull-fetch-%EA%B7%B8%EB%A6%AC%EA%B3%A0-clone)
 
 ### 3. [Shell, Linux Cli & http](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Shell%2C%20Linux%20Cli%20%26%20http.md)
 

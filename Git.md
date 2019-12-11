@@ -56,7 +56,6 @@
 >> Working Directory의 파일이라고 모두 Git의 관리 하에 있는 파일은 아닙니다.
 > * Modified(변경 발생)와 Unmodified : Staged 되거나 Commit 된 시점 이후로 수정, 변경이 있다면 Modified라고 합니다.
 >> Modified와 Unmodified파일은 Tracked 된 상태입니다.
-<sub>[출처 : dololak.tistory](https://dololak.tistory.com/category/%EA%B9%83%28Git%29?page=1)</sub>
 
 ---
 
@@ -72,7 +71,7 @@
 
 * `git revert "버전"` : 버전을 유지하고 그 전 commit으로 되돌아갑니다.  
                         한 버전씩 역순으로 내려가야 충돌이 일어나지 않습니다. **건너뛰면 안 됩니다.**  
-[reset과 revert의 차이점](http://www.devpools.kr/2017/01/31/%EA%B0%9C%EB%B0%9C%EB%B0%94%EB%B3%B4%EB%93%A4-1%ED%99%94-git-back-to-the-future/)
+> * [reset과 revert의 차이점](http://www.devpools.kr/2017/01/31/%EA%B0%9C%EB%B0%9C%EB%B0%94%EB%B3%B4%EB%93%A4-1%ED%99%94-git-back-to-the-future/)에 관한 만화
 
 * `git checkout "branch name"` : 해당 branch로 돌아간다.
 > * **단순히 head가 가리키는 것을 바꿉니다**
@@ -129,8 +128,6 @@
 > * 이처럼 브랜치를 부분적으로 rebase 하는 것을 "Cherry Pick"이라고 합니다.
 >> 이것은 하나의 commit만 rebase 하는 것을 의미합니다.
 >>> * `git cherry-pick (버전 값)` : 병합하고자 한 브랜치 위에서 해당 부분의 버전 값을 끌고 와 병합합니다.  
-<sub>[출처 : https://mobicon.tistory.com/230](https://mobicon.tistory.com/230)</sub>
-
 
 ##### merge와 rebase
 * merges는 변경 내용의 이력이 모두 그대로 남아 있기 때문에 이력이 복잡해집니다.
@@ -147,7 +144,6 @@
 > * Me브랜치와 Other브랜치의 병합(2-way merge)은 B부분을 제외하고 git이 스스로 병합해줄 수 있는 것이 없습니다.
 >> 이럴 때 Base브랜치를 추가로 병합(3-way merge)을 이용합니다.
 >>> Base브랜치를 기준으로 변형된 부분을 자동으로 병합해줍니다.
-<sub>[출처 : opentutorials](https://opentutorials.org/module/2676/15307)</sub>
 
 ---
 
@@ -171,3 +167,12 @@
 #### clone
 * `git clone (remote repository URL)` : remote repository의 파일을 복사하여 내 위치에 복제합니다.
 > 결과적으로 pull 과 같지만 클라이언트상에 아무것도 없는 상태에서 서버의 프로젝트를 내려받습니다.
+
+---
+
+<sub> 1) Git의 세 가지 영역, 그리고 상태 이미지 [출처 : dololak.tistory](https://dololak.tistory.com/category/%EA%B9%83%28Git%29?page=1)</sub>  
+<sub> 2) merge의 이미지 [출처 : backlog.com](https://backlog.com/git-tutorial/kr/stepup/stepup1_1.html)</sub>  
+<sub> 3) cherry pick의 이미지 [출처 : https://mobicon.tistory.com/230](https://mobicon.tistory.com/230)</sub>  
+<sub> 4) 3-way merge의 이미지[출처 : opentutorials](https://opentutorials.org/module/2676/15307)</sub>
+
+

@@ -34,7 +34,7 @@
 
 # Shell&Kernel
 * OS를 구성하는 요소 중 가장 중요하고 큰 것이 쉘(Shell)과 커널(Kernel)입니다.
-![](Shell&Kernel)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/os/Shell%26Kernel.png)
 
 * 사용자가 하드웨어를 제어할때 일련의 과정을 거치게 됩니다.
 > * 우리가 명령어를 입력하게 되면 컴퓨터 내부에서는 쉘이 이를 받아들입니다.

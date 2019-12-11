@@ -8,7 +8,7 @@
 
 #### 기본명칭
 
-![](database_table)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/database_table2.png)
 
 * 표(Table)은 릴레이션이라고도 합니다.
 * 식별자(identifier)는 여러개의 집합체를 담고있는 관계형 데이터베이스에서 각각의 구분할 수 있는 논리적인 개념입니다.
@@ -21,9 +21,31 @@
 
 # DBMS(DataBase Management System)
 
-![](dbms)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/DBMS.png)
 
 * 데이터베이스를 조작하는 별도의 소프트웨어를 DBMS, 데이터베이스 관리 시스템이라고 합니다.
+* 데이터베이스 관리 시스템이란 데이터베이스를 관리하며 응용 프로그램들이 데이터베이스를 공유하며 사용할 수 있는 환경을 제공하는 소프트웨어입니다.
+
+### Type of DBMS
+
+##### Oracle
+* 오라클에서 만들어 판매중인 상업용 데이터베이스입니다.
+* 윈도우즈, 리눅스, 유닉스 등 다양한 OS에 설치를 할 수 있습니다.
+* MS_SQL , MY_SQL보다 대량의 데이터를 처리하기 좋습니다.
+* 대기업에서 주로 사용하며 글로벌 DB시장 점유율 1위입니다.<sub>2019년 12월 기준</sub>
+* 비공개 소스, 폐쇄적인 운영을 합니다.
+
+##### MY_SQL
+* MySQL사에서 개발, 썬마이크로시스템즈를 거쳐 현재 오라클에 흡수합병됬습니다.
+* 윈도우즈, 리눅스, 유닉스 등 다양한 OS에 설치를 할 수 있습니다.
+* 오픈소스로 이루어져있는 무료 프로그램입니다, 단, 상업적 사용시에는 비용이 발생합니다.
+* 가격등의 장점을 앞세워 다수의 중소기업에서 사용 중입니다.
+
+##### MS_SQL
+* 마이크로소프트 사에서 개발한 상업용 데이터베이스입니다.
+* 다른 OS에서도 사용가능하지만 윈도우즈에 특히 특화되어있습니다.
+* 비공개 소스로 폐쇄적인 정책입니다. 단, 리눅스버전은 오픈소스입니다.
+* 비교적 중소기업에서 주로 사용합니다.
 
 * 오라클에서 우리가 할것은 '표'에 정보를 기록&읽는것이다.  
   표가 많아질수록 연관된 표들끼리 Grouping할 체계가 필요하다. 이것을 Schema라고한다  
@@ -195,7 +217,7 @@ SELECT SEQ_tablename.CURRVAL FROM tablename; > 현재 tablename 이란 TABLE에 
 예제와 함께 [동영상](https://opentutorials.org/course/3885/26417) 에서 확인하자.
 
 ---
-<sub>1. Database 이미지 [출처 : 코딩팩토리](https://coding-factory.tistory.com/77)</sub>
+<sub>1. Database 이미지 및 내용 [출처 : 코딩팩토리](https://coding-factory.tistory.com/77)</sub>
 
 
 

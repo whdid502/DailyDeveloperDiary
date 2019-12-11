@@ -22,11 +22,11 @@
 *  스키마(schema)는 데이터베이스에서 자료의 구조, 자료의 표현 방법, 자료 간의 관계를 형식 언어로 정의한 구조입니다.
 > * 단순히 말하자면 연관된 Table끼리 그룹화해둔것을 schema라고 합니다.
 
-![](schema)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/schema.jpg)
 
 * schema 3계층 예시
 
-![](scema_ex)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/schema_ex.jpg)
 
 * 스키마는 3계층으로 이루어져 있습니다. 이는 관점에 따라 분류되었습니다.
 * 외부스키마는 개인의 입장, '서브스키마'라고도 합니다. 사용자 뷰를 가리킵니다. 

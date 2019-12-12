@@ -3,6 +3,7 @@
 * 데이터베이스란 공통으로 사용되는 데이터의 공유와 운영을 위해 저장 관리할 수 있도록 하는 공간을 말합니다. 
 
 * 압도적으로 많이사용되는 database 는 **관계형 데이터베이스(reational database)** 입니다.  
+> * 데이터베이스는 차등적으로 권한을 줄 수 있는 등, 보안적 으로 뛰어납니다.
 > * 이 관계형데이터베이스의 핵심은 **표** 이다.  
 >> * 열과 행으로 표현한다면 방대한 데이터를 쉽고 효율적으로 처리할 수 있습니다.
 
@@ -69,49 +70,91 @@
 ---
 
 # SQL
+* SQL의 구문은 암기보단 필요에 의한 검색으로 사용합니다.
 
-* 
+### 예제1(CREATE)
 
-###### 1. table(표)만들기
 ```
-CREATE TABLE tablename(
-	id NUMBER NOT NULL,
-	title VARCHAR2(50) NOT NULL,
-	description VARCHAR2(4000) NULL,
-	created DATE NOT NULL,
-	CONSTRAINT PK_tablename PRIMARY KEY(id) 
+CREATE TABLE `author` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `profile` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 );
 ```
+id|name|profile
+--|-----|-------
 
-id|title|description|created
---|-----|-----------|-------
+#### CREATE TABLE
+> * 'author'이란 이름의 표를 만들었습니다.
+> * 'author'에는 'id', 'name', 'profile' 이란 컬럼이 있습니다.
 
-> 1) 컬럼(열)은 ()로 묶어지정하고, ;으로 끝낸다  
-> 2) 컬럼뒤에 데이터타입은 꼭 지정되어야한다. > NUMBER(숫자만) VARCHAR2(4000)4000이하의 문자, DATE(날짜)  
-> 3) NULL(없다), NOT NULL(반드시있어야한다.)등의 제한명령어를 쓸수있다.  
-> 4) CONSTRAINT(제한한다)도 제약조건이다. PK_tablenamed은 프라이머리키의 이름이고, PRIMARY KEY(id)는 id컬럼을 전부 고유값(중복된다면 명령이 실행  되지않게, 전부 구별되게)으로 만든다.  
->> PRIMARY KEY 의 행의 값은 유일무이하다! 후에 PRIMARY KEY로 지정한 행을 찾는것은 속도가 월등히 빠르다
- 
-###### 2. table에 행(row) 추가하기
+#### int, varchar
+> * 각 컬럼의 값을 특정한 조건으로 제한할 수 있습니다.
+> * int(m)은 '그 값을 정수로 제한하되, m개까지 검색이 가능합니다.'의 의미입니다.
+> * varchar(m)은 '행의 문자가 m을 넘지 않는다.'입니다.
+>> * 이러한 데이터 값은 지정되어야 합니다.
+
+#### NULL, NOT NULL
+> * NULL은 "값이 없는것을 허용합니다", NOT NULL은 "값이 없는것을 허용하지 않습니다."입니다.
+
+#### PRIMARY KEY()
+> * 괄호 안의 컬럼이 메인 컬럼이 되게 하며, 중복되지 않게 해줍니다. 각각의 행을 식별하는 식별자로 쓰기 위함입니다.
+
+### 예제2(INSERT)
+
 ```
-INSERT INTO tablename
-	(id,title,description,created)
+INSERT INTO 'author'
+	(id,name,profile)
 	VALUES
-	(1,'ORACLE','ORACLE is ..',SYSDATE);
-```
-```
-commit;
+	(1,'egoing','developer');
 ```
 
-id|title|description|created
---|-----|-----------|-------
-1|ORACLE|ORACLE is ..|12/08/2019
+### 예제2-1(INSERT)
 
-> 1) 열은 ()묶어진다.
-> 2) VALUES는 구체적인 값을 적는다
-> 3) id 은 데이터타입을 숫자로 지정햇으므로 숫자를적고, title,description은 문자숫자제한 즉 문자로 지정햇으니 문자를 적어준다.
-> 4) created는 데이터타입이 DATE,날짜이므로 SYSDATE(현재)등으로 적어준다.
-> 5) **commit;까지 해야 완성(기계적으로하자, 무조건한다)**   
+```
+INSERT INTO `author` VALUES (1,'egoing','developer');
+INSERT INTO `author` VALUES (2,'duru','database administrator');
+INSERT INTO `author` VALUES (3,'taeho','data scientist, developer');
+COMMIT;
+```
+
+id|name|profile
+--|-----|-------
+1|egoing|developer
+2|duru|database administrator
+3|taeho|data scientist, developer
+
+#### INSERT
+> * 행을 삽입합니다.
+
+#### COMMIT
+> * 수정사항을 적용합니다.
+
+### 예제3(SELECT)
+
+```
+SELCET 'name' FORM 'author' WHERE 'profile'='developer' ORDER BY 'id' DESC LIMIT 1;
+```
+
+#### SELECT
+> * 표를 출력합니다.
+>> * SELECT * FROM 'TABLENAME' : TABLENAME 표를 전부 출력합니다.
+
+#### WHERE
+> * 위치의 조건을 덧붙입니다.
+>> * 위의 예시에선 'profile'이란 행의 값이 'developer'라는 위치조건을 덧붙였습니다.
+
+#### ORDER BY ... DESC & ASC
+> * 지정한 행을 기준으로 내림차순 혹 오름차순으로 출력합니다.
+>> * 위의 예시에선 'id'행을 기준으로 내림차순한다는 조건을 덧붙였습니다.
+
+#### LIMIT ()
+> * 조건에 부합하는 표를 전부가 아닌 ()개만 출력합니다.
+
+
+
+
 
 ###### 3. table 가져오기(확인하기)
 ```

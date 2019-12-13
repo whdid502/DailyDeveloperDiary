@@ -220,14 +220,14 @@ DROP TABLE tablename;
 * 수없이 많은 데이터를 지닌 표를 수정이 편하게 분할하며, 읽기 쉽게 합친것 처럼 보이게 할수 있습니다.
 * 표를 쪼갬으로써 중복된 값을 제거할 수 있습니다.
 
-#### topic
+##### topic(표1)
 tid|title|descripition|name|city|job_title|job_description
 ---|-----|------------|----|----|---------|---------------
 1|HTML|HTML is ...|egoing|seoul|developer|developer is...
 2|CSS|CSS is ...|leezche|jeju|designer|designer is...
 3|Dateabase|Database is ...|egoing|seoul|developer|developer is ...
 
-#### comment
+##### comment(표2)
 cid|descripition|name|city|job_title|job_description
 ---|------------|----|----|---------|---------------
 1|HTML is ...|egoing|seoul|developer|developer is...
@@ -235,6 +235,76 @@ cid|descripition|name|city|job_title|job_description
 * topic표 내부와 topic과 comment사이에서 중복되는 내용이 있습니다.
 > * 이럴때 표를 쪼갬으로서 수정을 간편히 할수 있습니다.
 
+##### 분할1
+
+![](detach_author)
+
+* 제작자에 관한 표를 author이라는 표로 분리했습니다.
+* PRIMARY KEY값으로 중복된 부분을 제거했습니다.
+
+##### 분할2
+
+![](detach_profile)
+
+* author에서도 중복되는 직업에 관한 부분을 profile이란 표로 분리했습니다.
+* id값과 profile_id값을 설정해 join할수있게 해두었습니다.
+
+##### 이렇게 분할된 표는 수정에 쉽지만, 읽기 어렵습니다.
+##### 이렇게 분할된 표를 읽기 편하게 합쳐진 것 처럼 저장되게 보이는것을 관계형데이터베이스의 join이라고 합니다.
+
+
+## join 표 예시
+![](join_ex)
+
+## Left Join
+
+![](left_join)
+
+```
+SELECT * FORM topic LEFT JOIN author ON topic.author_id = author.aid
+```
+* topic테이블을 기준으로 author테이블과 LEFT JOIN 하겠습니다.
+* 단, topic테이블의 author_id와 author테이블의 aid값이 같게합니다. 
+
+![](left_join_ex)
+
+* NULL값이 없으므로 나머지값은 NULL처리되었습니다.
+
+## Left Join(3개이상)
+
+```
+SELECT * FORM topic LEFT JOIN author ON topic.author_id = author.aid LEFT JOIN profile ON autohr.profile_id = profile.pid;
+```
+
+* 위의 합쳐진 표에 같은 절차로 join합니다.
+
+![](left_join-ex2)
+
+## 원하는 열 출력
+
+```
+SELECT tid,topic.title,autohr_id,profile.title AS job_title 
+	FORM topic LEFT JOIN author ON topic.author_id = author.aid LEFT JOIN profile ON autohr.profile_id = profile.pid;
+```
+
+![](left_join_ex3)
+
+* 출력하고 싶은 행만 선택한것 입니다.
+> * topic.title은 title이란 행이 profile 테이블에도 있기때문에 모호함을 제거하기 위함입니다.
+* AS job_title을 붙임으로써, profile.title의 이름은 job_title입니다.
+
+## 원하는 행 출력
+
+```
+SELECT tid,topic.title,autohr_id,profile.title AS job_title 
+	FORM topic LEFT JOIN author ON topic.author_id = author.aid LEFT JOIN profile ON autohr.profile_id = profile.pid
+	WHERE aid=1;
+```
+
+![](left_join_ex4)
+
+* egoing이란 사람이 쓴 글만 보고싶은 상태입니다.
+> * author의 표값에서 aid를 추출해 위치를 적용시켰습니다.
 
 ---
 <sub>1. Database 이미지 및 내용 [출처 : 코딩팩토리](https://coding-factory.tistory.com/77)</sub>  

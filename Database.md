@@ -237,14 +237,14 @@ cid|descripition|name|city|job_title|job_description
 
 ##### 분할1
 
-![](detach_author)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/Detach_author.PNG)
 
 * 제작자에 관한 표를 author이라는 표로 분리했습니다.
 * PRIMARY KEY값으로 중복된 부분을 제거했습니다.
 
 ##### 분할2
 
-![](detach_profile)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/detach_profile.PNG)
 
 * author에서도 중복되는 직업에 관한 부분을 profile이란 표로 분리했습니다.
 * id값과 profile_id값을 설정해 join할수있게 해두었습니다.
@@ -254,11 +254,11 @@ cid|descripition|name|city|job_title|job_description
 
 
 ## join 표 예시
-![](join_ex)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/join_ex.PNG)
 
 ## Left Join
 
-![](left_join)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/left_join.PNG)
 
 ```
 SELECT * FORM topic LEFT JOIN author ON topic.author_id = author.aid
@@ -266,9 +266,9 @@ SELECT * FORM topic LEFT JOIN author ON topic.author_id = author.aid
 * topic테이블을 기준으로 author테이블과 LEFT JOIN 하겠습니다.
 * 단, topic테이블의 author_id와 author테이블의 aid값이 같게합니다. 
 
-![](left_join_ex)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/left_join_ex.PNG)
 
-* NULL값이 없으므로 나머지값은 NULL처리되었습니다.
+* NULL값이 없지만, 기준이 topic이므로 나머지값은 NULL처리되었습니다.
 
 ## Left Join(3개이상)
 
@@ -278,22 +278,22 @@ SELECT * FORM topic LEFT JOIN author ON topic.author_id = author.aid LEFT JOIN p
 
 * 위의 합쳐진 표에 같은 절차로 join합니다.
 
-![](left_join-ex2)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/left_join_ex2.PNG)
 
-## 원하는 열 출력
+## 원하는 행 출력
 
 ```
 SELECT tid,topic.title,autohr_id,profile.title AS job_title 
 	FORM topic LEFT JOIN author ON topic.author_id = author.aid LEFT JOIN profile ON autohr.profile_id = profile.pid;
 ```
 
-![](left_join_ex3)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/left_join_ex3.PNG)
 
 * 출력하고 싶은 행만 선택한것 입니다.
 > * topic.title은 title이란 행이 profile 테이블에도 있기때문에 모호함을 제거하기 위함입니다.
 * AS job_title을 붙임으로써, profile.title의 이름은 job_title입니다.
 
-## 원하는 행 출력
+## 원하는 열 출력
 
 ```
 SELECT tid,topic.title,autohr_id,profile.title AS job_title 
@@ -301,14 +301,83 @@ SELECT tid,topic.title,autohr_id,profile.title AS job_title
 	WHERE aid=1;
 ```
 
-![](left_join_ex4)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/left_join_ex4.PNG)
 
 * egoing이란 사람이 쓴 글만 보고싶은 상태입니다.
 > * author의 표값에서 aid를 추출해 위치를 적용시켰습니다.
 
+## Inner Join
+
+![](inner_join)
+
+* join을 말하면 inner join을 말합니다.
+= 양쪽 모두에만 존재하는 값만을 가지고 새로운 표를 만듭니다.
+> * NULL값이 존재하지 않습니다.
+
+```
+SELECT * FORM topic INNER JOIN author ON topic.author_id = author.aid;
+```
+
+![](inner_join_ex)
+
+* topic을 기준으로 author을 Inner join합니다.
+
+## Inner Join(3개이상)
+
+```
+SELECT * FORM topic INNER JOIN author ON topic.author_id = author.aid
+	INNER JOIN profile ON profile.pid = author.profile_id;
+```
+
+![](inner_join_ex2)
+
+## Full Outer Join
+
+![](Full Outer Join)
+
+![](fulleouterjoin)
+
+```
+SELECT * FROM topic FULL OUTER JOIN author ON topic.author_id = author.aid;
+```
+이것은
+```
+(SELECT * FORM topic LEFT JOIN author ON topic.author_id = author.aid)
+	UNION
+	(SELECT * FROM topic RIGHT JOIN author ON topic.author_id = author.aid);
+```
+과 같습니다.
+
+![](FOJEX)
+
+* Left Join과 Right Join을 모두 합쳐 출력합니다.
+
+![](FOJEX2)
+
+* 그 후, 중복되는 부분을 제거해줍니다.
+
+* 모든 표에 있는 정보로 표를 만드는 방식입니다.
+
+## Exculsive Left Join
+
+![](exjoin)
+
+```
+SELECT * FROM topic LEFT JOIN author ON topic.author_id = author.aid WHERE author.aid is NULL;
+```
+
+![](ㄷexjoinex)
+
+* 기준 표에만 있는 정보를 가져오는 것입니다.
+
+* Full Outer Join과 Exculsive Join은 Left Outer Join과 Inner Join을 응용해서 만든것 입니다.
+
+
+*
+
 ---
 <sub>1. Database 이미지 및 내용 [출처 : 코딩팩토리](https://coding-factory.tistory.com/77)</sub>  
-<sub>2. Schema 예시 이미지 및 내용 [출처 : ykcb.tistory](https://ykcb.tistory.com/entry/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EC%8A%A4%ED%82%A4%EB%A7%88%EC%9D%98-%EA%B0%9C%EB%85%90-%ED%8A%B9%EC%A7%95)</sub>
+<sub>2. Schema 예시 이미지 및 내용 [출처 : ykcb.tistory](https://ykcb.tistory.com/entry/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EC%8A%A4%ED%82%A4%EB%A7%88%EC%9D%98-%EA%B0%9C%EB%85%90-%ED%8A%B9%EC%A7%95)</sub>  
 <sub>3. JOIN의 표 및 내용 [출처 : opentutorials.org](https://opentutorials.org/course/3884/25179)</sub>
 
 

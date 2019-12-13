@@ -152,89 +152,67 @@ SELCET 'name' FORM 'author' WHERE 'profile'='developer' ORDER BY 'id' DESC LIMIT
 #### LIMIT ()
 > * 조건에 부합하는 표를 전부가 아닌 ()개만 출력합니다.
 
-
-
-
-
-###### 3. table 가져오기(확인하기)
-```
-SELECT * FROM tablename;
-```
-> 1) *은 모든 컬럼를 말한다.
-> 2) sqlpls론 불편하다. SQL DEVELOPER를 사용하면 깔끔하게본다.
-
-###### 4. table 분할해 가져오기(확인하기)
-```
-SELECT id,title,created FROM tablename;
-```
-> 1) *(모든컬럼)대신 id,title,create 컬럼만 보겟다
+### 예제3-1(SELECT)
 
 ```
-SELECT * FROM tablename WHERE id =(<,>) 1;
-```				 
-> 1) 모든 컬럼중에서 / id컬럼이 1인(1보다작은,1보다큰) 부분의 로우만 본다.  
+SELECT * FROM tablename   
+	 OFFSET 0 ROWS  
+	 FETCH NEXT 1 ROWS ONLY;  
+```
 
-###### 5. 출력된 결과를 정렬
-```
-SELECT * FROM tablename ORDER BY id DESC;
-                                    ASC;
-```
-> 1) tablename 의 모든컬럼을 점령한다 `SELECT * FROM tablename`
->> id컬럼을 기준으로 `ORDER BY id`
->>> 큰숫자(혹 문자순)부터 내림으로 `DESC;`, 작은숫자(혹 문자순)부터 올림으로 `ASC;`
-
-###### 6. 전체(*)에서 페이징 하기
-> * 전체의 시트양이 너무많다면 *를 꺼내올때마다 데이터베이스는 마비된다.  
-> 책에서 페이지가 나뉘어잇듯이, 시트를 분할하는것을 페이징이라 한다.
-```
-SECET * FROM tablename
-	OFFSET 1 ROWS;
-```
-> 1) OFFSET 1은 '0번째 이후에 나오는 행들만 가져온다=우리가 봤을때 2번째
->> * 컴퓨터는 0부터 센다.
-
-
-###### 7. 한 행을 가져오기
-```
-SELECT *FROM tablename   
-	OFFSET 0 ROWS  
-	FETCH NEXT 1 ROWS ONLY;  
-```
-> 1) 1번째 이후의 / 하나의 열만을 가져온다. 
-> 2) 몇번째 페이지인가를 의미한다.
+> 1) 1번째 이후의(OFSET) 하나의 열만을(FETCH NEXT 1 ONLY) 가져옵니다. 
 
 ```
 SELECT *FROM tablename
        OFFSET 1 ROWS
        FETCH NEXT 1 ROWS ONLY;
 ```
-> 1) 2번째 이후의 / 하나의 열만을 가져온다.
+> 1) 2번째 이후의 하나의 열만을 가져옵니다.
 
-###### 8. 행 내용 변경하기
+### 8. 예제4(UPDATE)
+
 ```
-UPDATE tablename
+UPDATE 'autohr'
 	SET
-	title = 'MSSQL',
-	description = 'MSSQL is ..'   >(여기까지하고 ; 로 마무리하면 모든 title과 description 컬럼이 저 내용으로바뀐다)
+	name = 'camp',
+	profile = 'teacher'   >(여기까지하고 ; 로 마무리하면 모든 title과 description 컬럼이 저 내용으로바뀐다)
 	WHERE                                       (무언가할때 WHERE이 없다면 다시 생각해보자)
 	id = 3;
 ```
-> 1) tablename이란 TABLE에서 title 컬럼을 'MSSQL', description컬럼을  'MSSQL is ..'이라고 업데이트한다. 단, 그 행은 id가 3인 행만 적용한다.
-> 2) 이런 수정작업후엔 항상 'commit;'을 입력해서 수정내용이 적용되게한다.
 
-###### 9. 삭제하기**(굉장히 파괴적인 결과를 불러일으킬수잇다, 항상조심하자)**
+###### UPDATE전
+
+id|name|profile
+--|-----|-------
+1|egoing|developer
+2|duru|database administrator
+3|taeho|data scientist, developer
+
+###### UPDATE후
+
+id|name|profile
+--|-----|-------
+1|egoing|developer
+2|duru|database administrator
+3|camp|teacher
+
+> 1) 'author'이란 표에서 name 컬럼을 'camp', profile 컬럼을  'teacher' 로 업데이트합니다. 단, 그 행은 id가 3인 행만 적용합니다.
+> 2) 이런 수정작업후엔 항상 'commit;'을 입력해서 수정내용이 적용되게 합니다.
+
+### 예제5(DELETE)
+
 ```
-DELETE FROM tablename            >(여기까지하고 ;로 마무리하면, 토픽행이 모두 삭제된다)
+DELETE FROM author           >(여기까지하고 ;로 마무리하면, 토픽행이 모두 삭제된다)
 	WHERE
 	id = 3;
 ```
-> 1) id 컬럼의 로우가 3인곳을 삭제한다.
+> 1) id 컬럼의 로우가 3인곳을 삭제합니ㄷ다.
 
-###### 10.표 지우기
+### 예제5-1(DROP)
 ```
 DROP TABLE tablename;
 ```
-> 1) tablename이란 TABLE 삭제
+> 1) author이란 표를 삭제합니다.
 
 ###### 11.시퀀스 생성하기  
 > * PRIMARY KEY와 가족이라고 생각하자, 같이 있으면 강력해진다.
@@ -257,6 +235,18 @@ SELECT SEQ_tablename.CURRVAL FROM tablename; > 현재 tablename 이란 TABLE에 
                              FROM DUAL;      > 가상 TABLE 에서 값을보여준다. 하나의 행에서만보여준다.
 ```
 > 1) 현재 시퀀스의 값을 본다.
+
+
+###### 6. 전체(*)에서 페이징 하기
+> * 전체의 시트양이 너무많다면 *를 꺼내올때마다 데이터베이스는 마비된다.  
+> 책에서 페이지가 나뉘어잇듯이, 시트를 분할하는것을 페이징이라 한다.
+```
+SECET * FROM tablename
+	OFFSET 1 ROWS;
+```
+> 1) OFFSET 1은 '0번째 이후에 나오는 행들만 가져온다=우리가 봤을때 2번째
+>> * 컴퓨터는 0부터 센다.
+
 
 ###### 12. 표 JOIN하기
 예제와 함께 [동영상](https://opentutorials.org/course/3885/26417) 에서 확인하자.

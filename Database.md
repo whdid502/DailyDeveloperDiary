@@ -218,13 +218,28 @@ DROP TABLE tablename;
 
 * JOIN은 왜 관계형 데이터베이스인지 설명해줍니다.
 * 수없이 많은 데이터를 지닌 표를 수정이 편하게 분할하며, 읽기 쉽게 합친것 처럼 보이게 할수 있습니다.
+* 표를 쪼갬으로써 중복된 값을 제거할 수 있습니다.
 
+#### topic
+tid|title|descripition|name|city|job_title|job_description
+---|-----|------------|----|----|---------|---------------
+1|HTML|HTML is ...|egoing|seoul|developer|developer is...
+2|CSS|CSS is ...|leezche|jeju|designer|designer is...
+3|Dateabase|Database is ...|egoing|seoul|developer|developer is ...
+
+#### comment
+cid|descripition|name|city|job_title|job_description
+---|------------|----|----|---------|---------------
+1|HTML is ...|egoing|seoul|developer|developer is...
+
+* topic표 내부와 topic과 comment사이에서 중복되는 내용이 있습니다.
+> * 이럴때 표를 쪼갬으로서 수정을 간편히 할수 있습니다.
 
 
 ---
 <sub>1. Database 이미지 및 내용 [출처 : 코딩팩토리](https://coding-factory.tistory.com/77)</sub>  
 <sub>2. Schema 예시 이미지 및 내용 [출처 : ykcb.tistory](https://ykcb.tistory.com/entry/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EC%8A%A4%ED%82%A4%EB%A7%88%EC%9D%98-%EA%B0%9C%EB%85%90-%ED%8A%B9%EC%A7%95)</sub>
-
+<sub>3. JOIN의 표 및 내용 [출처 : opentutorials.org](https://opentutorials.org/course/3884/25179)</sub>
 
 
 

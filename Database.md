@@ -308,7 +308,7 @@ SELECT tid,topic.title,autohr_id,profile.title AS job_title
 
 ## Inner Join
 
-![](inner_join)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/ineer_join.PNG)
 
 * join을 말하면 inner join을 말합니다.
 = 양쪽 모두에만 존재하는 값만을 가지고 새로운 표를 만듭니다.
@@ -318,7 +318,7 @@ SELECT tid,topic.title,autohr_id,profile.title AS job_title
 SELECT * FORM topic INNER JOIN author ON topic.author_id = author.aid;
 ```
 
-![](inner_join_ex)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/ineer_join_ex.PNG)
 
 * topic을 기준으로 author을 Inner join합니다.
 
@@ -329,13 +329,11 @@ SELECT * FORM topic INNER JOIN author ON topic.author_id = author.aid
 	INNER JOIN profile ON profile.pid = author.profile_id;
 ```
 
-![](inner_join_ex2)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/ineer_join_ex2.PNG)
 
 ## Full Outer Join
 
-![](Full Outer Join)
-
-![](fulleouterjoin)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/fullouterjoin.PNG)
 
 ```
 SELECT * FROM topic FULL OUTER JOIN author ON topic.author_id = author.aid;
@@ -348,11 +346,11 @@ SELECT * FROM topic FULL OUTER JOIN author ON topic.author_id = author.aid;
 ```
 과 같습니다.
 
-![](FOJEX)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/fullouterjoinex.PNG)
 
 * Left Join과 Right Join을 모두 합쳐 출력합니다.
 
-![](FOJEX2)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/fullouterjoinex2.PNG)
 
 * 그 후, 중복되는 부분을 제거해줍니다.
 
@@ -360,22 +358,20 @@ SELECT * FROM topic FULL OUTER JOIN author ON topic.author_id = author.aid;
 
 ## Exculsive Left Join
 
-![](exjoin)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/exjoin.PNG)
 
 ```
 SELECT * FROM topic LEFT JOIN author ON topic.author_id = author.aid WHERE author.aid is NULL;
 ```
 
-![](ㄷexjoinex)
+![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/exjoinex.PNG)
 
 * 기준 표에만 있는 정보를 가져오는 것입니다.
 
 * Full Outer Join과 Exculsive Join은 Left Outer Join과 Inner Join을 응용해서 만든것 입니다.
 
-
-*
-
 ---
+
 <sub>1. Database 이미지 및 내용 [출처 : 코딩팩토리](https://coding-factory.tistory.com/77)</sub>  
 <sub>2. Schema 예시 이미지 및 내용 [출처 : ykcb.tistory](https://ykcb.tistory.com/entry/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EC%8A%A4%ED%82%A4%EB%A7%88%EC%9D%98-%EA%B0%9C%EB%85%90-%ED%8A%B9%EC%A7%95)</sub>  
 <sub>3. JOIN의 표 및 내용 [출처 : opentutorials.org](https://opentutorials.org/course/3884/25179)</sub>

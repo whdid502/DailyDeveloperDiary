@@ -2,7 +2,7 @@
 
 * 데이터베이스란 공통으로 사용되는 데이터의 공유와 운영을 위해 저장 관리할 수 있도록 하는 공간을 말합니다. 
 
-* 압도적으로 많이사용되는 database 는 **관계형 데이터베이스(reational database)** 입니다.  
+* 압도적으로 많이 사용되는 database 는 **관계형 데이터베이스(reational database)** 입니다.  
 > * 데이터베이스는 차등적으로 권한을 줄 수 있는 등, 보안적 으로 뛰어납니다.
 > * 이 관계형데이터베이스의 핵심은 **표** 이다.  
 >> * 열과 행으로 표현한다면 방대한 데이터를 쉽고 효율적으로 처리할 수 있습니다.
@@ -12,8 +12,8 @@
 ![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/database_table2.png)
 
 * 표(Table)은 릴레이션이라고도 합니다.
-* 식별자(identifier)는 여러개의 집합체를 담고있는 관계형 데이터베이스에서 각각의 구분할 수 있는 논리적인 개념입니다.
-> * 유일성 : 하나의 테이블에서 모든 행은 서로 다른 키 값을 가져야 합니다.
+* 식별자(identifier)는 여러 개의 집합체를 담고 있는 관계형 데이터베이스에서 각각 구분할 수 있는 논리적인 개념입니다.
+> * 유일성 : 하나의 테이블에서 모든 행은 서로 다른 키값을 가져야 합니다.
 > * 최소성 : 꼭 필요한 최소한의 속성들로만 키를 구성해야 합니다.
 * 튜플(Tuple)은 행(Row)를 의미합니다. 행은 테이블에서 같은 값을 가질 수 없습니다. 데이터의 타입입니다. 튜플의 수를 카디날리티(Cardinality)라고 합니다.
 * 어트리뷰트(Attribute)는 열(Columm)을 의미합니다. 데이터의 구조입니다. 어트리뷰트의 수를 디그리(Degree)라고 합니다.
@@ -21,7 +21,7 @@
 #### Schema
 
 *  스키마(schema)는 데이터베이스에서 자료의 구조, 자료의 표현 방법, 자료 간의 관계를 형식 언어로 정의한 구조입니다.
-> * 단순히 말하자면 연관된 Table끼리 그룹화해둔것을 schema라고 합니다.
+> * 단순히 말하자면 연관된 Table끼리 그룹화해둔 것을 schema라고 합니다.
 
 ![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/schema.jpg)
 
@@ -30,12 +30,12 @@
 ![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/schema_ex.jpg)
 
 * 스키마는 3계층으로 이루어져 있습니다. 이는 관점에 따라 분류되었습니다.
-* 외부스키마는 개인의 입장, '서브스키마'라고도 합니다. 사용자 뷰를 가리킵니다. 
-> * 하나의 외부스키마는 여럿이 공유 가능하며, 하나의 DB시스템에 여러 개의 외부스키마가 존재 가능합니다.
-* 내부스키마는 시스템 프로그래머나 설계자의 관점에서 바라보는 스키마입니다.
+* 외부 스키마는 개인의 입장, '서브 스키마'라고도 합니다. 사용자 뷰를 가리킵니다. 
+> * 하나의 외부 스키마는 여럿이 공유 가능하며, 하나의 DB 시스템에 여러 개의 외부 스키마가 존재 가능합니다.
+* 내부 스키마는 시스템 프로그래머나 설계자의 관점에서 바라보는 스키마입니다.
 > * 데이터베이스의 물리적 구조를 가리킵니다.(= 실제 저장방법을 기술하는 물리적인 저장장치와 관련됨) 
 * 개념스키마는 조직 전체의 입장, 전체적인 뷰를 가리킵니다.
-> * 개체간의 관계와 제약조건을 나타내고, 데이터베이스의 접근권한/보안/무결성 규칙에 대한 명세를 정의합니다. 
+> * 개체 간의 관계와 제약조건을 나타내고, 데이터베이스의 접근권한/보안/무결성 규칙에 대한 명세를 정의합니다. 
 
 ---
 
@@ -57,14 +57,14 @@
 
 ##### MY_SQL
 * MySQL사에서 개발, 썬마이크로시스템즈를 거쳐 현재 오라클에 흡수합병됬습니다.
-* 윈도우즈, 리눅스, 유닉스 등 다양한 OS에 설치를 할 수 있습니다.
-* 오픈소스로 이루어져있는 무료 프로그램입니다, 단, 상업적 사용시에는 비용이 발생합니다.
-* 가격등의 장점을 앞세워 다수의 중소기업에서 사용 중입니다.
+* 윈도우즈, 리눅스, 유닉스 등 다양한 OS에 설치할 수 있습니다.
+* 오픈소스로 이루어져 있는 무료 프로그램입니다, 단, 상업적 사용시에는 비용이 발생합니다.
+* 가격 등의 장점을 앞세워 다수의 중소기업에서 사용 중입니다.
 
 ##### MS_SQL
 * 마이크로소프트 사에서 개발한 상업용 데이터베이스입니다.
-* 다른 OS에서도 사용가능하지만 윈도우즈에 특히 특화되어있습니다.
-* 비공개 소스로 폐쇄적인 정책입니다. 단, 리눅스버전은 오픈소스입니다.
+* 다른 OS에서도 사용 가능하지만 윈도우즈에 특히 특화되어있습니다.
+* 비공개 소스로 폐쇄적인 정책입니다. 단, 리눅스 버전은 오픈소스입니다.
 * 비교적 중소기업에서 주로 사용합니다.
 
 ---
@@ -217,7 +217,7 @@ DROP TABLE tablename;
 # JOIN
 
 * JOIN은 왜 관계형 데이터베이스인지 설명해줍니다.
-* 수없이 많은 데이터를 지닌 표를 수정이 편하게 분할하며, 읽기 쉽게 합친것 처럼 보이게 할수 있습니다.
+* 수없이 많은 데이터를 지닌 표를 수정이 편하게 나누며, 읽기 쉽게 합친 것 처럼 보이게 할 수 있습니다.
 * 표를 쪼갬으로써 중복된 값을 제거할 수 있습니다.
 
 ##### topic(표1)
@@ -247,7 +247,7 @@ cid|descripition|name|city|job_title|job_description
 ![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/detach_profile.PNG)
 
 * author에서도 중복되는 직업에 관한 부분을 profile이란 표로 분리했습니다.
-* id값과 profile_id값을 설정해 join할수있게 해두었습니다.
+* id값과 profile_id값을 설정해 join할 수 있게 해두었습니다.
 
 ##### 이렇게 분할된 표는 수정에 쉽지만, 읽기 어렵습니다.
 ##### 이렇게 분할된 표를 읽기 편하게 합쳐진 것 처럼 저장되게 보이는것을 관계형데이터베이스의 join이라고 합니다.
@@ -264,11 +264,11 @@ cid|descripition|name|city|job_title|job_description
 SELECT * FORM topic LEFT JOIN author ON topic.author_id = author.aid
 ```
 * topic테이블을 기준으로 author테이블과 LEFT JOIN 하겠습니다.
-* 단, topic테이블의 author_id와 author테이블의 aid값이 같게합니다. 
+* 단, topic테이블의 author_id와 author테이블의 aid값이 같게 합니다. 
 
 ![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/left_join_ex.PNG)
 
-* NULL값이 없지만, 기준이 topic이므로 나머지값은 NULL처리되었습니다.
+* NULL값이 없지만, 기준이 topic이므로 나머지 값은 NULL 처리되었습니다.
 
 ## Left Join(3개이상)
 
@@ -289,8 +289,8 @@ SELECT tid,topic.title,autohr_id,profile.title AS job_title
 
 ![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/left_join_ex3.PNG)
 
-* 출력하고 싶은 행만 선택한것 입니다.
-> * topic.title은 title이란 행이 profile 테이블에도 있기때문에 모호함을 제거하기 위함입니다.
+* 출력하고 싶은 행만 선택한 것 입니다.
+> * topic.title은 title이란 행이 profile 테이블에도 있기 때문에 모호함을 제거하기 위함입니다.
 * AS job_title을 붙임으로써, profile.title의 이름은 job_title입니다.
 
 ## 원하는 열 출력
@@ -303,8 +303,8 @@ SELECT tid,topic.title,autohr_id,profile.title AS job_title
 
 ![](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Image/database/left_join_ex4.PNG)
 
-* egoing이란 사람이 쓴 글만 보고싶은 상태입니다.
-> * author의 표값에서 aid를 추출해 위치를 적용시켰습니다.
+* egoing이란 사람이 쓴 글만 보고 싶은 상태입니다.
+> * author의 푯값에서 aid를 추출해 위치를 적용했습니다.
 
 ## Inner Join
 

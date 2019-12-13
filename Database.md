@@ -175,8 +175,8 @@ SELECT *FROM tablename
 UPDATE 'autohr'
 	SET
 	name = 'camp',
-	profile = 'teacher'   >(여기까지하고 ; 로 마무리하면 모든 title과 description 컬럼이 저 내용으로바뀐다)
-	WHERE                                       (무언가할때 WHERE이 없다면 다시 생각해보자)
+	profile = 'teacher'   >(여기까지하고 ; 로 마무리하면 모든 title과 description 컬럼이 저 내용으로 바뀝니다)
+	WHERE                                       (무언가할때 WHERE이 없다면 다시 생각해 봐야 합니다.)
 	id = 3;
 ```
 
@@ -202,11 +202,11 @@ id|name|profile
 ### 예제5(DELETE)
 
 ```
-DELETE FROM author           >(여기까지하고 ;로 마무리하면, 토픽행이 모두 삭제된다)
+DELETE FROM author           >(여기까지하고 ;로 마무리하면, 토픽행이 모두 삭제됩니다.)
 	WHERE
 	id = 3;
 ```
-> 1) id 컬럼의 로우가 3인곳을 삭제합니ㄷ다.
+> 1) id 컬럼의 로우가 3인곳을 삭제합니다.
 
 ### 예제5-1(DROP)
 ```
@@ -214,42 +214,12 @@ DROP TABLE tablename;
 ```
 > 1) author이란 표를 삭제합니다.
 
-###### 11.시퀀스 생성하기  
-> * PRIMARY KEY와 가족이라고 생각하자, 같이 있으면 강력해진다.
-```
-CREATE SEQUENCE SEQ_tablename;
-```
-> 1) SEQ_tablename 이라는 시퀀스를 생성한다.
+# JOIN
 
-```
-INSERT INTO tablename
-	(id,title,description,created)
-	VALUES
-	(SEQ_tablename.NEXTVAL,'ORACLE','ORACLE is ..',SYSDATE);
-```
-> 1) id 컬럼에서 자동으로 다음값을 찾아 입력해준다. NEXT(다음)VAL(숫자)
->> 값이 충돌하지 않게끔한다.
-
-```
-SELECT SEQ_tablename.CURRVAL FROM tablename; > 현재 tablename 이란 TABLE에 잇는 모든행의 수만큼 값을 표시해준다
-                             FROM DUAL;      > 가상 TABLE 에서 값을보여준다. 하나의 행에서만보여준다.
-```
-> 1) 현재 시퀀스의 값을 본다.
+* JOIN은 왜 관계형 데이터베이스인지 설명해줍니다.
+* 수없이 많은 데이터를 지닌 표를 수정이 편하게 분할하며, 읽기 쉽게 합친것 처럼 보이게 할수 있습니다.
 
 
-###### 6. 전체(*)에서 페이징 하기
-> * 전체의 시트양이 너무많다면 *를 꺼내올때마다 데이터베이스는 마비된다.  
-> 책에서 페이지가 나뉘어잇듯이, 시트를 분할하는것을 페이징이라 한다.
-```
-SECET * FROM tablename
-	OFFSET 1 ROWS;
-```
-> 1) OFFSET 1은 '0번째 이후에 나오는 행들만 가져온다=우리가 봤을때 2번째
->> * 컴퓨터는 0부터 센다.
-
-
-###### 12. 표 JOIN하기
-예제와 함께 [동영상](https://opentutorials.org/course/3885/26417) 에서 확인하자.
 
 ---
 <sub>1. Database 이미지 및 내용 [출처 : 코딩팩토리](https://coding-factory.tistory.com/77)</sub>  

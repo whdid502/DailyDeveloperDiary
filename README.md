@@ -16,6 +16,4 @@
 
 ## C#
 
-### 1. [Why C# & Unity, What is OS](https://github.com/whdid502/DailyDeveloperDiary/blob/master/Why%20C%23%20%26%20Unity%2C%20What%20is%20OS.md)
-
 ### 1. [C#Basic](https://github.com/whdid502/DailyDeveloperDiary/blob/master/C%23Basic.md)

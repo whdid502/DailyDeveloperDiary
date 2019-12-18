@@ -23,3 +23,15 @@ api : 서버와 사용자간의 약속한 방식대로 원하는 정보를 얻기위한 제한자?
 IDE 찾아보기 
 
 AJAX : 서버통신
+
+id를 가리킬때 #
+클래스르 가리킬때 .
+
+자식선택자를 공부해보자
+
+display:flex
+flex-direction
+align-items
+justify-content
+margin과 padding
+>> 공부해보자

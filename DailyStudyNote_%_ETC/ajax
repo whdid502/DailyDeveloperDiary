@@ -1,0 +1,16 @@
+ajax 비동기 서버통신방식
+자바스크립트의 한종류이며 돌려놓고 다른일을 하는것,
+요청후 다른일을 할수있습니다. 끝나면 정해진 함수(=콜백함수)를 부를수 있다.
+보통 앞뒤관계가 없는 일을 수행할때 비동기방식으로 하면 효율적
+chrome extension json formatter
+요청의 방법 get?post?
+그대로 가져오면 get
+수정삽입삭제 하면 post
+<숙제>
+jquery.focus이용
+핸드폰번호 형식체크 (정규표현식)
+기본틀만들기
+다맞게 돼엇을때 주문완료alert
+python3.8.1 pycharm 설치
+add python 3.7 to path 꼭 체크
+windows executable 64bit installer 설치

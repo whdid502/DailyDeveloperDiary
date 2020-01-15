@@ -1,0 +1,67 @@
+python을 설치한다는것 > js나 jquery와 다르게 python을 컴퓨터가 알아들을 수 있게 해준다는것.(일종의 번역)
+pycharm은 python을 편하게 쓰기 위한 ide입니다.
+
+자료형
+ 정수 : 소수점 X
+  ex) 7, 10
+ 실수 : 소수점 O
+  ex) 10.2, 87.5 등등
+
+문자열
+  문자열을 만들기 위해서는 '나 "로 글자를 감싸면 됩니다.
+
+여러 문자열들 연결하기
+ +로 하면 됩니다.
+
+문자열 반복하기
+ *로 하면 됩니다.
+data = "Hello! \n" # \n은 줄을 바꾸라는 의미
+print '---- Result ---'
+print data * 5
+---- Result ---
+Hello!
+Hello!
+Hello!
+Hello!
+Hello!
+
+문자열 슬라이싱
+파이썬 내부적으로 문자열은 배열로 되어 있어서, index를 가지고 특정 자리의 문자열만 가져올 수 있습니다.
+
+H e l l o _ W o r l d
+0 1 2 3 4 5 6 7 8 9 10
+
+ 문자열 가져오기
+
+data = "Hello World"
+print '---- Result ---'
+print data
+print data[0] // 'H'
+print data[3] // 'l'
+
+ 연속적으로 가져오기 [시작위치:종료위치]
+시작위치를 비우면 맨 처음부터, 종료위치를 비우면 맨 마지막까지란 의미
+
+print data[0:4] // 'Hell'
+print data[:5] // 'Hello'
+print data[6:] // 'World'
+print data[-1] // 'd'
+
+문자열 포맷팅
+여러개의 문자를 합칠때 매번 +를 이용해서 하는건 불편해서 포맷팅이 제공이 됩니다
+
+data1 = "Hi %s!" % "Alex" // 'Hi 1!'
+data2 = "Hi %s!" % "Anna" // 'Hi Anna!'
+data3 = "Hi %s and %s!" % ("Alex", "Anna") // 'Hi Alex and Anna!'
+
+ 문자열 함수
+len(문자열) :	문자열의 길이 반환
+count(찾을 글자) :	문자열안에 찾을 글자 개수 반환
+index(찾을 글자) :	찾을 글자의 위치 반환
+upper() :	문자열 대문자로 바꾸기
+lower() :	문자열 소문자로 바꾸기
+strip() :	양쪽 공백 지우기
+lstrip() :	왼쪽 공백 지우기
+rstrip() :	오른쪽 공백 지우기
+replace(바꿔야 할 글자, 바꿀 글자) :	문자열 개수 세기
+split(구분자) :	구분자를 기준으로 나눈다, 없으면 공백으로 나눠서 리스트로 반환

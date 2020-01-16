@@ -65,3 +65,250 @@ lstrip() :	왼쪽 공백 지우기
 rstrip() :	오른쪽 공백 지우기
 replace(바꿔야 할 글자, 바꿀 글자) :	문자열 개수 세기
 split(구분자) :	구분자를 기준으로 나눈다, 없으면 공백으로 나눠서 리스트로 반환
+
+리스트
+리스트는 여러개의 자료형을 담을수 있는 배열입니다.
+
+구조는 다음과 같이 되어 있습니다.
+
+리스트명 = [요소1, 요소2, 요소3, ...]
+
+아래와 같이 리스트 안에 리스트가 들어갈 수도 있습니다.
+
+   1      2        3    [4,5,6]
+list[0] list[1] list[2] list[3]
+
+리스트 연산하기
+리스트 역시 +나 *와 같은 연산자를 이용할 수 있습니다.
+
+# coding=utf-8
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+
+print list1 + list2  // [1, 2, 3, 4, 5, 6]
+print list1 * 2 // [1, 2, 3, 1, 2, 3]
+
+리스트안의 특정 값 바꾸기
+특정 인덱스를 불러서 값을 대입해주면 됩니다.
+
+list = [1, 2, 3]
+
+print list // [1, 2, 3]
+
+list[1] = 10 # 여기서 2 -> 10으로 바꿔줌
+
+print list // [1, 10, 3]
+
+리스트 함수
+append(추가할 값) :	리스트에 맨 뒷부분에 추가할 값을 추가
+sort() :	리스트 정렬
+index(찾을 값) :	리스트에서 찾을 값의 위치를 반환
+insert(넣을 위치, 넣을 값) :	리스트에 넣을 위치에 넣을 값을 넣어준다.
+remove(삭제할 값) :	리스트에서 삭제할 값을 찾아서 삭제 (가장 먼저 나온 값)
+count(찾을 값) :	리스트에 찾을 값이 몇 개있는지 개수를 세서 반환
+extend(확장할 리스트) :	리스트에 확장할 리스트를 붙임
+
+튜플
+튜플(tuple)은 몇 가지 점을 제외하곤 리스트와 거의 비슷하며 리스트와 다른 점은 다음과 같다.
+
+            리스트	                    튜플
+괄호	      [ and ]	                 ( and )
+수정	생성, 삭제, 수정 가능	          수정 불가
+
+결론) 만약 값이 변경이 되면 안될때는 튜플을 쓰고 변화가 필요하면 리스트를 사용한다
+
+그 외에는 기존의 리스트와 동일하게 슬라이싱부터 +, * 연산등은 동작합니다.
+
+딕셔너리
+{Key1:Value1, Key2:Value2, Key3:Value3 ...}
+Key와 Value의 쌍 여러 개가 {과 }로 둘러싸여 있다. 각각의 요소는 Key : Value 형태로 이루어져 있고 쉼표(,) 로 구분되어 있다.
+
+※ Key는 변하지 않는 값을 사용하고, Value에는 변하는 값과 변하지 않는 값 모두 사용할 수 있다.
+
+leebokyung = {'name':'bokyung', 'phone':'01011111111', 'birth': '1205'}
+
+print leebokyung // {'phone': '01011111111', 'name': 'bokyung', 'birth': '1205'}
+print leebokyung['name'] // bokyung
+print leebokyung['phone'] // 01011111111
+print leebokyung['birth'] // 1205
+
+# 추가하기 leebokyung['age'] = 20
+print leebokyung // {'phone': '01011111111', 'age': 20, 'name': 'bokyung', 'birth': '1205'}
+
+# 같은 key에 추가하기 leebokyung['age'] = 25
+print leebokyung // {'phone': '01011111111', 'age': 25, 'name': 'bokyung', 'birth': '1205'}
+
+# 삭제하기 del leebokyung['phone']
+print leebokyung // {'age': 25, 'name': 'bokyung', 'birth': '1205'}
+
+# Key만 출력하기
+print leebokyung.keys() // ['age', 'name', 'birth']
+
+# 값만 출력하기
+print leebokyung.values() // [25, 'bokyung', '1205']
+
+집합 자료형
+집합(set)은 파이썬 2.3부터 지원되기 시작한 자료형으로, 집합에 관련된 것들을 쉽게 처리하기 위해 만들어진 자료형이다.
+
+집합 자료형은 다음과 같이 set 또는 { and }를 이용해 만들 수 있다.
+
+set1 = {1, 2, 3}
+set2 = set("Hello")
+
+print set1 // set([1, 2, 3])
+print set2 # 중복을 허용하지 않음 // set(['H', 'e', 'l', 'o'])
+
+집합 자료형의 특징
+ 중복을 허용하지 않는다.
+ 순서가 없다(=인덱싱을 사용할 수 없다).
+
+집합 자료형 활용하는 방법 - 교집합, 합집합, 차집합 구하기
+ set 자료형이 정말 유용하게 사용되는 경우는 다음과 같이 교집합, 합집합, 차집합을 구할 때이다.
+
+ 우선 다음과 같이 2개의 set 자료형을 만든 후 따라 해보자. s1은 1부터 6까지의 값을 가지게 되었고, s2는 4부터 9까지의 값을 가지게 되었다.
+
+ set1 = set([1, 2, 3, 4, 5, 6])
+ set2 = set([4, 5, 6, 7, 8, 9])
+
+ print set1 & set2 // print set1.intersection(set2) # 교집합  // set([4, 5, 6])
+
+ print set1 | set2 // print set1.union(set2) # 합집합 // set([1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+ print set1 - set2 // print set1.difference(set2) # 차집합 // set([1, 2, 3])
+
+ if문
+모든 프로그래밍에서 가장 많이 쓰는 것중에 하나라고 생각하는 if문은 조건을 주고 참(=true)일때와 거짓(=false)일때로 분기할때 사용합니다.
+
+다른 언어에서는 구분을 블록('{', '}'로 하지만 파이썬은 탭으로 합니다.)
+
+기본 포맷
+if 조건:
+    조건이 만족할때 들어오는 명령어
+elif 조건2:
+    조건2가 만족할때 들어오는 명령어
+else
+    조건이 만족하지 않을때 들어오는 명령어
+
+예제
+a = 8
+b = 10
+
+if a > b:
+    print "a is larger than b"
+else:
+    print "b is larger than a" // b is lager then a
+
+여기서 주의해야 할 점은 조건문에서 :와 들여쓰기입니다
+
+비교 연산자
+a > b :	a가 b보다 크다
+a < b :	a가 b보다 작다
+a <= b :	a가 b보다 크거나 같다
+a <= b :	a가 b보다 작거나 같다
+a == b :	a와 b는 같다
+a != b :	a와 b는 같지 않다
+
+논리 연산자
+조건1 and 조건2 :	조건1과 조건2가 모두 만족해야 True
+조건1 or 조건2 :	조건1이나 조건2 둘중 하나만 만족해도 True
+not 조건 :	조건이 만족하지 않아야 True
+
+포함 연산자 (임의로 지은 이름)
+특정 값이 리스트나, 튜플, 문자열 등의 포함이 되어 있으면 True를 반환
+
+data in 리스트 :	data가 리스트에 포함되어 있으면 True
+data in 튜플 :	data가 튜플에 포함되어 있으면 True
+data in 문자열 :	data가 문자열에 포함되어 있으면 True
+
+pocket = ['paper', 'cellphone', 'money']
+if 'money' in pocket:
+    print("택시를 타고 가라")
+else:
+    print("걸어가라") // 택시를 타고 가라
+
+while문
+while문은 조건문이 True인 동안은 끊임없이 반복을 해주는 구문입니다.
+
+while문 기본 구조
+while 조건문:
+    수행할 명렁어
+    ...
+
+예제
+index = 0
+while index <= 10:
+    print index
+    index = index + 1
+// 0
+   1
+   2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+   10
+
+연속적으로 증감하는 법
+Java	Python	줄이지 않은 식
+a++	  a+=1     a = a + 1
+a–	  a-=1     a = a - 1
+
+while문 강제로 빠져나가기 (=break)
+반복문(while문이나 for문)에서 break를 만나면 강제로 바깥으로 나가게 됩니다
+
+index = 0
+while index <= 10:
+    print index
+
+    if index == 5:
+        break
+
+    index = index + 1
+
+// 0
+   1
+   2
+   3
+   4
+   5
+
+현재 돌고있는 순번만 건너뛰기 (=continue)
+break와 달리 반복문 자체를 나가는게 아니라 해당 cycle만 건너뛰게 됩니다.
+
+index = 0
+while index < 10:
+    index = index + 1
+
+    if index % 2 == 0:
+        continue
+
+    print index
+
+//1
+  3
+  5
+  7
+  9
+
+for문
+while문과 같은 반복문 중에 하나로 개인적으로 if문과 더불어 가장 많이 쓰는 문법입니다.
+
+for문 기본 구조
+ for 변수 in 리스트(또는 튜플, 문자열):
+     수행할 명령어 # 변수 사용할때     ...
+ for _ in 리스트(또는 튜플, 문자열):
+     수행할 명령어 # 변수 사용하지 않을때     ...
+
+scores = [90, 25, 67, 45, 80]
+
+for score in scores:
+     print score
+
+// 90
+   25
+   67
+   45
+   80

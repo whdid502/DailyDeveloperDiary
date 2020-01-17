@@ -312,3 +312,90 @@ for score in scores:
    67
    45
    80
+
+함수
+함수는 자주 사용되는 코드를 함수라는 형태로 만듦으로써 반복된 작업과 기하급수적으로 증가하는 코드량을 줄일 수 있습니다.
+
+함수 구조
+def 함수이름(매개 변수): 처리 명령어 return 반환 값
+
+함수 타입 #1 (매개변수: X, 리턴값: X)
+def printMyName():
+    print 'Jungwoon'
+
+printMyName() // Jungwoon
+
+함수 타입 #2 (매개변수: O, 리턴값: X)
+def calculatePlus(a, b):
+    print "Sum is %d" % (a + b)
+
+calculatePlus(19, 32) // Sum is 51
+
+함수 타입 #3 (매개변수: X, 리턴값: O)
+def getMyBirthDay():
+    return "12.05."
+
+print 'My birth is %s' % getMyBirthDay() // My birth is 12.05.
+
+함수 타입 #4 (매개변수: O, 리턴값: O)
+def plus(a, b):
+    return a + b
+
+print 'Sum is %s' % plus(12, 78) // Sum is 90
+
+입력값이 정해지지 않았을때 (파이썬에 있는 특별한 기능)
+def plus(*values):
+    tot = 0
+
+    for value in values:
+        tot = tot + value
+
+    return tot
+
+print 'Sum is %s' % plus(12, 78, 23, 44, 634) // Sum is 791
+
+return의 다른 사용법 (return의 의미)
+def sayNickname(nickname):
+
+    if nickname == 'idiot':
+        return
+
+    return nickname
+
+
+print 'My Nickname is %s' % sayNickname("Pretty") // My Nickname is Pretty
+print 'My Nickname is %s' % sayNickname("idiot") // My Nickname is None
+
+여러개의 리턴값을 받기 (튜플 사용)
+def calculate(a, b):
+    return a + b, a * b
+
+print calculate(12, 23) # 결과값이 여러개일때는 '한 개'의 튜플로 받는다 // (35, 276)
+print calculate(12, 23)[0] # 더하기한 결과 값만 가져오기 // 35
+print calculate(12, 23)[1] # 곱하기한 결과 값만 가져오기 // 276
+
+매개변수의 default값 설정하기
+def checkBreakfast(name, room, meal=True):
+    print "Name : %s" % name
+    print "Room : %d" % room
+
+    if meal:
+        print "include breakfast"
+    else:
+        print "no breakfast"
+
+checkBreakfast("Jungwoon", 302)
+print '--------------'
+checkBreakfast("Bokyung", 303, False)
+
+//
+
+Name : Jungwoon
+Room : 302
+include breakfast
+--------------
+Name : Bokyung
+Room : 303
+no breakfast
+
+default를 준 매개변수 뒤에 따라오는 매개변수도 항상 default 값을 설정해야 한다

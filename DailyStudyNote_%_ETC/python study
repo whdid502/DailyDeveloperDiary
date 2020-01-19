@@ -399,3 +399,173 @@ Room : 303
 no breakfast
 
 default를 준 매개변수 뒤에 따라오는 매개변수도 항상 default 값을 설정해야 한다
+
+로컬 변수에 대한 개념
+아래와 같이 같은 이름이라도 블록에 따라서 변수가 영향을 미칠 수 있는 범위가 달라진다
+
+a = 123
+def checkLocalValue():
+  a = 32
+  print a // 32
+
+print a // 123
+
+lobal 명령어 이용
+아래 소스와 같이 global를 명시함으로써 임의로 글로벌 변수를 사용할 수 있는데 비추
+
+a = 123
+
+def checkLocalValue():
+    global a # 글로벌 변수 a를 사용하겠다는 의미
+    a = 32
+    print a // 32
+
+checkLocalValue()
+print a // 32
+
+input()를 이용하여 직접 입력받기
+직접 특정 데이터를 입력 받아서 처리하고 싶을때가 있는데, 그때 input()을 쓰면 입력을 받을 수 있습니다.
+
+기본 사용방법
+data = input()
+>> 2
+print data // 2
+
+문구를 사용하여 입력받기
+number = input("숫자를 입력하세요: ")
+>> 2
+print number // 숫자를 입력하세요: 2
+
+print()의 다른 기능들
+print()는 이미 많이 사용했겠지만, 이번에는 print()에 있는 다른 기능들을 설명하려고 합니다.
+
+버전에 따른 print() 사용법
+print "Hello World" # version 2.x
+print("Hello World") # version 3.x
+
+한 줄 띄지 않고 옆에다 붙여서 사용하기
+# version 2.x
+    for i in range(10):
+    print i,
+# version 3.x
+    for i in range(10):
+    print(i, end=' ')
+
+파일 읽고 쓰기
+이번에는 실제 파일을 만드는 방법에 대해서 설명하려고 합니다.
+
+기본 형식
+file = open("파일이름(확장자 포함)", '파일 열기 모드') # 파일 열어주기 file.write("데이터") # 파일 쓰기 file.read() # 파일 읽기 (파일의 내용 전
+
+파일 열기 모드
+리스트	                        튜플
+  r                       	읽기 모드
+  w                        	쓰기 모드
+  a     	추가 모드 - 파일의 마지막에 새로운 내용 추가할때
+
+파일 생성 예제
+newFile = open("/Users/jungwoon/PycharmProjects/Test/newFile.txt", 'w') # 쓰기모드로 파일 생성 newFile.close # 닫아주기
+
+파일 쓰기 예제
+newFile = open("/Users/jungwoon/PycharmProjects/Test/newFile.txt", 'w')
+
+for i in range(5):
+    newFile.write("%d Hello World\n" % i)
+
+newFile.close()
+
+파일 읽기 예제 - read()
+파일 전체를 string으로 읽어옵니다.
+
+newFile = open("/Users/jungwoon/PycharmProjects/Test/newFile.txt", 'r')
+print newFile.read()
+newFile.close()
+
+// 0 Hello World
+   1 Hello World
+   2 Hello World
+   3 Hello World
+   4 Hello World
+
+파일 읽기 예제 - readline()
+한줄씩 읽어옵니다.
+
+newFile = open("/Users/jungwoon/PycharmProjects/Test/newFile.txt", 'r')
+print newFile.readline()
+newFile.close() // 0 Hello World
+
+만약 여러번 호출하면 그 다음 줄을 읽어옵니다
+
+newFile = open("/Users/jungwoon/PycharmProjects/Test/newFile.txt", 'r')
+print newFile.readline()
+print newFile.readline()
+print newFile.readline()
+newFile.close()
+
+// 0 Hello World
+
+   1 Hello World
+
+   2 Hello World
+
+readline()을 이용해서 전체 데이터 읽어오기
+
+newFile = open("/Users/jungwoon/PycharmProjects/Test/newFile.txt", 'r')
+
+while True:
+    line = newFile.readline()
+    if not line: break;
+    print line
+
+newFile.close()
+
+// 0 Hello World
+
+   1 Hello World
+
+   2 Hello World
+
+   3 Hello World
+
+   4 Hello World
+
+파일 읽기 예제 - readlines()
+readlines()는 한번에 라인을 리스트 형태로 가져옵니다.
+
+newFile = open("/Users/jungwoon/PycharmProjects/Test/newFile.txt", 'r')
+
+lines = newFile.readlines()
+
+for line in lines:
+    print line
+
+newFile.close()
+
+// 0 Hello World
+
+   1 Hello World
+
+   2 Hello World
+
+   3 Hello World
+
+   4 Hello World
+
+with문 사용하기
+위에서는 파일을 open() 했으면 게속 close() 했어야 했는데, with를 사용하면 별도로 close() 하지 않아도 됩니다.
+
+with open("/Users/jungwoon/PycharmProjects/Test/newFile.txt", 'r') as newFile:
+    lines = newFile.readlines()
+
+    for line in lines:
+        print line
+
+// 0 Hello World
+
+   1 Hello World
+
+   2 Hello World
+
+   3 Hello World
+
+   4 Hello World

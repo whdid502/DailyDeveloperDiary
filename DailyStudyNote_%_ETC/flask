@@ -1,0 +1,37 @@
+1. 플라스크(Flask)
+플라스크는 파이썬으로 작성된 마이크로 웹 프레임워크의 하나입니다.
+
+Werkzeug 툴킷과 Jinja2 템플릿 엔진에 기반을 두고 BSD 라이선스입니다.
+
+ㅇ Werkzeug : Python용 WSGI 유틸리티 라이브러리 (BSD 라이선스)
+– http://werkzeug.pocoo.org/
+
+ㅇ WSGI : 웹 서버 게이트웨이 인터페이스
+– 위키백과 – WSGI
+– 웹서버와 웹어플리케이션의 인터페이스를 위한 파이썬 프레임워크
+
+ㅇ Jinja2 : Django의 템플릿을 모델로하여 현대적이고 디자이너 친화적인 python용 템플릿 언어
+– http://jinja.pocoo.org/docs/2.10/
+
+플라스크는 위에 언급된 것과 같이 마이크로 프레임워크라고 불립니다.
+
+플라스크에서의 마이크로 프레임워크(Microframework)는 핵심 기능만 간결하게 유지하고 확장을 함에 있어서 유연함을 제공하는 것을 목적으로 하고 다양한 확장기능을 지원합니다.
+
+2. 플라스크(Flask) 웹서비스 구동 및 확인
+아래 기본 코드를 작성하여 플라스크로 웹서비스를 구동하고 정상적으로 사이트 접속이 되는지 확인해 보겠습니다.
+
+hello.py 라는 이름의 파일을 생성하고 아래 코드를 작성합니다.
+
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+
+def hello_world():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run()
+그리고 Terminal로 접속하여 위에 생성한 작업공간(디렉토리)로 이동을 하고 위에 작성한 hello.py 파일을 실행 합니다.
+
+웹 브라우져를 통해서 웹서비스가 구동된 주소(http://127.0.0.1:5000/ or http://localhost:5000/)로 접속하면 아래와 같이 정상적으로 웹서비스가 구동되고 있는 것을 확인 할 수 있습니다.

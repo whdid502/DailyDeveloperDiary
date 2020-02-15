@@ -1,0 +1,97 @@
+1. JSON (JavaScript Object Notation)
+
+ㅇ 자바스크립트에서의 객체 표기 방법을 기반으로 한 데이터 형식
+- 다양한 형식으로 구조화된 데이터를 직렬화시킨 텍스트 포멧
+- 각 데이터(토큰)를 `속성(Property)`과 `값(Vaule)`의 쌍으로 표현
+
+ㅇ 비록 명칭에서 Javascript가 붙었지만,
+- 자바스크립트 이외에도, 다양한 응용 프로그램 또는 웹 서비스 또는 서버/클라이언트 간의
+가벼운 데이터 교환에 이용됨
+
+2. JSON 특징
+ㅇ 문법이 직관적이고, 가벼움
+ㅇ 원래는, 웹 서버와 웹 브라우저의 자바스크립트 간에 데이터 전송의 수단으로 쓰였음
+ㅇ 현재는, 웹 상에서 구조화된 문서 교환을 위한 공통 포멧으로 정착되고 있음
+- 폭넓은 언어 및 라이브러리에서 지원됨
+
+3. JSON 데이터 형식/형태
+
+※ 객체 리터럴 표기법을 기반으로 함
+- 각 데이터(토큰)는, 콜론(:)으로 구분되는, `속성`과 `값`으로 구성 됨
+
+ㅇ `속성`은, 콜론 좌측에 큰 따옴표(") 로 둘러싸인 문자열
+- 작은 따옴표(') 사용 불가
+
+ㅇ `값`은, 다음과 같은 종류들이 가능
+- 문자열 : 큰따옴표(")로 둘러싸여 표현됨
+- 숫자   : 그냥 숫자 자체로 표현됨
+- 진리값 : true 또는 false
+- null
+- 배열   : 대괄호([ ])로 둘러싸이며, 각 요소는 쉼표(,)로 구분되어 표현됨
+- 객체   : 중괄호({ })로 둘러싸여 표현됨
+
+※ JSON 데이터(토큰) 사이사이에,
+- 띄어쓰기,탭으로 보기 좋게 표현 가능하나, 주석과 같은 설명문 요소는 불가
+
+4. JSON 데이터 처리를 위한 언어별 함수/메소드
+
+ㅇ 자바스크립트 메소드
+- objJS = parse(jsonString, function (key, value) { })
+. jsonString : JSON 형식의 문자열 (객체 리터럴)
+. key,value : 키,값의 쌍으로된 매개변수
+. JSON 형식 데이터를 자바스크립트 객체 형식으로 반환
+.. 즉, JSON 데이터를 자바스크립트 객체 그대로 사용이 가능
+- jsonString = stringify(objJS)
+. 자바스크립트 객체(objJS)를 JSON 형식의 문자열로 변환시켜 줌
+
+ㅇ PHP 함수
+- PHP 배열 = json_decode(jsonString)
+- jsonString = json_encode(PHP 배열)
+
+5. JSON 사용 例
+
+ㅇ PHP
+- 임의 형식의 데이터
+. 객체 형식 例) aString = { "name1" : "value1" , "name2" : "value2" , ... }
+. 배열 형식 例) aString = [ "name1" : "value1" , "name2" : "value2" , ... ]
+
+- 임의 형식의 데이터 -> PHP 배열
+.  $arr = json_decode ( $aString );
+
+- PHP 배열 -> JSON 형식의 데이터
+.  HTML 헤더 (server -> client)
+<meta http-equiv='content-type' content='application/json'>
+<meta charset='utf-8'>
+.  echo json_encode ( $arr, JSON_UNESCAPED_UNICODE );
+
+ㅇ Javascript
+- JSON 형식의 데이터(jsonString) -> 자바스크립트 객체(objJS)
+.  var objJS = JSON.parse ( jsonString );
+
+- 자바스크립트 객체(objJS) -> JSON 형식의 데이터(jsonString)
+.  var jsonString = JSON.stringify ( objJS );
+
+- ajax 호출 例 (client -> server)
+$.ajax({
+  url: url,
+  type: 'POST',
+  contentType:'application/json',
+  dataType:'json',
+  data: JSON.stringify(obj),
+  success: function(result){
+    ...
+  }
+  });
+
+  6. JSONP (JSON with Padding)
+
+  ㅇ (동일 출처 정책에 제한 받지 않음)
+  - 타 서버에 저장된 *.js 파일 내에,
+  - 자바스크립트 함수 내 인수로써 저장된 JSON 형식 데이터를 갖고 있으면서,
+  - 클라이언트에 정의된 동일 함수를 실행하면,
+  - 원격 타 서버에 있는 그 함수의 인수(파라미터)로써 데이터가 전달되는 구조
+
+  ㅇ 버튼 클릭 등 해당 이벤트가 발생하면,
+  - 타 서버의 스크립트를 가져오기 위한 script 요소를 생성하고,
+  - 원격 타 서버는 JSON 데이터를 포함한 함수 반환값을 클라이언트에 응답하면,
+  - 클라이언트는 그 반환값을 콜백함수에서 처리하는 형태

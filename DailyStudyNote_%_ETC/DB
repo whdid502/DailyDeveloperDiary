@@ -1,0 +1,79 @@
+1. DBMS란?
+
+데이터베이스를 직접 응용 프로그램들이 조작하는 것이 아니라 데이터베이스를 조작하는 별도의 소프트웨어가 있는데 이를 데이터베이스 관리 시스템(DBMS : DataBase Management System)이라고 합니다. 즉 데이터베이스 관리 시스템이란 데이터베이스를 관리하며 응용 프로그램들이 데이터베이스를 공유하며 사용할 수 있는 환경을 제공하는 소프트웨어입니다.
+
+2. DBMS 종류 및 장단점 분석
+
+대표적인 DBMS는 Oracle사의 Oracle,My_SQL MicroSoft사의 MS_SQL이 있다.
+
+2-1. Oracle
+
+오라클에서 만들어 판매중인 상업용 데이터베이스
+
+윈도우즈 리눅스 유닉스 등 다양한 운영체제에 설치를 할 수 있다.
+
+MS_SQL , MY_SQL보다 대량의 데이터를 처리하기 좋음
+
+대기업에서 주로 사용하며 글로벌 DB시장 점유율 1위
+
+오픈소스가 아닌 비공개 소스로 운영
+
+2-2. MY_SQL
+
+MySQL사에서 개발, 썬마이크로시스템즈를 거쳐 현재 오라클에 흡수합병됨
+
+윈도우즈 리눅스 유닉스 등 다양한 운영체제에 설치를 할 수 있다.
+
+오픈소스로 이루어져있는 무료 프로그램(상업적 사용시 비용있음)
+
+가격등의 장점을 앞세워 다수의 중소기업에서 사용중
+
+2-3. MS_SQL
+
+마이크로소프트 사에서 개발한 상업용 데이터베이스
+
+다른 운영체제도 사용가능하지만 윈도우즈에 특히 특화되어있음
+
+비공개 소스로 폐쇄적인 정책 (리눅스버전은 오픈소스)
+
+비교적 중소기업에서 주로 사용함
+
+1. 관계형 데이터베이스(RDB)
+
+- 아직까지도 가장 많이 사용되는 데이터베이스로서 흔히 행(Column)과 열(Row)로 표현되는 테이블간의 관계를 나타낼 때 사용되며, 이렇게 표현된 데이터베이스는 SQL을 통하여 관리 및 접근한다.
+
+[RDB 종류]
+
+Oracle, MySQL(Oracle) / MS-SQL(Microsoft) / DB2, Infomix(IBM) / Maria DB(Sun Microsystems) / Derby(Apache) / SQLite(Opensource)
+
+*SQLite: 로컬에서 사용하는 경량 데이터베이스로서 원격 Connection이 발생하지 않으므로 속도가 매우 빠르다. (주로 모바일이나 웹에서 사용됨)
+
+2. NoSQL(Not Only SQL)
+
+- NoSQL은 RDB의 특성 뿐만 아니라 다른 특성까지도 지원해 주는 데이터베이스라는 의미를 지닌다.
+
+- 장점 : 대용량 데이터를 다루거나 데이터 분산 처리에 용이. 유연한 데이터 모델링이 가능. Cloud Computing에 적합.
+
+[NoSQL 종류]
+
+1) Document방식
+
+- MongoDB(MongoDB Inc.), CouchDB(Apache) : Json, XML과 같은 Collection 데이터 모델 구조 사용
+
+
+
+2) Key - Value 방식
+
+- Redis, Memchached : 둘다 In-memory DB이기도 하며 Key와 Value의 데이터가 쌍으로 저장되는 가장 단순한 데이터 모델 구조 사용
+
+
+
+3) Big Table DB
+
+- HBase, Cassandra, Hypertable, ScyllaDB : Key-Value 형에서 발전된 형태인 Column Family 데이터 모델 구조 사용
+
+3. 그외 DB
+
+- 계층형 데이터베이스 : 데이터간의 관계가 트리 구조인 데이터 모델 사용
+
+- 네트워크형 데이터베이스 : 데이터간의 다양한 관계가 그물망과 같은 모델 사용

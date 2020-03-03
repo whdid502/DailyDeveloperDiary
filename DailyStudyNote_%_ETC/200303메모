@@ -1,0 +1,47 @@
+mongodb ubuntu에 설치하는것 링크
+
+https://www.digitalocean.com/community/tㅁutorials/how-to-install-mongodb-on-ubuntu-18-04
+
+내가 서버를 리눅스에서 직접돌리면 방화벽을 손대서 포트를 열어주는게 맞다
+
+물탱크에 물을 주려면 호스를 꽂으면 되는데 방화벽을 여는건 내가 송곳으로 구멍내서 물뽑아낸거나 다름없다
+
+sudo apt -get update (lunux에서 가장할것)
+
+sudo apt -get install python3 -venv
+
+.myenv/bin/activate > 명렁어실행할때 위치고려필수 여기서 .은 실행하는의미
+
+가상환경에서 패키지를 설치한건 돌아가지 않는다.
+
+가상환경에서 돌리면 환경관리가 편하다. myenv폴더 안에서 모든게 돌아가기 때문
+
+ip v4 ip v6 < 찾아보자
+
+apt, apt-get의 차이, 큰 차이없음, apt-get이 조금더 고급도구
+
+포트번호없애기
+
+5000을 80으로 바꾸는건 아예 실행불가
+
+aws 에서 elb를 사용해보자 > 포워딩해주는 역할
+
+udo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 5000
+
+> 리눅스에서 포트번호 제거하는 명령어
+
+sudo iptables -t nat -L --line-numbers
+
+> 포트번호 조회
+
+sudo iptables -t nat -D PREROUTING 1
+
+>포트번호제거
+
+nohub python3 app.py
+
+>우분투 꺼도 서버 돌아감
+
+가비아 가입하기(도메인구입)
+
+구입하고(.shop) 내 총서비스가 1로 바뀌는것까지 확인

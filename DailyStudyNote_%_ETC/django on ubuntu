@@ -1,0 +1,213 @@
+[0] apt-get 패키지 업데이트
+
+$ sudo apt-get update && apt-get upgrade -y
+
+
+
+[1] python-pip, python-dev 설치
+
+$ sudo apt-get install python-pip python-dev
+$ sudo apt-get install python3-pip python3-dev
+
+
+
+[2] 확인
+
+$ pip -V
+$ pip3 -V
+
+
+
+[3] pip으로 virtualenv virtualenvwrapper 설치
+
+$ pip install virtualenv virtualenvwrapper
+
+$ pip3 install virtualenv virtualenvwrapper
+
+
+
+[4] virtualenv 프로젝트 생성
+
+$ virtualenv --python=파이썬버전 가상환경이름
+
+# ex)
+
+$ virtualenv --python=python3.5 가상폴더
+
+$ virtualenv --python=python2.7 가상폴더
+
+
+
+[5] 가상환경 실행
+
+$ cd 가상폴더/bin/
+
+$ source activate
+
+
+
+[6] 장고설치
+
+- pip이 최신 버전인지 확인
+
+$ pip install --upgrade pip
+
+$ pip install django~=1.11.0
+
+
+
+[7] 장고 프로젝트 생성
+
+$ cd 가상폴더
+
+$ django-admin startproject mysite .
+
+
+
+[8] 장고 프로젝트 환경설정 변경
+
+mysite/settings.py
+
+
+
+TIME_ZONE = 'Asia/Seoul'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+
+
+
+추가 및 데이터베이스 셋팅 >> 이미 내부에 sqlite3이 설치되어 있다고 함.
+
+DATABASES = {
+
+    'default': {
+
+        'ENGINE': 'django.db.backends.sqlite3',
+
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+    }
+
+}
+
+
+
+[9] 실행 (python 으로 실행하거나 uWSGI 으로 실행)
+
+$ python manage.py migrate ---> 서버 작동 확인
+
+$ python manage.py runserver ---> 서버실행
+
+
+
+[9-1] uWSGI를 virtualenv에 설치
+
+$ pip install uwsgi
+
+
+
+[9-2] uWSGI 실행
+
+	$ uwsgi --socket :8001 --wsgi-file test.py
+
+
+
+[9-3] django 프로젝트 실행
+
+$ python manage.py runserver
+
+$ uwsgi --socket :8001 --module mysite.wsgi --> 실행 되었음
+
+
+
+>> (test) root@mungmange:/var/www/dev/git_project/dev_toy/py/test/mysite # uwsgi --socket :8001 --module mysite.wsgi
+
+
+
+$ uwsgi --http :8001 --module mysite.wsgi #uwsgi --socket :8001 --wsgi-file test.py
+
+
+
+
+
+[10] nginx 스크립트
+
+-------------------------------------------
+
+upstream django{
+
+    server localhost:8001;
+
+}
+
+server {
+
+
+
+    listen       80;
+
+    server_name  localhost;
+
+
+
+    charset utf-8;
+
+
+
+	location ~ /d {
+
+
+
+	   	uwsgi_pass  django;
+
+		include     uwsgi_params; # the uwsgi_params file you installed
+
+	}
+
+}
+
+-------------------------------------------
+
+$ service nginx restart
+
+
+
+[11] 참고로 setting.py 파일 수정 후
+
+$ python manage.py migrate 해주기
+
+
+
+
+
+[12] 어플리케이션 프로젝트 생성
+
+$ python manage.py 가상폴더 blog
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------
+
+# python 쿼리셋
+
+
+
+[1] shell 실행
+
+(test) root@mungmange:/var/www/dev/git_project/dev_toy/py/test/mysite# python manage.py shell
+
+
+
+
+
+[2] 객체 조회
+
+>>> from blog.models import Post
+
+>>> Post.objects.all()
+
+<QuerySet [<Post: aa>, <Post: aa>, <Post: aa>, <Post: ad>, <Post: sdf>]>

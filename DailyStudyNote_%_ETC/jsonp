@@ -1,0 +1,91 @@
+자바스크립트의 보안 정책 중 하나인 SOP(Same-Origin Policy) 때문에 데이터를 호출하는 도메인과 데이터를 반환하는 도메인의 주소가 다르면 Ajax를 이용할 수 없다. 그러나 JSONP 라는 형식이나 Proxy 매시업 페이지를 통해 해결 할 수 있는데 여기서는 JSONP를 이용한 방법을 설명하겠다.
+
+원래 Ajax의 코드는 아래와 같다. 그러나 아래 코드로는 Cross Domain에 직면했을때 정상적인 responseText를 얻을 수가 없다.
+
+
+$.ajax({
+  type: "POST",
+  url: "search.do",
+  data: $('#searchbox').val(),
+  contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+  success: function(data) {
+    if (data != null) {
+      // ...
+    } else {
+      //....
+    }
+  }
+});
+
+
+그러므로 우리는 새로운 방법을 사용해야 한다.
+
+
+JSONP(JSON with Padding) 을 이용한 Ajax 통신
+
+ - 반환되는 데이터 (JSON)가 아래와 같다고 하자.
+
+{
+  'result': 'user',
+  'go': '테스트'
+}
+
+ - 정상적인 데이터를 받기 위해서는 아래와 같이 작성해야 한다. (두 가지 방법 중 아무거나 해도 상관없다.)
+
+ 1. $.getJSON()
+
+$.getJSON("http://ip:8080/jsp/upload?id=user&callback=?",
+    function(data) {
+            alert(data.result + ", " +  data.go);
+    }
+);
+
+ 2. $.ajax();
+
+$.ajax({
+    url : "http://ip:8080/jsp/upload",
+    data : "id=user",
+    dataType : "jsonp",
+    jsonp : "callback",
+    success: function(data) {
+        if(data != null)    {
+            alert(data.result + ", " +  data.go);
+        }
+    }
+});
+
+jQuery 1.2부터는 JSONP 호출에 대한 네이티브 지원이 제공되고 있다. JSONP 콜백을 지정한 경우 다른 도메인에 있는 JSON 데이터를 로드할 수 있으며 JSON 콜백은 url?callback=? 라는 구문을 사용하여 지정할 수 있다.
+
+$.getJSON() 방식을 살펴보면 url 맨 끝에 callback=이라는 문자열과 함께 실제 함수 이름 대신 ? 기호를 콜백 함수 이름으로 입력하는 것을 볼 수 있다. 이는 jQuery가 ? 기호를 인라인 함수를 호출하는 생성된 함수 이름(예:jsonp1234568416)으로 바꾸기때문이다. 굳이 ? 을 적을 필요는 없고 따로 처리하는 콜백함수가 있다면 해당 함수의 이름을 적어줘도 무방하다. 그러나 익명 메소드로 바로 처리할 경우 반드시 ? 를 써줘야 한다.
+
+
+
+데이터 반환 (Servlet)
+
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  request.setCharacterEncoding("UTF-8");
+  response.setCharacterEncoding("UTF-8");
+
+  // 전송된 데이터를 추출(id와 콜백 메소드명)
+  String id = request.getParameter("id");
+  String callBack = request.getParameter("callback");
+
+  // 반환 될 데이터
+  JSONObject obj = new JSONObject();
+  obj.put("result", id);
+  obj.put("go", "테스트");
+
+  // 호출 할 javascript 콜백 메소드를 지정 해 준다.
+  PrintWriter out = response.getWriter();
+  out.write(callBack + "(" + obj.toString() + ")");
+  System.out.println(callBack + "(" + obj.toString() + ")");
+
+  out.flush();
+  out.close();
+}
+
+Serlvet으로 구현한 데이터 반환 메소드이다. JSONP는 Get방식으로만 데이터를 가져올 수 있으므로 doGet메소드에 로직을 작성하였다.
+위 코드를 살펴보면 먼저 전달받은 데이터들을 json 형태로 구성한 뒤 콜백함수의 이름으로 감싸줘야 한다.
+
+최종적으로 반환해야 할 문자열은 아래와 같다. 말 그대로 JSONP(json with padding)이다.
+ jQuery17204359748272690922_1338291446125({"result":"user","go":"테스트"})

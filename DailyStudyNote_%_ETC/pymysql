@@ -1,0 +1,93 @@
+pymysql 모듈 이해 및 실습
+
+pymysql 라이브러리 소개 및 설치
+
+mysql을 python에서 사용할 수 있는 라이브러리 (pymysql 라이브러리 이외에도 MySQLdb(Mysql-pytion), MySQL connector 등 다양한 라이브러리 존재)
+이 중에서 설치가 가장 쉬운 라이브러리
+설치
+pip install PyMySQL
+일반적인 mysql 핸들링 코드 작성 순서
+
+PyMySql 모듈 import
+pymysql.connect() 메소드를 사용하여 MySQL에 연결
+호스트명, 포트, 로그인, 암호, 접속할 DB 등을 파라미터로 지정
+MySQL 접속이 성공하면, Connection 객체로부터 cursor() 메서드를 호출하여 Cursor 객체를 가져옴
+Cursor 객체의 execute() 메서드를 사용하여 SQL 문장을 DB 서버에 전송
+SQL 쿼리의 경우 Cursor 객체의 fetchall(), fetchone(), fetchmany() 등의 메서드를 사용하여 서버로부터 가져온 데이타를 코드에서 활용
+삽입, 갱신, 삭제 등의 DML(Data Manipulation Language) 문장을 실행하는 경우, INSERT/UPDATE/DELETE 후 Connection 객체의 commit() 메서드를 사용하여 데이타를 확정
+Connection 객체의 close() 메서드를 사용하여 DB 연결을 닫음
+PyMySql 모듈 import
+In [ ]:
+import pymysql
+pymysql.connect() 메소드를 사용하여 MySQL에 연결
+호스트명, 포트, 로그인, 암호, 접속할 DB 등을 파라미터로 지정
+주요 파라미터
+host : 접속할 mysql server 주소
+port : 접속할 mysql server 의 포트 번호
+user : mysql ID
+passwd : mysql ID의 암호
+db : 접속할 데이터베이스
+charset='utf8' : mysql에서 select하여 데이타를 가져올 때 한글이 깨질 수 있으므로 연결 설정에 넣어줌
+
+
+MySQL 접속이 성공하면, Connection 객체로부터 cursor() 메서드를 호출하여 Cursor 객체를 가져옴
+Cursor 객체의 execute() 메서드를 사용하여 SQL 문장을 DB 서버에 전송
+
+테이블 생성
+Cursor Object 가져오기: cursor = db.cursor()
+SQL 실행하기: cursor.execute(SQL)
+실행 mysql 서버에 확정 반영하기: db.commit()
+
+cursor 는 control structure of database 입니다. (연결된 객체로 보셔도 좋습니다.)
+
+SQL 실행 (Cursor 객체의 execute() 메서드를 사용하여 INSERT, UPDATE 혹은 DELETE 문장을 DB 서버에 보냄)
+
+삽입, 갱신, 삭제 등이 모두 끝났으면 Connection 객체의 commit() 메서드를 사용하여 데이타를 Commit
+
+
+# 접속
+db = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='korea123', db='dave', charset='utf8')
+
+# 커서 가져오기
+cursor = db.cursor()
+
+# SQL 문 만들기
+sql = '''
+            CREATE TABLE korea2 (
+                   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                   name VARCHAR(20) NOT NULL,
+                   model_num VARCHAR(10) NOT NULL,
+                   model_type VARCHAR(10) NOT NULL,
+                   PRIMARY KEY(id)
+            );
+        '''
+
+# 실행하기
+cursor.execute(sql)
+
+# DB에 Complete 하기
+db.commit()
+
+# DB 연결 닫기
+db.close()
+
+
+좀더 깔끔하게
+
+
+db = pymysql.connect(host='funcoding-db.ca1fydhpobsc.ap-northeast-2.rds.amazonaws.com', port=3306, user='davelee', passwd='korea123', db='dave_db', charset='utf8')
+try:
+    with db.cursor() as cursor:
+        sql = '''
+            CREATE TABLE korea (
+                   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+                   name VARCHAR(20) NOT NULL,
+                   model_num VARCHAR(10) NOT NULL,
+                   model_type VARCHAR(10) NOT NULL,
+                   PRIMARY KEY(id)
+            );
+        '''
+        cursor.execute(sql)
+        db.commit()
+finally:
+    db.close()

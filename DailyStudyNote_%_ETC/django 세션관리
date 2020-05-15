@@ -1,0 +1,115 @@
+회원가입 절차는 총 3단계로 이루어졌고, 사용자는 무조건 각 단계를 순차적으로 거쳐야만 했다. 예를 들어 2단계에 접근할려면 반드시 1단계에서 넘어와야 했고, 3단계에 접근할려면 반드시 2단계에서 넘어와야 했다. 1단계를 거치지 않고, 바로 2단계로 접근할 시에는 잘못된 접근이라는 오류 메시지를 사용자에게 보여주어야 됐다.
+
+하지만 HTTP는 Stateless 프로토콜이다. 따라서 HTTP는 사용자의 히스토리에는 전혀 관심이 없다. 이 사용자가 1단계를 거쳐왔는지, 2단계를 거쳐왔는지에 대해서는 알 길이 없고, 오로지 현재의 요청 정보에 대해서만 순수하게 처리할 뿐이다.
+
+이러한 HTTP의 단점을 보완하기 위해 나온 것이 세션과 쿠키이고, 이를 통해 해결할 수 있었다. 여기서 그 해결방법을 공유하고자 한다.(글을 쓰기 전에 이것을 어떻게 설명해야될지 몰라서 제목을 정하는 데도 한참 고민하였고, 결국 "Django의 세션을 이용한 단계별 페이지 만들기" 라고 이름짓게 되었다. 사실 아직도 100% 마음에 들지는 않는다. 좋은 제목 있으면 추천 부탁드립니..)
+
+우선 세션을 이용하지 않고 간단하게 3개의 페이지를 만들어 보았다.
+
+# views.py
+
+from django.views import View
+from django.shortcuts import redirect, render
+from django.core.urlresolvers import reverse
+
+class Step1View(View):
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'step1.html')
+
+    def post(self, request, *args, **kwargs):
+        return redirect(reverse('step2'))
+
+
+class Step2View(View):
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'step2.html')
+
+    def post(self, request, *args, **kwargs):
+        return redirect(reverse('step3'))
+
+
+class Step3View(View):
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'step3.html')
+# urls.py
+
+from django.conf.urls import url
+from django.contrib import admin
+
+from .views import *
+
+
+urlpatterns = [
+    url(r'^step1/$', Step1View.as_view(), name='step1'),
+    url(r'^step2/$', Step2View.as_view(), name='step2'),
+    url(r'^step3/$', Step3View.as_view(), name='step3'),
+]
+<!-- step1.html -->
+
+<h1>Step1</h1>
+
+<form action="/step1/", method="POST">
+  {% csrf_token %}
+  <input type="submit" value="다음">
+</form>
+<!-- step2.html -->
+
+<h1>Step2</h1>
+
+<form action="/step2/", method="POST">
+  {% csrf_token %}
+  <input type="submit" value="다음">
+</form>
+<!-- step3.html -->
+
+<h1>Step3</h1>
+
+<p>Complete</p>
+이렇게 구현하면, 모든 페이지에 대해서 URL(/step1/, /step2/, /step3/)로 접근할 수 있다. 이제 세션을 이용해 /step1/ => /step2/ => /step3/ 순서로만 접근이 가능하게 바꾸어보자.
+
+Django에서는 기본적으로 세션 관리 기능을 제공해주고, request.session 이라는 딕셔너리 객체에 필요한 값을 저장하고 읽어올 수 있다. request.session['step1_complete'], request.session['step2_complete'] 이 두 키 값을 이용해 아래와 같이 view를 수정하였다.
+
+# views.py
+
+from django.views import View
+from django.shortcuts import redirect, render
+from django.core.urlresolvers import reverse
+from django.core.exceptions import PermissionDenied
+
+
+class Step1View(View):
+
+    def get(self, request, *args, **kwargs):
+        request.session['step1_complete'] = False
+        request.session['step2_complete'] = False
+        return render(request, 'step1.html')
+
+    def post(self, request, *args, **kwargs):
+        request.session['step1_complete'] = True
+        return redirect(reverse('step2'))
+
+
+class Step2View(View):
+
+    def get(self, request, *args, **kwargs):
+        if not request.session.get('step1_complete', False):
+            raise PermissionDenied
+        request.session['step1_complete'] = False
+        return render(request, 'step2.html')
+
+    def post(self, request, *args, **kwargs):
+        request.session['step2_complete'] = True
+        return redirect(reverse('step3'))
+
+
+class Step3View(View):
+
+    def get(self, request, *args, **kwargs):
+        if not request.session.get('step2_complete', False):
+            raise PermissionDenied
+        request.session['step2_complete'] = False
+        return render(request, 'step3.html')
+이제 단계의 순서대로 접근하지 않으면 403 Forbidden 페이지를 볼 수 있을 것이다.

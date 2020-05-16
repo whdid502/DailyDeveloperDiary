@@ -1,0 +1,108 @@
+Django의 세션을 활용해, 유저별 데이터를 저장해볼까 합니다.
+　
+현재프로젝트에서는 Session을 활용하지 않고 redis로 Session을 커스터마이징 해서 사용했었는데요. redis로 session을 커스터마이징하면 sessionId도 직접 생성해야하고 (uuid로 생성해서 사용했습니다), django가 제공하는 session과의 유기적인 기능들을 사용하지 못하는 단점이 있었습니다.
+　
+그 결과 django의 세션기능을 활용하여 유저별 stateful한 웹어플을 만들어보고자 합니다. 심지어 사용법도 매우 간단합니다.
+
+session이란 뭘까요?session
+클라이언트별 정보를 브라우저가 아닌 웹서버에 저장하는 것입니다.
+　
+클라이언트의 정보를 웹브라우저에 저장하는 기술을 cookie라고 하죠. django의 session은 쿠키에는 sessionId만을 저장하여, 클라이언트와 웹서버간의 연결성을 확보한뒤 sessionId를 통해 커뮤니케이션을 실행합니다.
+　
+session의 라이프사이클은 브라우저에 의존합니다. 같은 브라우저를 사용하고 있다면 링크를 통해서 다른 사이트로 이동할때도 sessionId는 쿠키로써 쭉 유지되고, 브라우저를 닫으면 사라집니다.
+　
+cookie와 session의 구체적인 이해는 다음 링크를 참조하세요. 링크
+
+session의 원리
+유저가 웹사이트에 접속
+웹사이트의 서버가 유저에게 sessionId를 부여
+유저의 브라우저가 이 sessionId를 cookie에 보존
+통신할때마다 sessionId를 웹서버에 전송(따라서 django의 경우 request객체에 sessionId가 들어있음)
+sessionId에 의해 웹사이트는 많은 접속 유저중 특정 유저를 인식할 수 있음
+Cookie란
+Cookie는 접속한 웹사이트에 의해 작성된 파일입니다. 사이트에서는 Cookie를 사용해 유저의 로그인 상태를 유지하거나 유저의 사이트 이용설정을 기억시킨다거나 유저의 지역 관련정보를 제공합니다.
+　
+웹서버에서 웹브라우저로 HTTP레스폰스의 헤더를 이용해서 작은 정보를 보냅니다. 이때 보내지는 정보를의 하나에 쿠키가 포함되어 있습니다. 쿠키는 서버 접속할때마다 자동전송됩니다. 물론 쿠키를 만든 웹사이트 이외에서는 다른 사이트가 만든 쿠키를 볼 수 없습니다.
+
+Django소스코드로 session확인해보기
+편의상 어플리케이션 urls.py, views.py, templates파일(index.html, result.html) 4개의 파일을 통해 session이 어떻게 활용되는지 알아보겠습니다.
+
+urls.py
+from django.contrib import admin
+from django.urls import include, path
+from . import views
+
+app_name = 'sessiontest'
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('result/', views.result, name='result'),
+]
+views.py
+from django.shortcuts import render
+from formtest.forms import MyForm, FilterForm
+
+
+def index(request):
+    print(request.session.session_key)
+    request.session['test'] = "hahaha"
+    return render(request, 'sessiontest/index.html')
+
+
+def result(request):
+    session_id = request.session.session_key
+    test = request.session['test']
+
+    contents = {
+        'session_id': session_id,
+        'test': test
+    }
+    return render(request, 'sessiontest/result.html', contents)
+index함수
+
+이때 처음 접속하는 브라우저에서는 request.session.session_key=None값을 찍어내게 됩니다.
+request.session['test'] : test라는 키에 'hahaha'를 저장합니다. 이게 django의 session을 활용하면 좋은점인데요. sessionId 같은건 개발자가 고려하지 않고 request.session과 같은 간단한 커맨드로 session을 활용할 수 있습니다.
+result함수
+
+result페이지에서는 sessionId와 request.session['test']저장한 내용물을 꺼내어 html에 표시합니다.
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thank You</title>
+</head>
+<body>
+<h2>WELCOME</h2>
+
+
+</body>
+</html>
+result.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thank You</title>
+</head>
+<body>
+    <h2>Response Entered by you:</h2>
+    <p>
+        sessionID: <strong>{{ session_id }}</strong>
+    </p>
+    <p>
+        test: <strong>{{ test }}</strong>
+    </p>
+
+</body>
+</html>
+result.html 결과
+
+d7v0bqwvagjq8fzcnjt76wgxb0s7zoc5라는 sessionId를 통해서 웹브라우저와 서버가 통신하는 것을 알 수 있습니다.
+웹브라우저에서 정말 SessionId가 쿠키에 저장되어 있는지 확인해보기
+chrome://settings/siteData에 접속하면 각 사이트가 가지고 있는 쿠키정보를 확인할 수 있습니다. 이번의 예에서 저는 localhost를 사용하였으므로 localhost의 쿠키정보를 까볼까요?
+　
+
+
+
+　
+sessionId라는 키안에 d7v0bqwvagjq8fzcnjt76wgxb0s7zoc5 sessionId가 잘 저장되어 있습니다.

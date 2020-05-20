@@ -132,15 +132,11 @@ const encodedPayload = new Buffer(JSON.stringify(payload))
 console.log('payload: ',encodedPayload);
 
 /* result
-payload:  eyJpc3MiOiJ2ZWxvcGVydC5jb20iLCJleHAiOiIxNDg1MjcwMDAwMDAwIiwiaHR0cHM6Ly92ZWxvcGVydC5jb20vand0X2NsYWltcy9pc19hZG1pbiI6dHJ1ZSwidXNlcklkIjoiMTEwMjgzNzM3MjcxMDIiLCJ1c2VybmFtZSI6InZlbG9wZXJ0In0
 */
-eyJpc3MiOiJ2ZWxvcGVydC5jb20iLCJleHAiOiIxNDg1MjcwMDAwMDAwIiwiaHR0cHM6Ly92ZWxvcGVydC5jb20vand0X2NsYWltcy9pc19hZG1pbiI6dHJ1ZSwidXNlcklkIjoiMTEwMjgzNzM3MjcxMDIiLCJ1c2VybmFtZSI6InZlbG9wZXJ0In0
 주의: base64로 인코딩을 할 때 dA== 처럼 뒤에 = 문자가 한두개 붙을 때가 있습니다. 이 문자는 base64 인코딩의 padding 문자라고 부릅니다.
 JWT 토큰은 가끔 URL 의 파라미터로 전달 될 때도 있는데요, 이 = 문자는, url-safe 하지 않으므로, 제거되어야 합니다. 패딩이 한개 생길 때도 있고, 두개 생길 때도 있는데, 전부 지워(제거해줘도 디코딩 할 때 전혀 문제가 되지 않습니다)
 
 JWT 토큰의 두번째 파트가 완성되었습니다!
-
-
 
 서명 (signature)
 JSON Web Token 의 마지막 부분은 바로 서명(signature) 입니다. 이 서명은 헤더의 인코딩값과, 정보의 인코딩값을 합친후 주어진 비밀키로 해쉬를 하여 생성합니다.
@@ -153,13 +149,9 @@ HMACSHA256(
   secret)
 이렇게 만든 해쉬를, base64 형태로 나타내면 됩니다 (문자열을 인코딩 하는게 아닌 hex → base64 인코딩을 해야합니다)
 
-
-
 한번, 이 포스트에서 사용된 예제 헤더와 정보를 해싱 해볼까요?
 
 먼저, 헤더와 정보의 인코딩 값 사이에 . 을 넣어주고, 합칩니다
-
-eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ2ZWxvcGVydC5jb20iLCJleHAiOiIxNDg1MjcwMDAwMDAwIiwiaHR0cHM6Ly92ZWxvcGVydC5jb20vand0X2NsYWltcy9pc19hZG1pbiI6dHJ1ZSwidXNlcklkIjoiMTEwMjgzNzM3MjcxMDIiLCJ1c2VybmFtZSI6InZlbG9wZXJ0In0
 
 이 값을 비밀키의 값을 secret 으로 해싱을 하고 base64로 인코딩하면 다음과 같은 값이 나옵니다.
 
@@ -173,17 +165,6 @@ const signature = crypto.createHmac('sha256', 'secret')
 
 console.log('signature: ',signature);
 WE5fMufM0NDSVGJ8cAolXGkyB5RmYwCto1pQwDIqo2w
-
-
-이 부분 또한 padding 이 생기면 지워줍니다.
-
-오우! 3번째 부분까지 끝났군요. 그러면 지금까지 구한 값들을 . 을 중간자로 다 합쳐주면, 하나의 토큰이 완성됩니다.
-
-eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ2ZWxvcGVydC5jb20iLCJleHAiOiIxNDg1MjcwMDAwMDAwIiwiaHR0cHM6Ly92ZWxvcGVydC5jb20vand0X2NsYWltcy9pc19hZG1pbiI6dHJ1ZSwidXNlcklkIjoiMTEwMjgzNzM3MjcxMDIiLCJ1c2VybmFtZSI6InZlbG9wZXJ0In0.WE5fMufM0NDSVGJ8cAolXGkyB5RmYwCto1pQwDIqo2w
-
-이 값을 https://jwt.io/ 의 디버거에 붙여넣어보세요 (JWT.IO 는 브라우저 상에서 JWT 토큰을 검증하고 생성 할 수 있게 해주는 디버거 서비스입니다)
-
-untitled-4
 
 하단의 텍스트가 파란색으로 Signature Verified 라고 뜨면 JWT 토큰이 검증되었다는 것 입니다.
 

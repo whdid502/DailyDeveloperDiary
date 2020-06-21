@@ -1,0 +1,86 @@
+1. 날짜와 시간 형태로 변환하기
+time 모듈의 localtime 함수를 사용하면 time에서 반환한 값을 날짜와 시간 형태로 변환해줍니다. 특히 localtime이라는 이름 그대로 현재 지역의 시간대를 사용합니다. 우리나라에서 실행했다면 UTC에 9시간을 더한 KST(Korea Standard Time, 한국 표준시)를 사용합니다(UTC+09:00).
+
+time.localtime(초)
+>>> time.localtime(time.time())
+time.struct_time(tm_year=2018, tm_mon=5, tm_mday=19, tm_hour=10, tm_min=54, tm_sec=25, tm_wday=5, tm_yday=139, tm_isdst=0)
+여기서 tm_wday는 요일(월요일~일요일, 0~6), tm_yday는 1월 1일부터 경과한 일수, tm_isdst는 서머타임 여부입니다.
+
+2. 날짜/시간 포맷에 맞춰서 출력하기
+time.localtime으로 만든 객체는 time.strftime 함수를 사용하여 원하는 날짜/시간 포맷으로 출력할 수 있습니다.
+
+time.strftime('포맷', 시간객체)
+>>> time.strftime('%Y-%m-%d', time.localtime(time.time()))
+'2018-05-19'
+>>> time.strftime('%c', time.localtime(time.time()))
+'Sat May 19 11:14:27 2018'
+%Y는 연, %m은 월, %d는 일인데, '%Y-%m-%d'는 '연-월-일' 포맷이라는 뜻입니다. 그리고 %c는 날짜와 시간을 함께 출력합니다.
+
+3. datetime 모듈로 현재 날짜와 시간 구하기
+이번에는 datetime 모듈의 datetime 클래스를 사용해보겠습니다. datetime.datetime으로 현재 날짜와 시간을 구할 때는 today 메서드를 사용합니다(현재 시간대 기준, KST).
+
+datetime.datetime.today()
+>>> import datetime
+>>> datetime.datetime.today()
+datetime.datetime(2018, 5, 19, 13, 15, 15, 881617)
+만약 datetime 모듈로 현재 시간을 구할 때 UTC를 기준으로 구하고 싶다면 now 메서드에 pytz 모듈로 시간대를 지정해주어야 합니다.
+
+datetime.datetime.now(시간대객체)
+먼저 pip로 pytz 모듈을 설치합니다.
+
+pip install pytz
+그리고 pytz.timezone에 'UTC'를 지정하면 UTC를 기준으로 시간을 구할 수 있습니다(KST보다 9시간 이전의 시간이 나옴).
+
+>>> datetime.datetime.now(pytz.timezone('UTC'))
+datetime.datetime(2018, 5, 19, 4, 40, 12, 536110, tzinfo=<UTC>)
+
+4. 특정 날짜와 시간으로 객체 만들기
+또는, datetime.datetime에 연, 월, 일, 시, 분, 초, 마이크로초를 넣어서 객체를 만들 수도 있습니다.
+
+datetime.datetime(year, month, day, hour=0, minute=0, second=0, microsecond=0)
+>>> d = datetime.datetime(2018, 5, 19)
+>>> d
+datetime.datetime(2018, 5, 19, 0, 0)
+
+5. 문자열로 날짜/시간 객체 만들기
+strptime 메서드를 사용하면 문자열 형태의 날짜를 datetime.datetime 객체로 만들 수 있습니다. 이때는 날짜/시간 포맷을 지정해줘야 합니다.
+
+datetime.datetime.strptime('날짜문자열', '포맷')
+>>> d = datetime.datetime.strptime('2018-05-19', '%Y-%m-%d')
+>>> d
+datetime.datetime(2018, 5, 19, 0, 0)
+
+6. 날짜/시간 객체를 문자열로 만들기
+반대로 datetime 객체를 문자열로 만들 수도 있습니다. 이때는 strftime 메서드를 사용합니다.
+
+datetime객체.strftime('포맷')
+>>> d.strftime('%Y-%m-%d')
+'2018-05-19'
+>>> d.strftime('%c')
+'Sat May 19 00:00:00 2018'
+
+7. 날짜와 시간 속성에 접근하기
+datetime.datetime 객체는 연( year), 월(month), 일(day), 시(hour), 분(minute), 초(second), 마이크로초(microsecond) 속성을 따로 가져올 수 있습니다.
+
+>>> today = datetime.today()
+>>> today.year, today.month, today.day, today.hour, today.minute, today.second, today.microsecond
+(2018, 5, 19, 9, 54, 15, 868556)
+
+8. 날짜와 시간 차이 계산하기
+datetime 모듈에서 유용한 기능이 바로 datetime.timedelta입니다. datetime.timedelta는 두 날짜와 시간 사이의 차이를 계산할 때 사용합니다.
+
+datetime.timedelta(days=0, seconds=0, microseconds=0, milliseconds=0,
+                   minutes=0, hours=0, weeks=0)
+다음은 2018년 5월 13일에서 20일전 날짜를 구합니다.
+
+>>> d = datetime(2018, 5, 13)
+>>> from datetime import timedelta
+>>> d - timedelta(days=20)
+datetime.datetime(2018, 4, 23, 0, 0)
+
+즉, datetime.datetime 객체에서 datetime.timedelta를 빼면 이전 날짜와 시간을 구하고, 더하면 이후 날짜와 시간을 구합니다.
+
+특히 datetime.datetime 객체에서 datetime.datetime 객체를 빼면 datetime.timedelta 객체가 나옵니다.
+
+>>> datetime(2018, 5, 13) - datetime(2018, 4, 1)
+datetime.timedelta(42)

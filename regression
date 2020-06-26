@@ -1,0 +1,41 @@
+통계학에서 회귀란, 여러 개의 독립변수와 한 개의 종속변수 간의 상관관계를 모델링하는 기법을 통칭한다.
+예를 들어 아파트 방 개수, 크기, 주변 학군 등 여러 개의 독립변수에 따라 아파트 가격이라는 종속변수가 어떤 관계를 나타내는지를 모델링하고 예측하는 방법이다.
+즉, 머신러닝 관점에서 본다면 독립변수는 feature에 해당하고, 종속변수는 결정값에 해당한다.
+여기서 핵심은 주어친 feature와 결정 값 데이터에서 학습을 통해 최적의 회귀 계수를 찾아내는 것이다.
+
+선형 회귀식 / w= 회귀 계수, x= 독립 변수, y= 종속 변수
+지도 학습의 종류
+지도 학습은 크게 분류와 회귀 두 가지 유형으로 나눌 수 있다. 이 두 가지 기법의 가장 큰 차이점은 분류는 예측 값이 카테고리와 같은 이산형 클래스(ex.타이타닉 생존의 라벨인 0,1)이고 회귀는 연속형 숫자값(ex.매출)이다.
+로지스틱 회귀분석
+보통 회귀는 연속형 숫자값을 예측하는데 쓰이지만, 로지스틱 회귀는 선형 회귀 방식을 분류에 적용한 알고리즘이다.
+시그모이드 함수의 최적선을 찾고 이 시그모이드 함수의 반환 값을 확률로 간주하여 확률에 따라 분류를 결정하는 방식이다
+
+S자 커브 형태의 시그모이드
+실습
+위스콘신 유방암 데이터 셋을 이용하여 로지스틱 회귀로 암 여부를 판단한다. 사이킷런을 활용할 예정이다.
+먼저 사이킷런의 load_breset_cancer() 함수로 데이터셋을 호출한다.
+import pandas as pd
+import matplotlib.pyplot as plt
+%matplotlib inline
+from sklearn.datasets import load_breast_cancer
+from sklearn.linear_model import LogisticRegression
+cancer = load_breast_cancer()
+먼저 알아두어야 할 것은, 로지스틱 회귀 분석같은 경우는 데이터의 정규 분포도에 따라 예측 성능에 영향을 받을 수 있다는 점 때문에 정규 분포 형태로 피처 스케일링을 진행한다. 추후 피처 스케일링에 대해서 학습을 따로 할 예정이다.
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+# StandardScaler( )로 평균이 0, 분산 1로 데이터 분포도 변환
+scaler = StandardScaler()
+data_scaled = scaler.fit_transform(cancer.data)
+X_train , X_test, y_train , y_test = train_test_split(data_scaled, cancer.target, test_size=0.3, random_state=0)
+그리고 로지스틱 회귀를 이용하여 학습 및 예측을 수행하고, 평가 방식인 정확도와 ROC-AUC 값을 구한다.
+from sklearn.metrics import accuracy_score, roc_auc_score
+# 로지스틱 회귀를 이용하여 학습 및 예측 수행.
+lr_clf = LogisticRegression()
+lr_clf.fit(X_train, y_train)
+lr_preds = lr_clf.predict(X_test)
+# accuracy와 roc_auc 측정
+print('accuracy: {:0.3f}'.format(accuracy_score(y_test, lr_preds)))
+print('roc_auc: {:0.3f}'.format(roc_auc_score(y_test , lr_preds)))
+
+정확도와 roc_auc
+로지스틱 회귀는 가볍고 빠르면서 이진(binary classfication) 분류 예측 성능도 뛰어나다고 한다. 이 때문에 이진 분류의 기본 모델로 사용하는 경우가 많고 로지스틱 회구는 희소한 데이터 세트 분류에도 뛰어난 성능을 보이기에 텍스트 분류에서도 자주 사용된다.

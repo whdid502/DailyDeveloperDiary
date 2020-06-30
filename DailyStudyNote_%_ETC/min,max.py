@@ -20,3 +20,27 @@ def solution(n, m):
     min_v = n_list[-2]*m_list[-2]
     answer.append(max_v)
     answer.append(min_v)
+
+#-------------
+#최대공약수
+def gcd(x,y):
+    #y가 0이될때까지 반복
+    while y:
+        #y를 x에 대입
+        #x를 y로 나눈 나머지에 y를 대입
+        x,y = y, x%y
+    return x
+
+#내장함수
+from math import gcd
+
+print(gcd(1071,1029))
+
+#21
+
+#---------
+#최소공배수
+from math import gcd
+
+def lcm(x,y):
+    return x*y // gcd(x,y)

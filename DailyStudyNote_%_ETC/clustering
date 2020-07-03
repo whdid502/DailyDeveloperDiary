@@ -1,0 +1,211 @@
+1) 군집분석(cluster analysis)이란?
+
+
+
+군집분석이란 데이터가 속해 있는 군집을 모르는 상태에서(Y값 label 없음) 유사한 혹은 동질의 데이터끼리 군집(cluster)로 묶어 주는 분석기법입니다.
+
+
+
+
+
+
+
+
+
+ 사자성어 중에 보면
+
+
+
+"유유상종(類類相從)", "끼리 끼리 모인다"라는 말이 있는데요, 군집분석을 잘 나타내는 말 같습니다.
+
+
+
+
+
+서양 속담에도 비슷한 것이 있습니다.
+
+
+
+"Birds of a feather flock together"
+
+ * 그림 출처 : http://www.winglish.com/free/asp/mrwin_default_com.asp?j_num=6
+
+
+
+
+
+군집분석은 유의미하거나 유용한 데이터의 구조를 파악하여 활용(clustering for utility)하거나, 데이터의 구조를 이해(understanding)하는 목적으로 분석 초기 탐색적 분석 단계에서 아주 많이 활용하곤 합니다.
+
+
+
+군집분석은 마케팅, 심리학, 사회학, 통계, 패턴 인식, 기계학습, 데이터마이닝 등에 다방면에 사용됩니다. 마케팅, CRM에 종사하는 분들은 고객세분화(cutomer segmentation) 하는데 군집분석 & 프로파일링 (customer clustering & profiling) 에 대해서 들어보았거나 시도를 해봤을 것 같습니다.
+
+
+
+(1) 군집분석으로 고객세분화를 먼저 수행하고 (un-supervised learning) -> (2) Decision Tree를 사용해서 군집분석을 통해 만든 군집들을 분류(Classification, supervised learning)하는 모델을 만드는 semi-supervised learning approach를 취하는 것도 생각해 볼 수 있을 것입니다.
+
+
+
+데이터가 X와 Y의 2차원으로만 구성되어 있다면 산점도(scatter plot)을 그려서 눈으로 확인해보는 것만으로도 데이터셋에 내재한 패턴, 군집 유무, 데이터 간 관계를 어림짐작할 수 있습니다.  3차원도 (좀 보기에 헷갈리기는 하지만) 3D plot을 그려서 눈으로 확인할 수 있습니다. 하지만 4차원 이상 넘어가면 사람 눈으로 군집 유무 여부를 확인, 판단하는게 어려워집니다. 이때 군집분석을 활용하면 좋겠지요?!  개별 나무를 몰라도 (데이터셋에 대한 사전지식이 없어도) 숲에 대한 조감도(군집)를 찾을 수 있다니 군집분석은 참 유용한 데이터 마이닝 (숨은 지식, 패턴 캐내기) 기법입니다.
+
+
+
+
+
+
+
+2) 군집분석의 원리(Principal of custer analysis)는?
+
+
+
+군집분석은 데이터가 어떤 군집에 속해있는지 알 수 있는 Y값 Label이 없는 상태에서 진행된다고 하였으므로 지도학습(supervised learning)처럼 명쾌한 모델성능평가가 쉽지가 않습니다.  군집을 몇 개로 하느냐에 따라서도 군집화가 영향을 많이 받기도 하는데요, 보통은 데이터 내 군집이 몇 개 있는지 모르는 경우가 많습니다.
+
+
+
+그렇다면 군집분석에서 모델 생성, 평가는 무슨 기준으로 하는 것일까 하는 의문이 들 것입니다. 군집분석에서는 주로 응집도(cohesion)과 분리도(separation) 척도를 많이 사용하는 편인데요, 군집분석을 컴퓨터가 이해하도록 수식, 척도를 가지고 군집화의 원리를 나타내보면
+
+
+
+      (1) 군집 內 응집도를 최대화하고, (maximizing cohesion within cluster,
+                                                    i.e. minimizing sum of distance b/w x and y)
+
+&   (2) 군집 間 분리도를 최대화하도록 (maximizing separation between clusters)
+
+
+
+군집을 형성한다는 것입니다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+군집분석 알고리즘의 근간에는 최적화(optimization) 개념이 들어있음을 알 수 있습니다.
+
+
+
+Graph-based clustering과 Prototype-base clustering 의 두 가지 approach별로 나누어서 응집도(cohesion)와 분리도(separation)의 개념을 수식과 시각화로 같이 나타내면 아래와 같습니다.
+
+
+
+
+
+ (2-a) 그래프 기반 응집도와 분리도 (Graph-based view of cohesion and separation)
+
+
+
+
+
+
+
+
+
+
+
+ (2-b) 프로토타입 기반 응집도와 분리도 (Prototype-base view of cohesion and separation)
+
+
+
+아래에 군집의 중심(centroid)을 기준으로 군집 내 데이터와 중심 간 거리를 가지고 응집도를, 군집 중심 간의 거리를 가지고 분리도를 나타내보았습니다.
+
+
+
+
+
+
+
+
+
+
+
+3) 군집분석에에는 어떤 유형이 있나?  어떻게 구분할 수 있나?
+
+
+
+ 군집분석을 구분할 수 있는 기준이 여러개 있을 수 있는데요, 한 군집 안에 부분군집이 있느냐 없느냐에 따라서 계층적 군집(hierarchical clustering)과 분할적 군집(partitional clustering)으로 나눌 수 있습니다. 계층적 군집은 한 군집 안에 부분군집이 있는 반면, 분할적 군집은 군집간 부분집합이나 중복없이 상호 배타적으로(exclusive) 존재합니다. 아래 그림의 이미지를 참고하시면 이해하기 쉬울거예요.
+
+
+
+
+
+
+
+
+
+
+
+   (3-a) 계층적 군집분석 (Hierarchical Clustering)
+
+
+
+계층적 군집분석은 (3-a-1) 개별 데이터에서 시작해서 유사한 데이터끼리 군집으로 차근차근 묶어가는 기법인 응집형 방법 (Aggolomerative, Bottom-up method)과, 응집형과는 반대로 (3-a-2) 모든 데이터를 하나의 군집에 속한다고 놓고, 차근차근 세부 군집으로 나누어가는 분리형 방법 (Divisive, Top-down method) 으로 구분할 수 있습니다.
+
+
+
+
+
+
+
+일반적으로 군집 간 합치기와 분할은 greedy manner (각 단계별 국소 최적해를 찾아가는 휴리스틱 최적화 알고리즘) 에 의해서 결정이 됩니다. 일반적인 경우 응집형(agglomerative) 군집화의 복잡도(complexity)는 으로서 큰 규모의 데이터셋에 적용하기에는 시간이 너무 오래 걸려서 무리일 수 있습니다. 일부 특별한 경우로, 단일(최단) 연결법(single-linkage (SLINK)), 완전(최장) 연결법(complete-linkage, CLINK)는 복잡도가 로서 최적의 효과적인 응집형 방법으로 알려져 있습니다. 모든 관측치를 상호배타적으로 탐색하는 경우의 분리형(divisive) 군집화는 복잡도가 으로서 아주 끔찍한 수준입니다. ^^; (from Wikipedia)
+
+앞으로 연재할 때 복잡도가 어마무시 높은 분리형 군집화는 제외하도록 할께요.
+
+
+
+응집형(Agglomerative) 방법에는 군집간 거리 척도와 연결법에 따라서 단일(최단) 연결법 (Single Linkage Method), 완전(최장) 연결법 (Complete Linkage Method), 평균 연결법 (Average Linkage Method), 중심 연결법 (Centroid Linkage Method), Ward 연결법 (Ward Linkage Method)이 있습니다.
+
+분리형(Divisive) 방법에는 DIANA 방법(DIANA algorithm)이 있습니다.
+
+
+
+
+
+
+
+
+
+
+
+  (3-b) 분할적 군집분석 (Partitional Clustering, Non-Hierarchical clustering)
+
+
+
+분할적 군집(Partitional clustering) 방법에는 거리 기반 군집화 (distance-based clustering), 밀도 기반 군집화(density-based clustering), 신경망 기반 군집화 (neural network-based clustering) 등이 있습니다.
+
+
+
+(3-b-1) 프로토타입 기반(Prototype-based) 군집화 기법에는 K-중심 군집(K-centroid clustering), 퍼지 군집(Fuzzy clustering)
+
+
+
+(3-b-2) 분포 기반(Distribution-based) 군집화에는 혼합분포 군집(Mixture distribution clustering)이 있습니다.
+
+
+
+(3-b-3) 밀도 기반(Density-based) 군집화 기법에는 중심 밀도 군집(Center density clustering), 격자 기반 군집(Grid-based clustering), 커넬 기반 군집(Kernel-based clustering) 등이 있습니다.
+
+
+
+(3-b-4) 그래프 기반(Graph-based) 군집화에는 코호넨 군집(Kohenen clustering) 이 있습니다.
+
+
+
+
+
+
+
+
+
+
+보통 군집분석 공부한다고 하면 'K-means clustering' 알고리즘 공부하고 끝내는 경우가 있는데요 (좀더 공부한다면 계층적 군집화 일부...), 위에 제시한 것처럼 군집분석 기법/알고리즘이 상당히 많이 있습니다. 분석 기법이 많다보니 뭘 써야하나 혼란스러울 수 있는데요, 군집분석 알고리즘별로 데이터 특성과 구조, 분석 목적에 맞게 보다 적절한 알고리즘이 있습니다. 따라서 분석가는 각 알고리즘의 개념, 특성, 장점과 단점을 알고 있어야 하고, 분석 목적, 데이터 특성에 맞게 잘 선택해서 사용할 줄 알아야 하겠습니다.
+
+
+
+위에서는 분석 기법 이름만 구조를 잡아서 나열을 했는데요, 앞으로 하나씩 차근차근 알고리즘 설명과 예시, 그리고 R script를 풀어보도록 하겠습니다.

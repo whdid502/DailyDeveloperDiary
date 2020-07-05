@@ -1,0 +1,38 @@
+▶MySQL 테이블 조회 기본 (SELECT)
+
+
+
+
+▶설명
+SELECT 쿼리(Query)는 테이블에서 원하는 컬럼의 데이터를 조회합니다.
+
+
+
+▶사용법
+전체 컬럼 조회
+SELECT * FROM 테이블;
+
+일부 컬럼 조회
+SELECT 컬럼1 [, 컬럼2, 컬럼3 ...] FROM 테이블;
+
+
+컬럼에 별칭을 설정하여  조회
+SELECT 컬럼1 AS 컬럼1별칭 [, 컬럼2 AS 컬럼2별칭, 컬럼3 AS 컬럼3별칭 ...] FROM 테이블;
+
+특정 조건에 만족하는 데이터 조회
+SELECT 컬럼1 [, 컬럼2, 컬럼3 ...] FROM 테이블 WHERE 조건식;
+* 조건식은 [연산자]를 참고하시기 바랍니다.
+
+▶예제 쿼리 (Example Query)
+전체 컬럼 조회
+SELECT * FROM table_name;
+
+일부 컬럼 조회
+SELECT name, age FROM table_name;
+
+
+컬럼에 별칭을 설정하여 조회
+SELECT name as nickname, age FROM table_name;
+
+특정 조건에 만족하는 데이터 조회 (age가 21 미만인 데이터)
+SELECT name, age FROM table_name WHERE age < 21;
